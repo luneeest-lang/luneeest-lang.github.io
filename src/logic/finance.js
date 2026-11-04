@@ -186,6 +186,70 @@ function convertWage({ mode, amount, weeklyHours, includeHoliday }) {
   };
 }
 
-const api = { monthlyPayment, loanSchedule, severancePeriod, severancePay, convertWage };
+// Hourly minimum wage by the year of the last working day (MOEL notices).
+const MINIMUM_WAGE = { 2026: 10320, 2027: 10700 };
+// Employment Insurance Act Enforcement Decree Article 68: the daily wage used for
+// the benefit is capped at 113,500 won, so the benefit tops out at 68,100 won.
+const BENEFIT_WAGE_CAP = 113500;
+// Employment Insurance Act Table 1, for people leaving on or after 2019-10-01:
+// [under 50, 50 or older or disabled] by insured period.
+const BENEFIT_DAYS = {
+  under1: [120, 120],
+  '1to3': [150, 180],
+  '3to5': [180, 210],
+  '5to10': [210, 240],
+  '10plus': [240, 270],
+};
+
+function unemploymentBenefit({ lastWorkDay, wagesLast3Months, dailyHours, olderOrDisabled, insuredBand }) {
+  const last = parseYmd(lastWorkDay);
+  if (last === null) {
+    return { error: 'invalid_date' };
+  }
+  const minimumWage = MINIMUM_WAGE[new Date(last).getUTCFullYear()];
+  if (!minimumWage) {
+    return { error: 'unsupported_year' };
+  }
+  if (!Number.isFinite(wagesLast3Months) || wagesLast3Months <= 0) {
+    return { error: 'invalid_wages' };
+  }
+  if (!Number.isFinite(dailyHours) || dailyHours <= 0 || dailyHours > 8) {
+    return { error: 'invalid_hours' };
+  }
+  const days = BENEFIT_DAYS[insuredBand];
+  if (!days) {
+    return { error: 'invalid_band' };
+  }
+  const leave = last + DAY_MS;
+  const start = monthsBefore(leave, 3);
+  const periodDays = Math.round((leave - start) / DAY_MS);
+  const averageDailyWage = wagesLast3Months / periodDays;
+  // Article 46: 60% of the base daily wage, but never below 80% of the minimum wage
+  // for the contractual daily hours, even when that is above the cap.
+  const floor = Math.round(minimumWage * dailyHours * 0.8);
+  const capped = Math.floor(Math.min(averageDailyWage, BENEFIT_WAGE_CAP) * 0.6);
+  let rule = averageDailyWage > BENEFIT_WAGE_CAP ? 'cap' : 'rate';
+  let dailyBenefit = capped;
+  if (capped < floor) {
+    dailyBenefit = floor;
+    rule = 'floor';
+  }
+  const benefitDays = days[olderOrDisabled ? 1 : 0];
+  return {
+    error: null,
+    periodStart: toYmd(start),
+    periodEnd: toYmd(last),
+    periodDays,
+    averageDailyWage,
+    minimumWage,
+    dailyBenefit,
+    rule,
+    benefitDays,
+    total: dailyBenefit * benefitDays,
+    monthly: dailyBenefit * 30,
+  };
+}
+
+const api = { monthlyPayment, loanSchedule, severancePeriod, severancePay, convertWage, unemploymentBenefit };
 if (typeof module !== 'undefined') module.exports = api;
 if (typeof window !== 'undefined') window.ToolLogic = Object.assign(window.ToolLogic || {}, api);

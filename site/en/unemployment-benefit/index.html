@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="naver-site-verification" content="039452e4a2ed6ef92166e9a02eaa07735279ac95" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+  <title>Korean Unemployment Benefit Calculator | Daily Amount, Days</title>
+  <meta name="description" content="Estimate South Korean unemployment benefits (job-seeking allowance): the daily amount, number of benefit days, and total, with the 2026 and 2027 limits.">
+  <link rel="canonical" href="https://moatool.com/en/unemployment-benefit/">
+    <link rel="alternate" hreflang="ko" href="https://moatool.com/ko/unemployment-benefit/">
+    <link rel="alternate" hreflang="en" href="https://moatool.com/en/unemployment-benefit/">
+    <link rel="alternate" hreflang="x-default" href="https://moatool.com/ko/unemployment-benefit/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Toolbox">
+  <meta property="og:title" content="Korean Unemployment Benefit Calculator | Daily Amount, Days">
+  <meta property="og:description" content="Estimate South Korean unemployment benefits (job-seeking allowance): the daily amount, number of benefit days, and total, with the 2026 and 2027 limits.">
+  <meta property="og:url" content="https://moatool.com/en/unemployment-benefit/">
+  <meta property="og:image" content="https://moatool.com/assets/og-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/style.css?v=b0098b28">
+  <link rel="icon" href="/assets/favicon.svg?v=b0098b28" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=b0098b28">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-name" href="/en/">Toolbox</a>
+  <nav class="site-nav" aria-label="Main menu"><a href="/en/">Tools</a><a href="/en/guides/">Guides</a><a href="/en/about/">About</a></nav>
+  <a class="lang-switch" href="/ko/unemployment-benefit/" hreflang="ko" lang="ko">한국어</a>
+</header>
+<main class="tool" data-category="calc">
+  <h1>Korean unemployment benefit calculator</h1>
+  <div class="intro"><p>Estimate the job-seeking allowance (구직급여) paid by South Korea&#39;s Employment Insurance: how much per day, for how many days, and in total. The calculator uses your wages for the three months before leaving, the legal daily cap and floor, and the benefit-day table based on age and insured period.</p>
+<p>It covers people who left a job in 2026 or 2027. Your local employment center makes the final decision on eligibility and amount.</p></div>
+  <form class="tool-form" id="tool-form">
+    <div class="field">
+  <label for="lastWorkDay">Last working day</label>
+  <div class="field-row">
+    <input id="lastWorkDay" name="lastWorkDay" type="date">
+    
+  </div>
+</div>
+<div class="field">
+  <label for="wages">Total wages for the last 3 months (pre-tax)</label>
+  <div class="field-row">
+    <input id="wages" name="wages" type="text" inputmode="decimal">
+    <span class="unit">won</span>
+  </div>
+</div>
+<div class="field">
+  <label for="dailyHours">Contractual hours per day</label>
+  <div class="field-row">
+    <input id="dailyHours" name="dailyHours" type="text" inputmode="decimal" value="8">
+    <span class="unit">hours</span>
+  </div>
+</div>
+<div class="field">
+  <label for="insuredBand">Employment insurance period</label>
+  <select id="insuredBand" name="insuredBand"><option value="under1">Under 1 year</option><option value="1to3">1 to under 3 years</option><option value="3to5">3 to under 5 years</option><option value="5to10">5 to under 10 years</option><option value="10plus">10 years or more</option></select>
+</div>
+<div class="field field-check">
+  <input id="olderOrDisabled" name="olderOrDisabled" type="checkbox">
+  <label for="olderOrDisabled">50 or older, or disabled, on the last working day</label>
+</div>
+    <div class="results" aria-live="polite">
+      <div class="output output-primary">
+  <span class="output-label">Daily benefit</span>
+  <output id="dailyBenefit"></output>
+</div>
+<div class="output">
+  <span class="output-label">Benefit days</span>
+  <output id="benefitDays"></output>
+</div>
+<div class="output">
+  <span class="output-label">Estimated total</span>
+  <output id="total"></output>
+</div>
+<div class="output">
+  <span class="output-label">Per 30 days</span>
+  <output id="monthly"></output>
+</div>
+<div class="output">
+  <span class="output-label">How it was calculated</span>
+  <output id="basis"></output>
+</div>
+    </div>
+    <p class="error" data-error="errorInvalidDate" role="alert" hidden>Enter a valid date.</p>
+<p class="error" data-error="errorUnsupportedYear" role="alert" hidden>Only last working days from January 1, 2026 are supported.</p>
+<p class="error" data-error="errorInvalidWages" role="alert" hidden>Enter three-month wages greater than 0.</p>
+<p class="error" data-error="errorInvalidHours" role="alert" hidden>Enter daily hours greater than 0 and no more than 8.</p>
+  </form>
+  <div class="share">
+    <button type="button" class="copy-btn" data-share data-label="Copy result link" data-copied="Link copied">Copy result link</button>
+    <p class="share-hint">The link contains the values you entered, so anyone you send it to sees the same result.</p>
+  </div>
+  
+  <section class="howto">
+    <h2>How to use</h2>
+    <ol><li>Pick your last working day.</li><li>Enter your total pre-tax wages for the three months up to that day, in won.</li><li>Check your contractual daily hours. Leave 8 for a full-time job.</li><li>Choose your insured period, and check the box if you were 50 or older or registered as disabled on your last day.</li></ol>
+  </section>
+  <section class="formula">
+    <h2>How it works</h2>
+    <p>Average daily wage = total wages in the three months up to your last working day ÷ the calendar days in that period.</p>
+<p>Daily benefit = average daily wage × 60%. Only up to 113,500 won of daily wage counts (Enforcement Decree Article 68), so the maximum benefit is 68,100 won a day.</p>
+<p>Floor = the minimum wage in the year you left × contractual daily hours × 80%. If 60% of your wage is lower, you receive the floor (Employment Insurance Act Article 46). For an 8-hour day the floor is 66,048 won in 2026 and 68,480 won in 2027.</p>
+<p>Total = daily benefit × benefit days. Benefit days range from 120 to 270 depending on age on your last day (under 50, or 50 and over or disabled) and how long you were insured.</p>
+  </section>
+  <section class="example">
+    <h2>Example</h2>
+    <p>A 40-year-old who worked until July 15, 2026, earned 9,000,000 won in the three months from April 16 (91 days), and was insured for two years has an average daily wage of about 98,901 won. Sixty percent is 59,340 won, below the 66,048 won floor, so they receive 66,048 won a day for 150 days, 9,907,200 won in total.</p>
+<p>With 15,000,000 won in three-month wages, the average wage exceeds the cap and the benefit is 68,100 won a day. Leaving in 2027, the 68,480 won floor is above the cap, so the benefit is 68,480 won a day.</p>
+  </section>
+  <section class="notes">
+    <h2>Good to know</h2>
+    <ul><li>To qualify you generally need at least 180 insured days in the 18 months before leaving, an involuntary separation, the ability and willingness to work, and active job seeking (Employment Insurance Act Article 40).</li><li>The first 7 days after you file are a waiting period with no benefit.</li><li>The 30-day figure is an approximation. Benefits are paid for the days recognized at each unemployment check-in.</li><li>In September 2026 the Ministry of Employment and Labor reported a reform plan that would tie the cap to 103% of the floor and pay on a six-day-week basis. This calculator will be updated if the law changes.</li><li>Results are estimates. The employment center decides eligibility and the actual amount.</li></ul>
+  </section>
+  
+  <section class="related-tools">
+    <h2>Related tools</h2>
+    <div class="grid"><a class="tool-card" data-category="calc" href="/en/severance/">
+  <span class="tool-card-title">Severance pay calculator</span>
+  <span class="tool-card-desc">Enter your start and leaving dates, recent wages, bonuses, and leave pay for an estimate of Korean severance pay.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/en/hourly-wage/">
+  <span class="tool-card-title">Korean hourly and monthly wage calculator</span>
+  <span class="tool-card-desc">Convert an hourly wage to a monthly wage in Korea and back, including weekly holiday pay (juhyu sudang) and the 209-hour monthly standard.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/en/date-diff/">
+  <span class="tool-card-title">Date difference calculator</span>
+  <span class="tool-card-desc">Enter a start and end date to get the number of days and weeks between them. Leap years are included.</span>
+</a></div>
+  </section>
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What percentage of my wage is the benefit?</summary><p>Article 46 of the Employment Insurance Act sets it at 60% of your average daily wage, within a legal daily cap and floor.</p></details>
+<details><summary>What if I leave a job in 2027?</summary><p>The 2027 floor for an 8-hour day is 68,480 won, which is above the current cap of 68,100 won. The law pays the floor whenever 60% of your wage is lower, so under current law full-time workers receive 68,480 won a day. A proposed reform could change the cap and payment schedule.</p></details>
+<details><summary>Can I get it if I quit?</summary><p>Generally no. Leaving voluntarily disqualifies you unless there is a recognized reason, such as unpaid wages. Ask your employment center.</p></details>
+  </section>
+  <section class="sources">
+    <h2>Sources</h2>
+    <ul><li><a href="https://www.moel.go.kr/faq/faqView.do?seqRepeat=204" target="_blank" rel="noopener noreferrer">Ministry of Employment and Labor: unemployment benefit days and amount (in Korean)</a></li><li><a href="https://www.law.go.kr/법령/고용보험법" target="_blank" rel="noopener noreferrer">National Law Information Center: Employment Insurance Act, Articles 40 and 46 and Table 1 (in Korean)</a></li><li><a href="https://www.law.go.kr/법령/고용보험법시행령" target="_blank" rel="noopener noreferrer">National Law Information Center: Enforcement Decree, Article 68 wage cap (in Korean)</a></li><li><a href="https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=19744" target="_blank" rel="noopener noreferrer">Ministry of Employment and Labor: 2027 minimum wage (in Korean)</a></li><li><a href="https://www.etoday.co.kr/news/view/2620387" target="_blank" rel="noopener noreferrer">eToday: report on the proposed 2027 benefit reform, September 2026 (in Korean)</a></li></ul>
+  </section>
+  <p class="updated">Last updated: 2026-11-04</p>
+</main>
+<footer class="site-footer">
+  <p>Values you enter are never stored or sent to a server. Advertising partners may use cookies.</p>
+  <p><a href="/en/guides/">Guides</a> · <a href="/en/about/">About this site</a> · <a href="/en/privacy/">Privacy policy</a></p>
+</footer>
+<script type="application/json" id="tool-labels">{"lastWorkDayLabel":"Last working day","wagesLabel":"Total wages for the last 3 months (pre-tax)","dailyHoursLabel":"Contractual hours per day","insuredBandLabel":"Employment insurance period","bandUnder1":"Under 1 year","band1to3":"1 to under 3 years","band3to5":"3 to under 5 years","band5to10":"5 to under 10 years","band10plus":"10 years or more","olderOrDisabledLabel":"50 or older, or disabled, on the last working day","unitWon":"won","unitHours":"hours","wonFormat":"{n} won","daysFormat":"{n} days","dailyBenefitLabel":"Daily benefit","benefitDaysLabel":"Benefit days","totalLabel":"Estimated total","monthlyLabel":"Per 30 days","basisLabel":"How it was calculated","basisRate":"60% of an average daily wage of {avg} ({start} to {end}, {days} days)","basisCap":"Average daily wage of {avg} is above the 113,500 won cap, so the maximum applies","basisFloor":"60% is below the floor, so the floor applies (minimum wage {wage} × hours × 80%)","errorInvalidDate":"Enter a valid date.","errorUnsupportedYear":"Only last working days from January 1, 2026 are supported.","errorInvalidWages":"Enter three-month wages greater than 0.","errorInvalidHours":"Enter daily hours greater than 0 and no more than 8."}</script>
+<script src="/assets/logic/finance.js?v=b0098b28"></script>
+<script src="/assets/common.js?v=b0098b28"></script>
+<script src="/assets/tools/unemployment-benefit.js?v=b0098b28" defer></script>
+</body>
+</html>

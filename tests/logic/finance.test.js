@@ -181,3 +181,75 @@ test('시간이나 금액이 올바르지 않으면 오류', () => {
   assert.equal(convertWage({ mode: 'hourlyToMonthly', amount: 10700, weeklyHours: 0, includeHoliday: true }).error, 'invalid_hours');
   assert.equal(convertWage({ mode: 'hourlyToMonthly', amount: 0, weeklyHours: 40, includeHoliday: true }).error, 'invalid_amount');
 });
+
+const { unemploymentBenefit } = require('../../src/logic/finance');
+
+function benefit(overrides) {
+  return unemploymentBenefit({
+    lastWorkDay: '2026-07-15',
+    wagesLast3Months: 9000000,
+    dailyHours: 8,
+    olderOrDisabled: false,
+    insuredBand: '1to3',
+    ...overrides,
+  });
+}
+
+test('실업급여 평균임금은 마지막 근무일까지 3개월 임금을 그 기간 일수로 나눈다', () => {
+  const r = benefit({});
+  assert.equal(r.error, null);
+  assert.equal(r.periodStart, '2026-04-16');
+  assert.equal(r.periodEnd, '2026-07-15');
+  assert.equal(r.periodDays, 91);
+  assert.equal(Math.floor(r.averageDailyWage), 98901);
+});
+
+test('평균임금의 60%가 하한액보다 낮으면 2026년 하한액 66,048원', () => {
+  const r = benefit({});
+  assert.equal(r.dailyBenefit, 66048);
+  assert.equal(r.rule, 'floor');
+  assert.equal(r.minimumWage, 10320);
+});
+
+test('평균임금이 높으면 2026년 상한액 68,100원', () => {
+  const r = benefit({ wagesLast3Months: 15000000 });
+  assert.equal(r.dailyBenefit, 68100);
+  assert.equal(r.rule, 'cap');
+});
+
+test('상한과 하한 사이면 평균임금의 60%를 원 단위로 버린다', () => {
+  const r = benefit({ wagesLast3Months: 10200000 });
+  assert.equal(r.dailyBenefit, 67252);
+  assert.equal(r.rule, 'rate');
+});
+
+test('2027년 이직자는 하한액 68,480원이 상한액보다 높아 하한액을 받는다', () => {
+  const r = benefit({ lastWorkDay: '2027-03-31', wagesLast3Months: 15000000 });
+  assert.equal(r.minimumWage, 10700);
+  assert.equal(r.dailyBenefit, 68480);
+  assert.equal(r.rule, 'floor');
+});
+
+test('단시간 근로자의 하한액은 1일 소정근로시간에 비례한다', () => {
+  const r = benefit({ wagesLast3Months: 4000000, dailyHours: 4 });
+  assert.equal(r.dailyBenefit, 33024);
+  assert.equal(r.rule, 'floor');
+});
+
+test('소정급여일수는 나이와 피보험기간으로 정하고 총액과 월 환산액을 계산한다', () => {
+  const r = benefit({});
+  assert.equal(r.benefitDays, 150);
+  assert.equal(r.total, 66048 * 150);
+  assert.equal(r.monthly, 66048 * 30);
+  assert.equal(benefit({ olderOrDisabled: true, insuredBand: '10plus' }).benefitDays, 270);
+  assert.equal(benefit({ insuredBand: 'under1' }).benefitDays, 120);
+  assert.equal(benefit({ olderOrDisabled: true, insuredBand: '5to10' }).benefitDays, 240);
+});
+
+test('지원하지 않는 연도나 잘못된 입력은 오류', () => {
+  assert.equal(benefit({ lastWorkDay: '2025-12-31' }).error, 'unsupported_year');
+  assert.equal(benefit({ lastWorkDay: '2026-02-30' }).error, 'invalid_date');
+  assert.equal(benefit({ wagesLast3Months: 0 }).error, 'invalid_wages');
+  assert.equal(benefit({ dailyHours: 9 }).error, 'invalid_hours');
+  assert.equal(benefit({ insuredBand: 'forever' }).error, 'invalid_band');
+});

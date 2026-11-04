@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="naver-site-verification" content="039452e4a2ed6ef92166e9a02eaa07735279ac95" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+  <title>실업급여 계산기 | 구직급여 일액, 지급일수, 총액 계산</title>
+  <meta name="description" content="마지막 근무일과 퇴사 전 3개월 임금, 나이, 고용보험 가입기간을 넣으면 구직급여 하루 금액과 받을 수 있는 일수, 총액을 계산합니다. 2026·2027년 상한액과 하한액을 반영합니다.">
+  <link rel="canonical" href="https://moatool.com/ko/unemployment-benefit/">
+    <link rel="alternate" hreflang="ko" href="https://moatool.com/ko/unemployment-benefit/">
+    <link rel="alternate" hreflang="en" href="https://moatool.com/en/unemployment-benefit/">
+    <link rel="alternate" hreflang="x-default" href="https://moatool.com/ko/unemployment-benefit/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="무료 도구">
+  <meta property="og:title" content="실업급여 계산기 | 구직급여 일액, 지급일수, 총액 계산">
+  <meta property="og:description" content="마지막 근무일과 퇴사 전 3개월 임금, 나이, 고용보험 가입기간을 넣으면 구직급여 하루 금액과 받을 수 있는 일수, 총액을 계산합니다. 2026·2027년 상한액과 하한액을 반영합니다.">
+  <meta property="og:url" content="https://moatool.com/ko/unemployment-benefit/">
+  <meta property="og:image" content="https://moatool.com/assets/og-ko.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/style.css?v=b0098b28">
+  <link rel="icon" href="/assets/favicon.svg?v=b0098b28" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=b0098b28">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-name" href="/ko/">무료 도구</a>
+  <nav class="site-nav" aria-label="주 메뉴"><a href="/ko/">도구</a><a href="/ko/guides/">가이드</a><a href="/ko/about/">소개</a></nav>
+  <a class="lang-switch" href="/en/unemployment-benefit/" hreflang="en" lang="en">English</a>
+</header>
+<main class="tool" data-category="calc">
+  <h1>실업급여 계산기</h1>
+  <div class="intro"><p>실업급여(구직급여)를 하루에 얼마씩, 며칠 동안, 모두 얼마나 받을 수 있는지 계산합니다. 퇴사 전 3개월 동안 받은 임금으로 평균임금을 구하고, 법에서 정한 상한액과 하한액, 나이와 고용보험 가입기간에 따른 지급일수를 적용합니다.</p>
+<p>2026년과 2027년에 이직한 경우를 계산할 수 있습니다. 실제 수급 자격과 금액은 고용센터에서 최종 확인됩니다.</p></div>
+  <form class="tool-form" id="tool-form">
+    <div class="field">
+  <label for="lastWorkDay">마지막 근무일 (이직일)</label>
+  <div class="field-row">
+    <input id="lastWorkDay" name="lastWorkDay" type="date">
+    
+  </div>
+</div>
+<div class="field">
+  <label for="wages">퇴사 전 3개월 임금 총액 (세전)</label>
+  <div class="field-row">
+    <input id="wages" name="wages" type="text" inputmode="decimal">
+    <span class="unit">원</span>
+  </div>
+</div>
+<div class="field">
+  <label for="dailyHours">1일 소정근로시간</label>
+  <div class="field-row">
+    <input id="dailyHours" name="dailyHours" type="text" inputmode="decimal" value="8">
+    <span class="unit">시간</span>
+  </div>
+</div>
+<div class="field">
+  <label for="insuredBand">고용보험 가입기간</label>
+  <select id="insuredBand" name="insuredBand"><option value="under1">1년 미만</option><option value="1to3">1년 이상 3년 미만</option><option value="3to5">3년 이상 5년 미만</option><option value="5to10">5년 이상 10년 미만</option><option value="10plus">10년 이상</option></select>
+</div>
+<div class="field field-check">
+  <input id="olderOrDisabled" name="olderOrDisabled" type="checkbox">
+  <label for="olderOrDisabled">이직일 기준 50세 이상 또는 장애인</label>
+</div>
+    <div class="results" aria-live="polite">
+      <div class="output output-primary">
+  <span class="output-label">구직급여 하루 금액</span>
+  <output id="dailyBenefit"></output>
+</div>
+<div class="output">
+  <span class="output-label">받을 수 있는 일수</span>
+  <output id="benefitDays"></output>
+</div>
+<div class="output">
+  <span class="output-label">총 예상 수령액</span>
+  <output id="total"></output>
+</div>
+<div class="output">
+  <span class="output-label">한 달(30일) 기준</span>
+  <output id="monthly"></output>
+</div>
+<div class="output">
+  <span class="output-label">계산 근거</span>
+  <output id="basis"></output>
+</div>
+    </div>
+    <p class="error" data-error="errorInvalidDate" role="alert" hidden>올바른 날짜를 입력해 주세요.</p>
+<p class="error" data-error="errorUnsupportedYear" role="alert" hidden>2026년 1월 1일 이후 이직한 경우만 계산할 수 있습니다.</p>
+<p class="error" data-error="errorInvalidWages" role="alert" hidden>3개월 임금 총액을 0보다 큰 숫자로 입력해 주세요.</p>
+<p class="error" data-error="errorInvalidHours" role="alert" hidden>1일 소정근로시간은 0보다 크고 8 이하로 입력해 주세요.</p>
+  </form>
+  <div class="share">
+    <button type="button" class="copy-btn" data-share data-label="결과 링크 복사" data-copied="링크를 복사했습니다">결과 링크 복사</button>
+    <p class="share-hint">입력한 값이 링크에 담깁니다. 링크를 받은 사람도 같은 결과를 볼 수 있습니다.</p>
+  </div>
+  
+  <section class="howto">
+    <h2>사용 방법</h2>
+    <ol><li>마지막으로 일한 날(이직일)을 선택합니다.</li><li>마지막 근무일까지 3개월 동안 받은 세전 임금 총액을 입력합니다.</li><li>근로계약서상 하루 소정근로시간을 확인합니다. 하루 8시간이면 그대로 둡니다.</li><li>고용보험 가입기간을 고르고, 이직일 기준 50세 이상이거나 장애인이면 체크합니다.</li></ol>
+  </section>
+  <section class="formula">
+    <h2>계산·처리 방식</h2>
+    <p>평균임금(하루) = 마지막 근무일까지 3개월 동안의 임금 총액 ÷ 그 기간의 달력 일수</p>
+<p>구직급여 하루 금액 = 평균임금 × 60%. 평균임금은 하루 113,500원까지만 반영하므로(고용보험법 시행령 제68조) 상한액은 68,100원입니다.</p>
+<p>하한액 = 이직일이 속한 해의 최저임금 × 1일 소정근로시간 × 80%입니다. 60%로 계산한 금액이 하한액보다 낮으면 하한액을 받습니다(고용보험법 제46조). 하루 8시간이면 2026년 66,048원, 2027년 68,480원입니다.</p>
+<p>총액 = 하루 금액 × 소정급여일수. 소정급여일수는 이직일 당시 나이(50세 미만, 50세 이상·장애인)와 고용보험 가입기간에 따라 120~270일입니다.</p>
+  </section>
+  <section class="example">
+    <h2>예시</h2>
+    <p>2026년 7월 15일까지 일하고 그만둔 40세 근로자가 3개월(4월 16일~7월 15일, 91일) 동안 900만 원을 받았고 가입기간이 2년이라면, 평균임금은 하루 약 98,901원이고 60%는 59,340원입니다. 하한액 66,048원보다 낮으므로 하루 66,048원을 150일 동안, 총 9,907,200원 받습니다.</p>
+<p>같은 조건에서 3개월 임금이 1,500만 원이면 평균임금이 상한을 넘어 하루 68,100원이 됩니다. 2027년에 이직하면 하한액 68,480원이 상한액보다 높아 하루 68,480원입니다.</p>
+  </section>
+  <section class="notes">
+    <h2>알아 두세요</h2>
+    <ul><li>실업급여를 받으려면 이직일 이전 18개월 동안 고용보험 피보험 단위기간이 180일 이상이어야 하고, 비자발적으로 이직했으며, 일할 의사와 능력이 있고 재취업 활동을 해야 합니다(고용보험법 제40조).</li><li>실업 신고 후 처음 7일은 대기기간으로 구직급여가 지급되지 않습니다.</li><li>한 달 기준 금액은 하루 금액 × 30일로 어림한 값입니다. 실제로는 실업 인정일마다 인정받은 날만큼 지급됩니다.</li><li>2026년 9월 고용노동부는 상한액을 하한액의 103%로 연동하고 지급을 주 6일 기준으로 바꾸는 개편안을 보고했습니다. 법 개정이 끝나면 이 계산기를 갱신합니다.</li><li>이 계산 결과는 참고용이며 실제 수급 자격과 금액은 고용센터에서 결정합니다.</li></ul>
+  </section>
+  <section class="related-guide">
+    <h2>관련 가이드</h2>
+    <p><a href="/ko/guides/unemployment-benefit/">실업급여 조건과 계산법</a></p>
+  </section>
+  <section class="related-tools">
+    <h2>함께 쓰면 좋은 도구</h2>
+    <div class="grid"><a class="tool-card" data-category="calc" href="/ko/severance/">
+  <span class="tool-card-title">퇴직금 계산기</span>
+  <span class="tool-card-desc">입사일과 퇴직일, 3개월 임금, 상여금, 연차수당을 넣으면 고용노동부 계산 방식으로 퇴직금 개략액을 계산합니다.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/ko/hourly-wage/">
+  <span class="tool-card-title">시급 월급 계산기</span>
+  <span class="tool-card-desc">시급을 월급으로, 월급을 시급으로 바꿉니다. 주 근무시간에 따라 주휴수당과 월 환산 시간(주 40시간이면 209시간)을 자동으로 계산합니다.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/ko/date-diff/">
+  <span class="tool-card-title">날짜 차이 계산기</span>
+  <span class="tool-card-desc">시작일과 종료일을 넣으면 두 날짜 사이의 일수와 주수를 바로 계산합니다. 윤년도 반영됩니다.</span>
+</a></div>
+  </section>
+  <section class="faq">
+    <h2>자주 묻는 질문</h2>
+    <details><summary>실업급여는 평균임금의 몇 %인가요?</summary><p>고용보험법 제46조에 따라 평균임금(기초일액)의 60%입니다. 다만 하루 상한액과 하한액이 있어서 실제 금액은 그 사이로 정해집니다.</p></details>
+<details><summary>2027년에 퇴사하면 얼마를 받나요?</summary><p>2027년 최저임금 10,700원 기준 하한액은 하루 68,480원(8시간 기준)이고, 현행 상한액 68,100원보다 높습니다. 법은 60%로 계산한 금액이 하한액보다 낮으면 하한액을 주도록 정하므로, 현행 법령대로라면 하루 8시간 근로자는 68,480원을 받습니다. 다만 상한액과 지급 방식을 바꾸는 개편안이 추진 중이라 달라질 수 있습니다.</p></details>
+<details><summary>자진 퇴사해도 받을 수 있나요?</summary><p>원칙적으로 자발적으로 그만두면 받을 수 없습니다. 다만 임금 체불, 통근 곤란 같은 정당한 사유가 인정되면 받을 수 있으니 고용센터에 확인하세요.</p></details>
+  </section>
+  <section class="sources">
+    <h2>참고 자료</h2>
+    <ul><li><a href="https://www.moel.go.kr/faq/faqView.do?seqRepeat=204" target="_blank" rel="noopener noreferrer">고용노동부: 실업급여의 지급기간 및 지급금액 (소정급여일수표)</a></li><li><a href="https://www.law.go.kr/법령/고용보험법" target="_blank" rel="noopener noreferrer">국가법령정보센터: 고용보험법 (제40조 수급 요건, 제46조 구직급여일액, 별표 1)</a></li><li><a href="https://www.law.go.kr/법령/고용보험법시행령" target="_blank" rel="noopener noreferrer">국가법령정보센터: 고용보험법 시행령 (제68조 급여기초 임금일액의 상한액)</a></li><li><a href="https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=19744" target="_blank" rel="noopener noreferrer">고용노동부: 2027년도 적용 최저임금 시간급 10,700원 (보도자료)</a></li><li><a href="https://www.etoday.co.kr/news/view/2620387" target="_blank" rel="noopener noreferrer">이투데이: 구직급여 상한액 축소·지급기간 연장 개편안 보도 (2026년 9월)</a></li></ul>
+  </section>
+  <p class="updated">최종 수정일: 2026-11-04</p>
+</main>
+<footer class="site-footer">
+  <p>입력하신 값은 저장되거나 서버로 전송되지 않습니다. 광고 서비스는 쿠키를 사용할 수 있습니다.</p>
+  <p><a href="/ko/guides/">가이드</a> · <a href="/ko/about/">사이트 소개</a> · <a href="/ko/privacy/">개인정보처리방침</a></p>
+</footer>
+<script type="application/json" id="tool-labels">{"lastWorkDayLabel":"마지막 근무일 (이직일)","wagesLabel":"퇴사 전 3개월 임금 총액 (세전)","dailyHoursLabel":"1일 소정근로시간","insuredBandLabel":"고용보험 가입기간","bandUnder1":"1년 미만","band1to3":"1년 이상 3년 미만","band3to5":"3년 이상 5년 미만","band5to10":"5년 이상 10년 미만","band10plus":"10년 이상","olderOrDisabledLabel":"이직일 기준 50세 이상 또는 장애인","unitWon":"원","unitHours":"시간","wonFormat":"{n}원","daysFormat":"{n}일","dailyBenefitLabel":"구직급여 하루 금액","benefitDaysLabel":"받을 수 있는 일수","totalLabel":"총 예상 수령액","monthlyLabel":"한 달(30일) 기준","basisLabel":"계산 근거","basisRate":"평균임금 하루 {avg}의 60% ({start}~{end}, {days}일 기준)","basisCap":"평균임금 하루 {avg}이 상한(113,500원)을 넘어 상한액 적용","basisFloor":"60% 금액이 하한액보다 낮아 하한액 적용 (최저임금 {wage} × 근로시간 × 80%)","errorInvalidDate":"올바른 날짜를 입력해 주세요.","errorUnsupportedYear":"2026년 1월 1일 이후 이직한 경우만 계산할 수 있습니다.","errorInvalidWages":"3개월 임금 총액을 0보다 큰 숫자로 입력해 주세요.","errorInvalidHours":"1일 소정근로시간은 0보다 크고 8 이하로 입력해 주세요."}</script>
+<script src="/assets/logic/finance.js?v=b0098b28"></script>
+<script src="/assets/common.js?v=b0098b28"></script>
+<script src="/assets/tools/unemployment-benefit.js?v=b0098b28" defer></script>
+</body>
+</html>

@@ -32,10 +32,11 @@ const SLUGS = [
   'discharge-date',
   'pyeong',
   'percent',
+  'unemployment-benefit',
 ];
 const LANGS = ['ko', 'en'];
 const GUIDE_SLUGS = {
-  ko: ['severance', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi', 'char-count'],
+  ko: ['severance', 'unemployment-benefit', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi', 'char-count'],
   en: ['korean-severance-pay', 'korean-age-explained', 'korean-bmi-categories'],
 };
 

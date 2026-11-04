@@ -124,6 +124,34 @@ const TOOL_FORMS = {
     ],
     errorKeys: [],
   },
+  'unemployment-benefit': {
+    inputs: [
+      { id: 'lastWorkDay', labelKey: 'lastWorkDayLabel', type: 'date' },
+      { id: 'wages', labelKey: 'wagesLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
+      { id: 'dailyHours', labelKey: 'dailyHoursLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitHours', value: '8' },
+      {
+        id: 'insuredBand',
+        labelKey: 'insuredBandLabel',
+        type: 'select',
+        options: [
+          { value: 'under1', labelKey: 'bandUnder1' },
+          { value: '1to3', labelKey: 'band1to3' },
+          { value: '3to5', labelKey: 'band3to5' },
+          { value: '5to10', labelKey: 'band5to10' },
+          { value: '10plus', labelKey: 'band10plus' },
+        ],
+      },
+      { id: 'olderOrDisabled', labelKey: 'olderOrDisabledLabel', type: 'checkbox' },
+    ],
+    outputs: [
+      { id: 'dailyBenefit', labelKey: 'dailyBenefitLabel', primary: true },
+      { id: 'benefitDays', labelKey: 'benefitDaysLabel' },
+      { id: 'total', labelKey: 'totalLabel' },
+      { id: 'monthly', labelKey: 'monthlyLabel' },
+      { id: 'basis', labelKey: 'basisLabel' },
+    ],
+    errorKeys: ['errorInvalidDate', 'errorUnsupportedYear', 'errorInvalidWages', 'errorInvalidHours'],
+  },
   'hourly-wage': {
     inputs: [
       {
@@ -225,6 +253,7 @@ const TOOL_FORMS = {
 const CALC_SLUGS = [
   'loan-calculator',
   'severance',
+  'unemployment-benefit',
   'hourly-wage',
   'date-diff',
   'date-add',
@@ -241,8 +270,9 @@ module.exports = { TOOL_FORMS, CALC_SLUGS, TEXT_SLUGS };
 // Two or three tools a visitor is likely to need next, shown under each tool.
 const RELATED_TOOLS = {
   'loan-calculator': ['percent', 'date-diff', 'severance'],
-  severance: ['hourly-wage', 'date-diff', 'loan-calculator'],
-  'hourly-wage': ['severance', 'percent', 'date-diff'],
+  severance: ['unemployment-benefit', 'hourly-wage', 'date-diff'],
+  'unemployment-benefit': ['severance', 'hourly-wage', 'date-diff'],
+  'hourly-wage': ['severance', 'unemployment-benefit', 'percent'],
   'date-diff': ['date-add', 'korean-age', 'discharge-date'],
   'date-add': ['date-diff', 'discharge-date', 'korean-age'],
   'korean-age': ['date-diff', 'date-add', 'bmi'],

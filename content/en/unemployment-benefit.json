@@ -1,0 +1,87 @@
+{
+  "slug": "unemployment-benefit",
+  "title": "Korean Unemployment Benefit Calculator | Daily Amount, Days",
+  "description": "Estimate South Korean unemployment benefits (job-seeking allowance): the daily amount, number of benefit days, and total, with the 2026 and 2027 limits.",
+  "h1": "Korean unemployment benefit calculator",
+  "intro": "Estimate the job-seeking allowance (구직급여) paid by South Korea's Employment Insurance: how much per day, for how many days, and in total. The calculator uses your wages for the three months before leaving, the legal daily cap and floor, and the benefit-day table based on age and insured period.\n\nIt covers people who left a job in 2026 or 2027. Your local employment center makes the final decision on eligibility and amount.",
+  "howTo": [
+    "Pick your last working day.",
+    "Enter your total pre-tax wages for the three months up to that day, in won.",
+    "Check your contractual daily hours. Leave 8 for a full-time job.",
+    "Choose your insured period, and check the box if you were 50 or older or registered as disabled on your last day."
+  ],
+  "faq": [
+    {
+      "q": "What percentage of my wage is the benefit?",
+      "a": "Article 46 of the Employment Insurance Act sets it at 60% of your average daily wage, within a legal daily cap and floor."
+    },
+    {
+      "q": "What if I leave a job in 2027?",
+      "a": "The 2027 floor for an 8-hour day is 68,480 won, which is above the current cap of 68,100 won. The law pays the floor whenever 60% of your wage is lower, so under current law full-time workers receive 68,480 won a day. A proposed reform could change the cap and payment schedule."
+    },
+    {
+      "q": "Can I get it if I quit?",
+      "a": "Generally no. Leaving voluntarily disqualifies you unless there is a recognized reason, such as unpaid wages. Ask your employment center."
+    }
+  ],
+  "labels": {
+    "lastWorkDayLabel": "Last working day",
+    "wagesLabel": "Total wages for the last 3 months (pre-tax)",
+    "dailyHoursLabel": "Contractual hours per day",
+    "insuredBandLabel": "Employment insurance period",
+    "bandUnder1": "Under 1 year",
+    "band1to3": "1 to under 3 years",
+    "band3to5": "3 to under 5 years",
+    "band5to10": "5 to under 10 years",
+    "band10plus": "10 years or more",
+    "olderOrDisabledLabel": "50 or older, or disabled, on the last working day",
+    "unitWon": "won",
+    "unitHours": "hours",
+    "wonFormat": "{n} won",
+    "daysFormat": "{n} days",
+    "dailyBenefitLabel": "Daily benefit",
+    "benefitDaysLabel": "Benefit days",
+    "totalLabel": "Estimated total",
+    "monthlyLabel": "Per 30 days",
+    "basisLabel": "How it was calculated",
+    "basisRate": "60% of an average daily wage of {avg} ({start} to {end}, {days} days)",
+    "basisCap": "Average daily wage of {avg} is above the 113,500 won cap, so the maximum applies",
+    "basisFloor": "60% is below the floor, so the floor applies (minimum wage {wage} × hours × 80%)",
+    "errorInvalidDate": "Enter a valid date.",
+    "errorUnsupportedYear": "Only last working days from January 1, 2026 are supported.",
+    "errorInvalidWages": "Enter three-month wages greater than 0.",
+    "errorInvalidHours": "Enter daily hours greater than 0 and no more than 8."
+  },
+  "formula": "Average daily wage = total wages in the three months up to your last working day ÷ the calendar days in that period.\n\nDaily benefit = average daily wage × 60%. Only up to 113,500 won of daily wage counts (Enforcement Decree Article 68), so the maximum benefit is 68,100 won a day.\n\nFloor = the minimum wage in the year you left × contractual daily hours × 80%. If 60% of your wage is lower, you receive the floor (Employment Insurance Act Article 46). For an 8-hour day the floor is 66,048 won in 2026 and 68,480 won in 2027.\n\nTotal = daily benefit × benefit days. Benefit days range from 120 to 270 depending on age on your last day (under 50, or 50 and over or disabled) and how long you were insured.",
+  "example": "A 40-year-old who worked until July 15, 2026, earned 9,000,000 won in the three months from April 16 (91 days), and was insured for two years has an average daily wage of about 98,901 won. Sixty percent is 59,340 won, below the 66,048 won floor, so they receive 66,048 won a day for 150 days, 9,907,200 won in total.\n\nWith 15,000,000 won in three-month wages, the average wage exceeds the cap and the benefit is 68,100 won a day. Leaving in 2027, the 68,480 won floor is above the cap, so the benefit is 68,480 won a day.",
+  "notes": [
+    "To qualify you generally need at least 180 insured days in the 18 months before leaving, an involuntary separation, the ability and willingness to work, and active job seeking (Employment Insurance Act Article 40).",
+    "The first 7 days after you file are a waiting period with no benefit.",
+    "The 30-day figure is an approximation. Benefits are paid for the days recognized at each unemployment check-in.",
+    "In September 2026 the Ministry of Employment and Labor reported a reform plan that would tie the cap to 103% of the floor and pay on a six-day-week basis. This calculator will be updated if the law changes.",
+    "Results are estimates. The employment center decides eligibility and the actual amount."
+  ],
+  "sources": [
+    {
+      "title": "Ministry of Employment and Labor: unemployment benefit days and amount (in Korean)",
+      "url": "https://www.moel.go.kr/faq/faqView.do?seqRepeat=204"
+    },
+    {
+      "title": "National Law Information Center: Employment Insurance Act, Articles 40 and 46 and Table 1 (in Korean)",
+      "url": "https://www.law.go.kr/법령/고용보험법"
+    },
+    {
+      "title": "National Law Information Center: Enforcement Decree, Article 68 wage cap (in Korean)",
+      "url": "https://www.law.go.kr/법령/고용보험법시행령"
+    },
+    {
+      "title": "Ministry of Employment and Labor: 2027 minimum wage (in Korean)",
+      "url": "https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=19744"
+    },
+    {
+      "title": "eToday: report on the proposed 2027 benefit reform, September 2026 (in Korean)",
+      "url": "https://www.etoday.co.kr/news/view/2620387"
+    }
+  ],
+  "updated": "2026-11-04"
+}

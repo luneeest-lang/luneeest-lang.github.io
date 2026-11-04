@@ -3,15 +3,22 @@
   <channel>
     <title>가이드 | 무료 도구</title>
     <link>https://moatool.com/ko/guides/</link>
-    <description>퇴직금, 주휴수당, 대출 상환방식, 만 나이, BMI, 글자수 세기를 공식 자료 기준으로 쉽게 설명한 가이드 모음입니다.</description>
+    <description>퇴직금, 실업급여, 주휴수당, 대출 상환방식, 만 나이, BMI, 글자수 세기를 공식 자료 기준으로 쉽게 설명한 가이드 모음입니다.</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 29 Oct 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 00:00:00 +0900</lastBuildDate>
     <item>
       <title>퇴직금 계산 방법 총정리</title>
       <link>https://moatool.com/ko/guides/severance/</link>
       <guid isPermaLink="true">https://moatool.com/ko/guides/severance/</guid>
       <description>퇴직금 계산 공식과 평균임금 구하는 법, 지급 대상과 지급 기한을 고용노동부 안내 기준으로 정리했습니다.</description>
       <pubDate>Thu, 29 Oct 2026 00:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>실업급여 조건과 계산법</title>
+      <link>https://moatool.com/ko/guides/unemployment-benefit/</link>
+      <guid isPermaLink="true">https://moatool.com/ko/guides/unemployment-benefit/</guid>
+      <description>실업급여(구직급여)를 받는 조건, 하루 금액 계산법, 상한액과 하한액, 나이와 가입기간별 지급일수를 법령과 고용노동부 자료 기준으로 정리했습니다.</description>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>원리금균등상환과 원금균등상환, 무엇이 다를까</title>

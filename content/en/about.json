@@ -9,7 +9,7 @@
     {
       "heading": "What we offer",
       "paragraphs": [
-        "Ten calculators, including loan interest, Korean severance pay, hourly-to-monthly wages, Korean age, military discharge dates, date math, pyeong, percentages, and BMI, plus four text tools: a character counter, case converter, line cleanup, and duplicate line remover. Each tool explains how it calculates, with examples and notes on reading the result."
+        "Eleven calculators, including loan interest, Korean severance pay, Korean unemployment benefits, hourly-to-monthly wages, Korean age, military discharge dates, date math, pyeong, percentages, and BMI, plus four text tools: a character counter, case converter, line cleanup, and duplicate line remover. Each tool explains how it calculates, with examples and notes on reading the result."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Major changes to the site."
       ],
       "items": [
-        "2026-11-04: Added related tools on every tool page and a helpful 404 page.",
+        "2026-11-04: Added a Korean unemployment benefit calculator, related tools on every tool page, and a helpful 404 page.",
         "2026-10-29: Added wage, Korean age, discharge date, pyeong, percent, and date-add calculators, more loan repayment methods with a monthly schedule, shareable result links, and English guides.",
         "2026-10-22: Added formulas, examples, and sources to English tool pages."
       ]

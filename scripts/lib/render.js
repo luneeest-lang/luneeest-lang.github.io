@@ -10,6 +10,7 @@ const LOGIC_FILE = {
   'date-diff': 'date',
   'date-add': 'date',
   'hourly-wage': 'finance',
+  'unemployment-benefit': 'finance',
   'korean-age': 'date',
   'discharge-date': 'date',
   pyeong: 'units',
@@ -171,7 +172,7 @@ function renderField(field, labels) {
   return `<div class="field">
   <label for="${field.id}">${label}</label>
   <div class="field-row">
-    <input id="${field.id}" name="${field.id}" type="${type}"${inputmode}${field.noShare ? ' data-no-share' : ''}>
+    <input id="${field.id}" name="${field.id}" type="${type}"${inputmode}${field.value ? ` value="${escapeHtml(field.value)}"` : ''}${field.noShare ? ' data-no-share' : ''}>
     ${unit}
   </div>
 </div>`;
