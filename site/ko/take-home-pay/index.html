@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="naver-site-verification" content="039452e4a2ed6ef92166e9a02eaa07735279ac95" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+  <title>연봉 실수령액 계산기 | 2026 4대보험·소득세 공제 후 월급</title>
+  <meta name="description" content="연봉을 넣으면 국민연금, 건강보험, 장기요양, 고용보험과 국세청 간이세액표 소득세를 뺀 월 실수령액을 계산합니다. 부양가족과 자녀 공제도 반영합니다.">
+  <link rel="canonical" href="https://moatool.com/ko/take-home-pay/">
+    <link rel="alternate" hreflang="ko" href="https://moatool.com/ko/take-home-pay/">
+    <link rel="alternate" hreflang="en" href="https://moatool.com/en/take-home-pay/">
+    <link rel="alternate" hreflang="x-default" href="https://moatool.com/ko/take-home-pay/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="무료 도구">
+  <meta property="og:title" content="연봉 실수령액 계산기 | 2026 4대보험·소득세 공제 후 월급">
+  <meta property="og:description" content="연봉을 넣으면 국민연금, 건강보험, 장기요양, 고용보험과 국세청 간이세액표 소득세를 뺀 월 실수령액을 계산합니다. 부양가족과 자녀 공제도 반영합니다.">
+  <meta property="og:url" content="https://moatool.com/ko/take-home-pay/">
+  <meta property="og:image" content="https://moatool.com/assets/og-ko.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/style.css?v=71a678d6">
+  <link rel="icon" href="/assets/favicon.svg?v=71a678d6" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=71a678d6">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-name" href="/ko/">무료 도구</a>
+  <nav class="site-nav" aria-label="주 메뉴"><a href="/ko/">도구</a><a href="/ko/guides/">가이드</a><a href="/ko/about/">소개</a></nav>
+  <a class="lang-switch" href="/en/take-home-pay/" hreflang="en" lang="en">English</a>
+</header>
+<main class="tool" data-category="calc">
+  <h1>연봉 실수령액 계산기</h1>
+  <div class="intro"><p>연봉을 넣으면 매달 통장에 들어오는 실수령액을 계산합니다. 4대보험(국민연금, 건강보험, 장기요양보험, 고용보험)은 2026년 근로자 부담 요율로, 소득세는 국세청 근로소득 간이세액표 원본 숫자로 계산합니다.</p>
+<p>연봉 협상이나 이직을 앞두고 세후 월급이 얼마인지 확인할 때 쓰세요. 실제 월급은 회사의 급여 구성과 연말정산 결과에 따라 달라질 수 있습니다.</p></div>
+  <form class="tool-form" id="tool-form">
+    <div class="field">
+  <label for="annualSalary">세전 연봉</label>
+  <div class="field-row">
+    <input id="annualSalary" name="annualSalary" type="text" inputmode="decimal">
+    <span class="unit">원</span>
+  </div>
+</div>
+<div class="field">
+  <label for="nonTaxable">월 비과세액 (식대 등)</label>
+  <div class="field-row">
+    <input id="nonTaxable" name="nonTaxable" type="text" inputmode="decimal" value="200,000">
+    <span class="unit">원</span>
+  </div>
+</div>
+<div class="field">
+  <label for="family">공제대상가족 수 (본인 포함)</label>
+  <div class="field-row">
+    <input id="family" name="family" type="text" inputmode="numeric" value="1">
+    <span class="unit">명</span>
+  </div>
+</div>
+<div class="field">
+  <label for="children">그중 8세 이상 20세 이하 자녀 수</label>
+  <div class="field-row">
+    <input id="children" name="children" type="text" inputmode="numeric" value="0">
+    <span class="unit">명</span>
+  </div>
+</div>
+    <div class="results" aria-live="polite">
+      <div class="output output-primary">
+  <span class="output-label">월 실수령액</span>
+  <output id="monthlyNet"></output>
+</div>
+<div class="output">
+  <span class="output-label">연 실수령액 (월 × 12)</span>
+  <output id="annualNet"></output>
+</div>
+<div class="output">
+  <span class="output-label">월 공제액 합계</span>
+  <output id="totalDeduction"></output>
+</div>
+<div class="output">
+  <span class="output-label">국민연금 (4.75%)</span>
+  <output id="pension"></output>
+</div>
+<div class="output">
+  <span class="output-label">건강보험 (3.595%)</span>
+  <output id="health"></output>
+</div>
+<div class="output">
+  <span class="output-label">장기요양보험</span>
+  <output id="longTermCare"></output>
+</div>
+<div class="output">
+  <span class="output-label">고용보험 (0.9%)</span>
+  <output id="employment"></output>
+</div>
+<div class="output">
+  <span class="output-label">소득세 (간이세액표)</span>
+  <output id="incomeTax"></output>
+</div>
+<div class="output">
+  <span class="output-label">지방소득세 (소득세의 10%)</span>
+  <output id="localTax"></output>
+</div>
+    </div>
+    <p class="error" data-error="errorInvalidSalary" role="alert" hidden>연봉을 0보다 큰 숫자로 입력해 주세요.</p>
+<p class="error" data-error="errorInvalidNonTaxable" role="alert" hidden>비과세액은 0 이상이고 월급보다 적어야 합니다.</p>
+<p class="error" data-error="errorInvalidFamily" role="alert" hidden>공제대상가족 수는 본인을 포함해 1명에서 11명 사이로 입력해 주세요.</p>
+<p class="error" data-error="errorInvalidChildren" role="alert" hidden>자녀 수는 0 이상이고 공제대상가족 수보다 적어야 합니다.</p>
+  </form>
+  <div class="share">
+    <button type="button" class="copy-btn" data-share data-label="결과 링크 복사" data-copied="링크를 복사했습니다">결과 링크 복사</button>
+    <p class="share-hint">입력한 값이 링크에 담깁니다. 링크를 받은 사람도 같은 결과를 볼 수 있습니다.</p>
+  </div>
+  
+  <section class="howto">
+    <h2>사용 방법</h2>
+    <ol><li>세전 연봉을 원 단위로 입력합니다. 퇴직금은 포함하지 않은 금액입니다.</li><li>월 비과세액을 확인합니다. 식대 비과세 한도인 20만 원이 기본으로 들어 있습니다.</li><li>공제대상가족 수를 입력합니다. 본인을 포함하고, 배우자와 부양가족이 있으면 함께 셉니다.</li><li>공제대상가족 중 8세 이상 20세 이하 자녀가 있으면 그 수를 입력합니다.</li></ol>
+  </section>
+  <section class="formula">
+    <h2>계산·처리 방식</h2>
+    <p>월급 = 연봉 ÷ 12, 과세 대상 월급 = 월급 − 월 비과세액입니다. 4대보험과 소득세는 과세 대상 월급을 기준으로 계산하고, 10원 미만은 버립니다.</p>
+<p>국민연금 = 기준소득월액 × 4.75%. 기준소득월액은 천 원 미만을 버리고, 41만 원보다 적으면 41만 원, 659만 원보다 많으면 659만 원을 적용합니다(2026년 7월~2027년 6월). 건강보험 = 과세 월급 × 3.595%, 장기요양보험 = 건강보험료 × (0.9448 ÷ 7.19), 고용보험 = 과세 월급 × 0.9%입니다.</p>
+<p>소득세는 국세청 근로소득 간이세액표에서 과세 월급과 공제대상가족 수에 해당하는 금액을 찾고, 8~20세 자녀가 1명이면 12,500원, 2명이면 29,160원, 3명 이상이면 29,160원에 2명을 넘는 1명마다 25,000원을 더한 금액을 뺍니다. 지방소득세는 소득세의 10%입니다.</p>
+  </section>
+  <section class="example">
+    <h2>예시</h2>
+    <p>연봉 4,200만 원, 비과세 20만 원, 본인 1명이면 월급 350만 원 중 과세 월급은 330만 원입니다. 국민연금 156,750원, 건강보험 118,630원, 장기요양 15,580원, 고용보험 29,700원, 소득세 102,770원, 지방소득세 10,270원을 빼면 월 실수령액은 3,066,300원입니다.</p>
+<p>같은 연봉에 배우자와 8~20세 자녀 2명이 있어 공제대상가족이 4명이면 소득세가 7,420원으로 줄어 월 3,171,180원을 받습니다. 연봉 6,000만 원, 본인 1명이면 월 4,195,410원입니다.</p>
+  </section>
+  <section class="notes">
+    <h2>알아 두세요</h2>
+    <ul><li>이 계산기는 2026년 근로자 부담 요율을 씁니다. 국민연금 9.5%(근로자 4.75%), 건강보험 7.19%(3.595%), 장기요양 0.9448%(건강보험료의 약 13.14%), 고용보험 실업급여 1.8%(0.9%)입니다.</li><li>건강보험료와 장기요양보험료는 실제로는 전년도 보수를 기준으로 부과되고 다음 해 정산되므로, 입사 첫해나 연봉이 바뀐 해에는 매달 떼는 금액이 다를 수 있습니다.</li><li>근로자가 원천징수 비율을 80%나 120%로 선택하면 매달 떼는 소득세가 달라집니다. 이 계산기는 100% 기준입니다.</li><li>상여금이 따로 나오는 경우, 연봉에 퇴직금이 포함된 경우, 비과세 항목이 식대 외에 더 있는 경우에는 실제 월급과 차이가 납니다.</li><li>결과는 참고용이며 실제 급여는 회사 급여명세서와 연말정산으로 확정됩니다.</li></ul>
+  </section>
+  
+  <section class="related-tools">
+    <h2>함께 쓰면 좋은 도구</h2>
+    <div class="grid"><a class="tool-card" data-category="calc" href="/ko/hourly-wage/">
+  <span class="tool-card-title">시급 월급 계산기</span>
+  <span class="tool-card-desc">시급을 월급으로, 월급을 시급으로 바꿉니다. 주 근무시간에 따라 주휴수당과 월 환산 시간(주 40시간이면 209시간)을 자동으로 계산합니다.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/ko/severance/">
+  <span class="tool-card-title">퇴직금 계산기</span>
+  <span class="tool-card-desc">입사일과 퇴직일, 3개월 임금, 상여금, 연차수당을 넣으면 고용노동부 계산 방식으로 퇴직금 개략액을 계산합니다.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/ko/unemployment-benefit/">
+  <span class="tool-card-title">실업급여 계산기</span>
+  <span class="tool-card-desc">마지막 근무일과 퇴사 전 3개월 임금, 나이, 고용보험 가입기간을 넣으면 구직급여 하루 금액과 받을 수 있는 일수, 총액을 계산합니다. 2026·2027년 상한액과 하한액을 반영합니다.</span>
+</a></div>
+  </section>
+  <section class="faq">
+    <h2>자주 묻는 질문</h2>
+    <details><summary>소득세는 어떻게 계산하나요?</summary><p>국세청이 공개한 근로소득 간이세액표의 숫자를 그대로 씁니다. 월급(비과세 제외)과 공제대상가족 수로 표에서 세액을 찾고, 8~20세 자녀가 있으면 자녀 수에 따라 정해진 금액을 뺍니다. 월급이 1,000만 원을 넘으면 표에 적힌 계산식을 따릅니다.</p></details>
+<details><summary>연말정산을 하면 금액이 달라지나요?</summary><p>네. 매달 떼는 소득세는 간이세액표로 미리 걷는 금액이고, 실제 세금은 다음 해 연말정산에서 카드 사용액, 보험료, 의료비 같은 공제를 반영해 확정됩니다. 그래서 환급을 받거나 추가로 낼 수 있습니다.</p></details>
+<details><summary>2027년 요율은 반영됐나요?</summary><p>아직 아닙니다. 2027년에는 국민연금 요율이 10%로 오르고 건강보험료율은 7.19%로 동결됩니다. 고용보험료율 인상과 장기요양보험료율은 확정 절차가 남아 있어, 모두 확정되면 이 계산기를 갱신합니다.</p></details>
+  </section>
+  <section class="sources">
+    <h2>참고 자료</h2>
+    <ul><li><a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=6583&amp;cntntsId=7862" target="_blank" rel="noopener noreferrer">국세청: 근로소득 원천징수방법(간이세액표)</a></li><li><a href="https://www.law.go.kr/법령/소득세법시행령" target="_blank" rel="noopener noreferrer">국가법령정보센터: 소득세법 시행령 (별표 2 근로소득 간이세액표, 제17조의2 식대 비과세)</a></li><li><a href="https://www.law.go.kr/법령/국민연금법" target="_blank" rel="noopener noreferrer">국가법령정보센터: 국민연금법 (제88조와 부칙, 2026년 9.5%에서 매년 0.5%p씩 13%까지 인상)</a></li><li><a href="https://medicaltimes.com/Users/News/NewsView.html?ID=1164975" target="_blank" rel="noopener noreferrer">메디칼타임즈: 2026년 건강보험료율 7.19% 결정 (건강보험정책심의위원회)</a></li><li><a href="https://www.law.go.kr/법령/고용보험및산업재해보상보험의보험료징수등에관한법률시행령" target="_blank" rel="noopener noreferrer">국가법령정보센터: 고용보험 및 산업재해보상보험의 보험료징수 등에 관한 법률 시행령 (제12조 보험료율)</a></li></ul>
+  </section>
+  <p class="updated">최종 수정일: 2026-11-04</p>
+</main>
+<footer class="site-footer">
+  <p>입력하신 값은 저장되거나 서버로 전송되지 않습니다. 광고 서비스는 쿠키를 사용할 수 있습니다.</p>
+  <p><a href="/ko/guides/">가이드</a> · <a href="/ko/about/">사이트 소개</a> · <a href="/ko/privacy/">개인정보처리방침</a></p>
+</footer>
+<script type="application/json" id="tool-labels">{"annualSalaryLabel":"세전 연봉","nonTaxableLabel":"월 비과세액 (식대 등)","familyLabel":"공제대상가족 수 (본인 포함)","childrenLabel":"그중 8세 이상 20세 이하 자녀 수","unitWon":"원","unitPeople":"명","wonFormat":"{n}원","monthlyNetLabel":"월 실수령액","annualNetLabel":"연 실수령액 (월 × 12)","totalDeductionLabel":"월 공제액 합계","pensionLabel":"국민연금 (4.75%)","healthLabel":"건강보험 (3.595%)","longTermCareLabel":"장기요양보험","employmentLabel":"고용보험 (0.9%)","incomeTaxLabel":"소득세 (간이세액표)","localTaxLabel":"지방소득세 (소득세의 10%)","errorInvalidSalary":"연봉을 0보다 큰 숫자로 입력해 주세요.","errorInvalidNonTaxable":"비과세액은 0 이상이고 월급보다 적어야 합니다.","errorInvalidFamily":"공제대상가족 수는 본인을 포함해 1명에서 11명 사이로 입력해 주세요.","errorInvalidChildren":"자녀 수는 0 이상이고 공제대상가족 수보다 적어야 합니다."}</script>
+<script src="/assets/logic/salary.js?v=71a678d6"></script>
+<script src="/assets/common.js?v=71a678d6"></script>
+<script src="/assets/tools/take-home-pay.js?v=71a678d6" defer></script>
+</body>
+</html>

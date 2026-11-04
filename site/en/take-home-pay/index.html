@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="naver-site-verification" content="039452e4a2ed6ef92166e9a02eaa07735279ac95" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+  <title>Korean Salary Take-Home Pay Calculator | After Tax 2026</title>
+  <meta name="description" content="Estimate monthly take-home pay in South Korea after the four social insurances and income tax from the official NTS withholding table, with family deductions.">
+  <link rel="canonical" href="https://moatool.com/en/take-home-pay/">
+    <link rel="alternate" hreflang="ko" href="https://moatool.com/ko/take-home-pay/">
+    <link rel="alternate" hreflang="en" href="https://moatool.com/en/take-home-pay/">
+    <link rel="alternate" hreflang="x-default" href="https://moatool.com/ko/take-home-pay/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Toolbox">
+  <meta property="og:title" content="Korean Salary Take-Home Pay Calculator | After Tax 2026">
+  <meta property="og:description" content="Estimate monthly take-home pay in South Korea after the four social insurances and income tax from the official NTS withholding table, with family deductions.">
+  <meta property="og:url" content="https://moatool.com/en/take-home-pay/">
+  <meta property="og:image" content="https://moatool.com/assets/og-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/style.css?v=71a678d6">
+  <link rel="icon" href="/assets/favicon.svg?v=71a678d6" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=71a678d6">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-name" href="/en/">Toolbox</a>
+  <nav class="site-nav" aria-label="Main menu"><a href="/en/">Tools</a><a href="/en/guides/">Guides</a><a href="/en/about/">About</a></nav>
+  <a class="lang-switch" href="/ko/take-home-pay/" hreflang="ko" lang="ko">한국어</a>
+</header>
+<main class="tool" data-category="calc">
+  <h1>Korean take-home pay calculator</h1>
+  <div class="intro"><p>Enter an annual salary to estimate the monthly take-home pay in South Korea. Social insurance (national pension, health insurance, long-term care insurance, and employment insurance) uses the 2026 employee rates, and income tax uses the numbers from the National Tax Service simplified withholding table.</p>
+<p>Actual pay depends on how your employer structures pay and on your year-end tax settlement.</p></div>
+  <form class="tool-form" id="tool-form">
+    <div class="field">
+  <label for="annualSalary">Annual salary (pre-tax)</label>
+  <div class="field-row">
+    <input id="annualSalary" name="annualSalary" type="text" inputmode="decimal">
+    <span class="unit">won</span>
+  </div>
+</div>
+<div class="field">
+  <label for="nonTaxable">Monthly non-taxable pay (meals, etc.)</label>
+  <div class="field-row">
+    <input id="nonTaxable" name="nonTaxable" type="text" inputmode="decimal" value="200,000">
+    <span class="unit">won</span>
+  </div>
+</div>
+<div class="field">
+  <label for="family">Family members for deductions (incl. you)</label>
+  <div class="field-row">
+    <input id="family" name="family" type="text" inputmode="numeric" value="1">
+    <span class="unit">people</span>
+  </div>
+</div>
+<div class="field">
+  <label for="children">Of whom children aged 8 to 20</label>
+  <div class="field-row">
+    <input id="children" name="children" type="text" inputmode="numeric" value="0">
+    <span class="unit">people</span>
+  </div>
+</div>
+    <div class="results" aria-live="polite">
+      <div class="output output-primary">
+  <span class="output-label">Monthly take-home pay</span>
+  <output id="monthlyNet"></output>
+</div>
+<div class="output">
+  <span class="output-label">Annual take-home (monthly × 12)</span>
+  <output id="annualNet"></output>
+</div>
+<div class="output">
+  <span class="output-label">Total monthly deductions</span>
+  <output id="totalDeduction"></output>
+</div>
+<div class="output">
+  <span class="output-label">National pension (4.75%)</span>
+  <output id="pension"></output>
+</div>
+<div class="output">
+  <span class="output-label">Health insurance (3.595%)</span>
+  <output id="health"></output>
+</div>
+<div class="output">
+  <span class="output-label">Long-term care insurance</span>
+  <output id="longTermCare"></output>
+</div>
+<div class="output">
+  <span class="output-label">Employment insurance (0.9%)</span>
+  <output id="employment"></output>
+</div>
+<div class="output">
+  <span class="output-label">Income tax (NTS table)</span>
+  <output id="incomeTax"></output>
+</div>
+<div class="output">
+  <span class="output-label">Local income tax (10% of income tax)</span>
+  <output id="localTax"></output>
+</div>
+    </div>
+    <p class="error" data-error="errorInvalidSalary" role="alert" hidden>Enter a salary greater than 0.</p>
+<p class="error" data-error="errorInvalidNonTaxable" role="alert" hidden>Non-taxable pay must be 0 or more and less than monthly pay.</p>
+<p class="error" data-error="errorInvalidFamily" role="alert" hidden>Enter 1 to 11 family members, including yourself.</p>
+<p class="error" data-error="errorInvalidChildren" role="alert" hidden>Children must be 0 or more and fewer than the family members.</p>
+  </form>
+  <div class="share">
+    <button type="button" class="copy-btn" data-share data-label="Copy result link" data-copied="Link copied">Copy result link</button>
+    <p class="share-hint">The link contains the values you entered, so anyone you send it to sees the same result.</p>
+  </div>
+  
+  <section class="howto">
+    <h2>How to use</h2>
+    <ol><li>Enter your pre-tax annual salary in won, excluding severance pay.</li><li>Check the monthly non-taxable amount. It starts at 200,000 won, the tax-free meal allowance limit.</li><li>Enter the number of family members for deductions, including yourself.</li><li>If any of them are children aged 8 to 20, enter how many.</li></ol>
+  </section>
+  <section class="formula">
+    <h2>How it works</h2>
+    <p>Monthly pay = annual salary ÷ 12, and taxable pay = monthly pay − non-taxable pay. Insurance and tax are based on taxable pay, with amounts under 10 won dropped.</p>
+<p>National pension = pension income × 4.75%, where pension income is rounded down to the thousand won and kept between 410,000 and 6,590,000 won (July 2026 to June 2027). Health insurance = taxable pay × 3.595%. Long-term care = health premium × (0.9448 ÷ 7.19). Employment insurance = taxable pay × 0.9%.</p>
+<p>Income tax is the amount in the National Tax Service simplified withholding table for your taxable pay and family size, minus 12,500 won for one child aged 8 to 20, 29,160 won for two, and 25,000 won more for each additional child. Local income tax is 10% of income tax.</p>
+  </section>
+  <section class="example">
+    <h2>Example</h2>
+    <p>A salary of 42,000,000 won with 200,000 won non-taxable and one family member gives monthly pay of 3,500,000 won and taxable pay of 3,300,000 won. After national pension 156,750, health insurance 118,630, long-term care 15,580, employment insurance 29,700, income tax 102,770, and local income tax 10,270 won, take-home pay is 3,066,300 won a month.</p>
+<p>With a spouse and two children aged 8 to 20 (four family members), income tax drops to 7,420 won and take-home pay is 3,171,180 won. A salary of 60,000,000 won for one person gives 4,195,410 won a month.</p>
+  </section>
+  <section class="notes">
+    <h2>Good to know</h2>
+    <ul><li>This calculator uses 2026 employee rates: national pension 9.5% (employee 4.75%), health insurance 7.19% (3.595%), long-term care 0.9448% of pay (about 13.14% of the health premium), and employment insurance 1.8% (0.9%).</li><li>Health and long-term care premiums are based on the previous year&#39;s pay and settled the next year, so the amount deducted can differ in your first year or after a raise.</li><li>Employees can choose 80% or 120% withholding. This calculator uses 100%.</li><li>Separate bonuses, salaries that include severance pay, and other non-taxable allowances make actual pay differ.</li><li>Results are estimates. Your payslip and year-end settlement determine the actual amounts.</li></ul>
+  </section>
+  
+  <section class="related-tools">
+    <h2>Related tools</h2>
+    <div class="grid"><a class="tool-card" data-category="calc" href="/en/hourly-wage/">
+  <span class="tool-card-title">Korean hourly and monthly wage calculator</span>
+  <span class="tool-card-desc">Convert an hourly wage to a monthly wage in Korea and back, including weekly holiday pay (juhyu sudang) and the 209-hour monthly standard.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/en/severance/">
+  <span class="tool-card-title">Severance pay calculator</span>
+  <span class="tool-card-desc">Enter your start and leaving dates, recent wages, bonuses, and leave pay for an estimate of Korean severance pay.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/en/unemployment-benefit/">
+  <span class="tool-card-title">Korean unemployment benefit calculator</span>
+  <span class="tool-card-desc">Estimate South Korean unemployment benefits (job-seeking allowance): the daily amount, number of benefit days, and total, with the 2026 and 2027 limits.</span>
+</a></div>
+  </section>
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How is income tax calculated?</summary><p>It uses the National Tax Service simplified withholding table as published. The tax is looked up by monthly taxable pay and family size, then reduced by a fixed amount for children aged 8 to 20. Above 10 million won a month, the table&#39;s formulas apply.</p></details>
+<details><summary>Will the year-end tax settlement change this?</summary><p>Yes. Monthly withholding is a prepayment. Your actual tax is settled the following year after deductions such as card spending, insurance, and medical costs, so you may get a refund or owe more.</p></details>
+<details><summary>Are 2027 rates included?</summary><p>Not yet. In 2027 the national pension rate rises to 10% and the health insurance rate stays at 7.19%. Other changes are still being finalized, and the calculator will be updated once they are.</p></details>
+  </section>
+  <section class="sources">
+    <h2>Sources</h2>
+    <ul><li><a href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=6583&amp;cntntsId=7862" target="_blank" rel="noopener noreferrer">National Tax Service: monthly withholding with the simplified tax table (in Korean)</a></li><li><a href="https://www.law.go.kr/법령/소득세법시행령" target="_blank" rel="noopener noreferrer">National Law Information Center: Income Tax Act Enforcement Decree, Table 2 (in Korean)</a></li><li><a href="https://www.law.go.kr/법령/국민연금법" target="_blank" rel="noopener noreferrer">National Law Information Center: National Pension Act, Article 88 and addenda, rising from 9.5% in 2026 by 0.5 points a year to 13% (in Korean)</a></li><li><a href="https://medicaltimes.com/Users/News/NewsView.html?ID=1164975" target="_blank" rel="noopener noreferrer">Medical Times: 2026 health insurance rate set at 7.19% (in Korean)</a></li><li><a href="https://www.law.go.kr/법령/고용보험및산업재해보상보험의보험료징수등에관한법률시행령" target="_blank" rel="noopener noreferrer">National Law Information Center: Enforcement Decree on employment insurance premiums, Article 12 (in Korean)</a></li></ul>
+  </section>
+  <p class="updated">Last updated: 2026-11-04</p>
+</main>
+<footer class="site-footer">
+  <p>Values you enter are never stored or sent to a server. Advertising partners may use cookies.</p>
+  <p><a href="/en/guides/">Guides</a> · <a href="/en/about/">About this site</a> · <a href="/en/privacy/">Privacy policy</a></p>
+</footer>
+<script type="application/json" id="tool-labels">{"annualSalaryLabel":"Annual salary (pre-tax)","nonTaxableLabel":"Monthly non-taxable pay (meals, etc.)","familyLabel":"Family members for deductions (incl. you)","childrenLabel":"Of whom children aged 8 to 20","unitWon":"won","unitPeople":"people","wonFormat":"{n} won","monthlyNetLabel":"Monthly take-home pay","annualNetLabel":"Annual take-home (monthly × 12)","totalDeductionLabel":"Total monthly deductions","pensionLabel":"National pension (4.75%)","healthLabel":"Health insurance (3.595%)","longTermCareLabel":"Long-term care insurance","employmentLabel":"Employment insurance (0.9%)","incomeTaxLabel":"Income tax (NTS table)","localTaxLabel":"Local income tax (10% of income tax)","errorInvalidSalary":"Enter a salary greater than 0.","errorInvalidNonTaxable":"Non-taxable pay must be 0 or more and less than monthly pay.","errorInvalidFamily":"Enter 1 to 11 family members, including yourself.","errorInvalidChildren":"Children must be 0 or more and fewer than the family members."}</script>
+<script src="/assets/logic/salary.js?v=71a678d6"></script>
+<script src="/assets/common.js?v=71a678d6"></script>
+<script src="/assets/tools/take-home-pay.js?v=71a678d6" defer></script>
+</body>
+</html>

@@ -86,6 +86,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/unemployment-benefit/"/>
   </url>
   <url>
+    <loc>https://moatool.com/ko/take-home-pay/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/take-home-pay/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/take-home-pay/"/>
+  </url>
+  <url>
     <loc>https://moatool.com/en/loan-calculator/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/loan-calculator/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/loan-calculator/"/>
@@ -159,6 +164,11 @@
     <loc>https://moatool.com/en/unemployment-benefit/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/unemployment-benefit/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/unemployment-benefit/"/>
+  </url>
+  <url>
+    <loc>https://moatool.com/en/take-home-pay/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/take-home-pay/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/take-home-pay/"/>
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/</loc>

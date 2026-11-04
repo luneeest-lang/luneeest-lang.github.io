@@ -33,6 +33,7 @@ const SLUGS = [
   'pyeong',
   'percent',
   'unemployment-benefit',
+  'take-home-pay',
 ];
 const LANGS = ['ko', 'en'];
 const GUIDE_SLUGS = {

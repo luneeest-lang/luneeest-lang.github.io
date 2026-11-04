@@ -58,9 +58,9 @@ test('계산기 페이지에 폼 입력 칸이 있다', () => {
   assert.match(page, /id="months"/);
 });
 
-test('페이지 수는 50 (루트 1, 404 1, 언어 홈 2, 도구 30, 개인정보 2, 소개 2, 가이드 목록 2, 가이드 10)', () => {
+test('페이지 수는 52 (루트 1, 404 1, 언어 홈 2, 도구 32, 개인정보 2, 소개 2, 가이드 목록 2, 가이드 10)', () => {
   const result = buildSite({ rootDir: ROOT, outDir: fs.mkdtempSync(path.join(os.tmpdir(), 'site-count-')) });
-  assert.equal(result.pages, 50);
+  assert.equal(result.pages, 52);
 });
 
 test('로직 파일이 site/assets/logic에 복사된다', () => {
@@ -619,4 +619,16 @@ test('실업급여 계산기가 두 언어로 생성되고 1일 소정근로시�
     assert.match(page, /<output id="dailyBenefit">/);
   }
   assert.match(read('ko/severance/index.html'), /<section class="related-tools">[\s\S]*href="\/ko\/unemployment-benefit\/"/);
+});
+
+test('연봉 실수령액 계산기가 두 언어로 생성되고 국세청 표가 든 로직 파일을 불러온다', () => {
+  for (const lang of ['ko', 'en']) {
+    const page = read(`${lang}/take-home-pay/index.html`);
+    assert.match(page, /\/assets\/logic\/salary\.js/);
+    assert.match(page, /<input id="nonTaxable" name="nonTaxable" type="text" inputmode="decimal" value="200,000">/);
+    assert.match(page, /<input id="family" name="family" type="text" inputmode="numeric" value="1">/);
+    assert.match(page, /<output id="monthlyNet">/);
+  }
+  assert.ok(fs.existsSync(path.join(outDir, 'assets', 'logic', 'salary.js')));
+  assert.match(read('ko/index.html'), /href="\/ko\/take-home-pay\/"/);
 });

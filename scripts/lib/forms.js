@@ -124,6 +124,26 @@ const TOOL_FORMS = {
     ],
     errorKeys: [],
   },
+  'take-home-pay': {
+    inputs: [
+      { id: 'annualSalary', labelKey: 'annualSalaryLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
+      { id: 'nonTaxable', labelKey: 'nonTaxableLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon', value: '200,000' },
+      { id: 'family', labelKey: 'familyLabel', type: 'text', inputmode: 'numeric', unitKey: 'unitPeople', value: '1' },
+      { id: 'children', labelKey: 'childrenLabel', type: 'text', inputmode: 'numeric', unitKey: 'unitPeople', value: '0' },
+    ],
+    outputs: [
+      { id: 'monthlyNet', labelKey: 'monthlyNetLabel', primary: true },
+      { id: 'annualNet', labelKey: 'annualNetLabel' },
+      { id: 'totalDeduction', labelKey: 'totalDeductionLabel' },
+      { id: 'pension', labelKey: 'pensionLabel' },
+      { id: 'health', labelKey: 'healthLabel' },
+      { id: 'longTermCare', labelKey: 'longTermCareLabel' },
+      { id: 'employment', labelKey: 'employmentLabel' },
+      { id: 'incomeTax', labelKey: 'incomeTaxLabel' },
+      { id: 'localTax', labelKey: 'localTaxLabel' },
+    ],
+    errorKeys: ['errorInvalidSalary', 'errorInvalidNonTaxable', 'errorInvalidFamily', 'errorInvalidChildren'],
+  },
   'unemployment-benefit': {
     inputs: [
       { id: 'lastWorkDay', labelKey: 'lastWorkDayLabel', type: 'date' },
@@ -251,6 +271,7 @@ const TOOL_FORMS = {
 };
 
 const CALC_SLUGS = [
+  'take-home-pay',
   'loan-calculator',
   'severance',
   'unemployment-benefit',
@@ -271,8 +292,9 @@ module.exports = { TOOL_FORMS, CALC_SLUGS, TEXT_SLUGS };
 const RELATED_TOOLS = {
   'loan-calculator': ['percent', 'date-diff', 'severance'],
   severance: ['unemployment-benefit', 'hourly-wage', 'date-diff'],
-  'unemployment-benefit': ['severance', 'hourly-wage', 'date-diff'],
-  'hourly-wage': ['severance', 'unemployment-benefit', 'percent'],
+  'unemployment-benefit': ['severance', 'take-home-pay', 'hourly-wage'],
+  'hourly-wage': ['take-home-pay', 'severance', 'unemployment-benefit'],
+  'take-home-pay': ['hourly-wage', 'severance', 'unemployment-benefit'],
   'date-diff': ['date-add', 'korean-age', 'discharge-date'],
   'date-add': ['date-diff', 'discharge-date', 'korean-age'],
   'korean-age': ['date-diff', 'date-add', 'bmi'],

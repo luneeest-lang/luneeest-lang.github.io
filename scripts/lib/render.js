@@ -11,6 +11,7 @@ const LOGIC_FILE = {
   'date-add': 'date',
   'hourly-wage': 'finance',
   'unemployment-benefit': 'finance',
+  'take-home-pay': 'salary',
   'korean-age': 'date',
   'discharge-date': 'date',
   pyeong: 'units',
