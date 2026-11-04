@@ -3,13 +3,13 @@
   "title": "About This Site and How We Check Our Tools | Toolbox",
   "description": "Why these free calculators and text tools exist, how your input is handled, how results and explanations are checked, and what to keep in mind.",
   "h1": "About this site",
-  "updated": "2026-10-29",
+  "updated": "2026-11-04",
   "intro": "moatool is a free collection of calculators and text tools for everyday and workplace tasks. Everything works right away, with no install or sign-up.\n\nThis page explains how the site is run and how we check the results and explanations.",
   "sections": [
     {
       "heading": "What we offer",
       "paragraphs": [
-        "Calculators for loans, Korean severance pay, date differences, and BMI, plus text tools such as a character counter and a line break cleaner. Each tool explains how it calculates, gives a worked example, and lists caveats so you can read the result correctly."
+        "Ten calculators, including loan interest, Korean severance pay, hourly-to-monthly wages, Korean age, military discharge dates, date math, pyeong, percentages, and BMI, plus four text tools: a character counter, case converter, line cleanup, and duplicate line remover. Each tool explains how it calculates, with examples and notes on reading the result."
       ]
     },
     {
@@ -37,6 +37,17 @@
       "paragraphs": [
         "Results and explanations on this site are for reference only. Actual loan terms, severance pay, and health status depend on your situation.",
         "Nothing on this site replaces professional advice from a lawyer, tax advisor, financial advisor, or doctor. Check with the relevant agency or a professional before making important decisions."
+      ]
+    },
+    {
+      "heading": "Update history",
+      "paragraphs": [
+        "Major changes to the site."
+      ],
+      "items": [
+        "2026-11-04: Added related tools on every tool page and a helpful 404 page.",
+        "2026-10-29: Added wage, Korean age, discharge date, pyeong, percent, and date-add calculators, more loan repayment methods with a monthly schedule, shareable result links, and English guides.",
+        "2026-10-22: Added formulas, examples, and sources to English tool pages."
       ]
     }
   ],

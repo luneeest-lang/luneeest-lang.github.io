@@ -265,7 +265,54 @@ function renderRelatedGuide(relatedGuide, ui, lang) {
   </section>`;
 }
 
-function renderToolPage({ lang, tool, ui, alternates, origin, relatedGuide }) {
+function toolCard(tool, lang) {
+  return `<a class="tool-card" data-category="${categoryOf(tool.slug)}" href="/${lang}/${tool.slug}/">
+  <span class="tool-card-title">${escapeHtml(tool.h1)}</span>
+  <span class="tool-card-desc">${escapeHtml(tool.description)}</span>
+</a>`;
+}
+
+function renderRelatedTools(tools, ui, lang) {
+  if (!tools.length) return '';
+  return `<section class="related-tools">
+    <h2>${escapeHtml(ui.relatedToolsHeading)}</h2>
+    <div class="grid">${tools.map((tool) => toolCard(tool, lang)).join('\n')}</div>
+  </section>`;
+}
+
+// GitHub Pages serves /404.html for any missing path, in either language.
+function renderNotFound({ ui, tools }) {
+  return `<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>${escapeHtml(ui.ko.notFoundTitle)} | ${escapeHtml(ui.ko.siteName)}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+  <link rel="stylesheet" href="${asset('/assets/style.css')}">${iconTags()}
+</head>
+<body>
+${header({ lang: 'ko', ui: ui.ko, alternates: { ko: '/ko/', en: '/en/' } })}
+<main class="not-found">
+  <h1>${escapeHtml(ui.ko.notFoundTitle)}</h1>
+  <p class="lead">${escapeHtml(ui.ko.notFoundLead)}</p>
+  <p lang="en">${escapeHtml(ui.en.notFoundLead)} <a href="/en/">${escapeHtml(ui.en.notFoundHomeLink)}</a></p>
+  <p><a class="cta" href="/ko/">${escapeHtml(ui.ko.notFoundHomeLink)}</a></p>
+  <section class="category" data-category="calc">
+    <h2>${escapeHtml(ui.ko.notFoundPopular)}</h2>
+    <div class="grid">${tools.map((tool) => toolCard(tool, 'ko')).join('\n')}</div>
+  </section>
+</main>
+${footer(ui.ko, 'ko')}
+</body>
+</html>
+`;
+}
+
+function renderToolPage({ lang, tool, ui, alternates, origin, relatedGuide, relatedTools = [] }) {
   const form = TOOL_FORMS[tool.slug];
   const labels = tool.labels;
   const inputs = form.inputs.map((field) => renderField(field, labels)).join('\n');
@@ -298,6 +345,7 @@ ${header({ lang, ui, alternates: alternates.paths })}
   </section>
   ${renderExplanation(tool, ui)}
   ${renderRelatedGuide(relatedGuide, ui, lang)}
+  ${renderRelatedTools(relatedTools, ui, lang)}
   <section class="faq">
     <h2>${escapeHtml(ui.faqHeading)}</h2>
     ${tool.faq.map((item) => `<details><summary>${escapeHtml(item.q)}</summary><p>${escapeHtml(item.a)}</p></details>`).join('\n')}
@@ -525,4 +573,5 @@ module.exports = {
   renderGuidePage,
   renderGuidesHub,
   renderPrivacyPage,
+  renderNotFound,
 };

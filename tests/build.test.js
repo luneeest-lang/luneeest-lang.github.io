@@ -58,9 +58,9 @@ test('계산기 페이지에 폼 입력 칸이 있다', () => {
   assert.match(page, /id="months"/);
 });
 
-test('페이지 수는 46 (루트 1, 언어 홈 2, 도구 28, 개인정보 2, 소개 2, 가이드 목록 2, 가이드 9)', () => {
+test('페이지 수는 47 (루트 1, 404 1, 언어 홈 2, 도구 28, 개인정보 2, 소개 2, 가이드 목록 2, 가이드 9)', () => {
   const result = buildSite({ rootDir: ROOT, outDir: fs.mkdtempSync(path.join(os.tmpdir(), 'site-count-')) });
-  assert.equal(result.pages, 46);
+  assert.equal(result.pages, 47);
 });
 
 test('로직 파일이 site/assets/logic에 복사된다', () => {
@@ -577,4 +577,36 @@ test('루트 주소는 이동 없이 한국어 홈을 보여 주고 대표 주�
   assert.match(html, /<link rel="canonical" href="https:\/\/moatool\.com\/ko\/">/);
   assert.match(html, /<meta property="og:url" content="https:\/\/moatool\.com\/ko\/">/);
   assert.match(html, /<meta property="og:image" content="https:\/\/moatool\.com\/assets\/og-ko\.png">/);
+});
+
+test('도구 페이지 아래에 관련 도구 카드가 같은 언어로 연결된다', () => {
+  const ko = read('ko/hourly-wage/index.html');
+  assert.match(ko, /<section class="related-tools">/);
+  assert.match(ko, /<section class="related-tools">[\s\S]*href="\/ko\/severance\/"[\s\S]*<\/section>/);
+  assert.match(read('en/korean-age/index.html'), /<section class="related-tools">[\s\S]*href="\/en\/date-diff\/"/);
+  assert.match(read('ko/char-count/index.html'), /<section class="related-tools">[\s\S]*href="\/ko\/line-cleanup\/"/);
+  for (const slug of ['loan-calculator', 'percent', 'dedupe-lines', 'discharge-date']) {
+    const page = read(`ko/${slug}/index.html`);
+    const section = page.match(/<section class="related-tools">([\s\S]*?)<\/section>/)[1];
+    const links = section.match(/href="\/ko\/[a-z-]+\/"/g) || [];
+    assert.ok(links.length >= 2 && links.length <= 3, `${slug} has 2-3 related tools`);
+    assert.ok(!section.includes(`href="/ko/${slug}/"`), `${slug} does not link to itself`);
+  }
+});
+
+test('404 페이지는 검색에서 빠지고 두 언어 홈과 주요 도구로 안내한다', () => {
+  const html = read('404.html');
+  assert.match(html, /<meta name="robots" content="noindex">/);
+  assert.match(html, /href="\/ko\/"/);
+  assert.match(html, /href="\/en\/"/);
+  assert.match(html, /href="\/ko\/hourly-wage\/"/);
+  assert.match(html, /\/assets\/style\.css\?v=/);
+  assert.doesNotMatch(read('sitemap.xml'), /404/);
+});
+
+test('소개 페이지에 업데이트 기록과 기준 갱신 일정이 있다', () => {
+  const ko = read('ko/about/index.html');
+  assert.match(ko, /<h2>업데이트 기록<\/h2>/);
+  assert.match(ko, /<h2>기준 갱신 일정<\/h2>/);
+  assert.match(read('en/about/index.html'), /<h2>Update history<\/h2>/);
 });

@@ -30,5 +30,10 @@
   "copiedLabel": "Copied",
   "shareLabel": "Copy result link",
   "sharedLabel": "Link copied",
-  "shareHint": "The link contains the values you entered, so anyone you send it to sees the same result."
+  "shareHint": "The link contains the values you entered, so anyone you send it to sees the same result.",
+  "relatedToolsHeading": "Related tools",
+  "notFoundTitle": "Page not found",
+  "notFoundLead": "This page does not exist or has moved.",
+  "notFoundHomeLink": "See all English tools",
+  "notFoundPopular": "Popular tools"
 }

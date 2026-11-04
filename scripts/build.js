@@ -8,9 +8,11 @@ const {
   renderGuidePage,
   renderGuidesHub,
   renderPrivacyPage,
+  renderNotFound,
   setAssetVersion,
   setSiteConfig,
 } = require('./lib/render');
+const { RELATED_TOOLS } = require('./lib/forms');
 
 // Production origin. It appears in canonical and hreflang links, sitemap.xml,
 // and robots.txt. Change it if the site moves to a custom domain.
@@ -247,6 +249,7 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
           alternates,
           origin,
           relatedGuide: relatedByTool[lang][slug],
+          relatedTools: (RELATED_TOOLS[slug] || []).map((other) => tools[lang][other]),
         })
       );
       pages += 1;
@@ -314,6 +317,10 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
   if (fs.existsSync(faviconIco)) {
     fs.copyFileSync(faviconIco, path.join(outDir, 'favicon.ico'));
   }
+
+  const popular = ['hourly-wage', 'severance', 'loan-calculator', 'korean-age', 'discharge-date', 'char-count'];
+  writePage(outDir, '404.html', renderNotFound({ ui, tools: popular.map((slug) => tools.ko[slug]) }));
+  pages += 1;
 
   writePage(outDir, 'sitemap.xml', sitemapXml(origin, sitemapEntries));
   for (const lang of LANGS) {

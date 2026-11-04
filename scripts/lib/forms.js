@@ -237,3 +237,23 @@ const CALC_SLUGS = [
 const TEXT_SLUGS = ['char-count', 'case-convert', 'line-cleanup', 'dedupe-lines'];
 
 module.exports = { TOOL_FORMS, CALC_SLUGS, TEXT_SLUGS };
+
+// Two or three tools a visitor is likely to need next, shown under each tool.
+const RELATED_TOOLS = {
+  'loan-calculator': ['percent', 'date-diff', 'severance'],
+  severance: ['hourly-wage', 'date-diff', 'loan-calculator'],
+  'hourly-wage': ['severance', 'percent', 'date-diff'],
+  'date-diff': ['date-add', 'korean-age', 'discharge-date'],
+  'date-add': ['date-diff', 'discharge-date', 'korean-age'],
+  'korean-age': ['date-diff', 'date-add', 'bmi'],
+  'discharge-date': ['date-add', 'date-diff', 'korean-age'],
+  bmi: ['korean-age', 'percent'],
+  pyeong: ['percent', 'loan-calculator'],
+  percent: ['loan-calculator', 'hourly-wage', 'pyeong'],
+  'char-count': ['line-cleanup', 'dedupe-lines', 'case-convert'],
+  'case-convert': ['char-count', 'line-cleanup', 'dedupe-lines'],
+  'line-cleanup': ['dedupe-lines', 'char-count', 'case-convert'],
+  'dedupe-lines': ['line-cleanup', 'char-count', 'case-convert'],
+};
+
+module.exports.RELATED_TOOLS = RELATED_TOOLS;
