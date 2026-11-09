@@ -1,14 +1,24 @@
 {
   "slug": "korean-age-explained",
   "pair": "korean-age",
-  "title": "Korean Age Explained: International, Year, and Counting Age",
-  "description": "How Korean age works, why Korea switched to international age in 2023, and where year age is still used, such as buying alcohol and tobacco.",
-  "h1": "Korean age explained",
-  "updated": "2026-10-29",
+  "title": "Legal Age in Korea: Drinking Age and Korean Age Explained",
+  "description": "What is the legal age in Korea? Adulthood starts at 19, and alcohol and tobacco are legal from January 1 of the year you turn 19. How Korean age works.",
+  "h1": "Legal age in Korea and Korean age explained",
+  "updated": "2026-11-09",
   "toolSlug": "korean-age",
   "ctaText": "Calculate your Korean age",
   "intro": "If you have ever been told you are a year or two older in Korea, you have met Korean age. Korea has used three different ways to count age, and they can differ by up to two years for the same person.\n\nOn June 28, 2023, Korea made international age the default in law. This guide explains the three systems, what changed, and where the older year age still applies, based on the text of Korean law and guidance from the Ministry of Government Legislation.",
   "sections": [
+    {
+      "heading": "Legal age in Korea at a glance",
+      "paragraphs": [
+        "Two ages come up most often when people ask about the legal age in Korea. They are counted differently, so the same person can reach them on different days."
+      ],
+      "items": [
+        "Legal adulthood: 19 in international age, counted from your birthday (Civil Act, Article 4).",
+        "Buying alcohol and tobacco: allowed from January 1 of the year you turn 19, whatever your birthday. The Juvenile Protection Act stops treating people as minors from that date, so this follows year age."
+      ]
+    },
     {
       "heading": "The three ways to count age",
       "paragraphs": [
@@ -58,7 +68,7 @@
   ],
   "sources": [
     {
-      "title": "National Law Information Center: Civil Act, Articles 158 and 160 (in Korean)",
+      "title": "National Law Information Center: Civil Act, Articles 4, 158, and 160 (in Korean)",
       "url": "https://www.law.go.kr/법령/민법"
     },
     {
