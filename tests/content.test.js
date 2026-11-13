@@ -21,6 +21,7 @@ const SLUGS = [
   'percent',
   'unemployment-benefit',
   'take-home-pay',
+  'annual-leave',
 ];
 const LANGS = ['ko', 'en'];
 const REQUIRED_KEYS = ['slug', 'title', 'description', 'h1', 'intro', 'howTo', 'faq', 'labels'];
@@ -55,7 +56,7 @@ function load(lang, slug) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, lang, `${slug}.json`), 'utf8'));
 }
 
-test('16개 도구마다 한국어와 영어 파일이 있다', () => {
+test('17개 도구마다 한국어와 영어 파일이 있다', () => {
   for (const lang of LANGS) {
     for (const slug of SLUGS) {
       assert.ok(fs.existsSync(path.join(ROOT, lang, `${slug}.json`)), `${lang}/${slug}.json`);
@@ -212,8 +213,8 @@ test('개인정보처리방침 외부 링크는 https 주소다', () => {
   }
 });
 
-const GUIDE_SLUGS = ['severance', 'unemployment-benefit', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi', 'char-count'];
-const GUIDE_SOURCE_SLUGS = ['severance', 'unemployment-benefit', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi'];
+const GUIDE_SLUGS = ['severance', 'unemployment-benefit', 'annual-leave', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi', 'char-count'];
+const GUIDE_SOURCE_SLUGS = ['severance', 'unemployment-benefit', 'annual-leave', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi'];
 
 function loadGuide(slug) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, 'ko', 'guides', `${slug}.json`), 'utf8'));

@@ -34,10 +34,11 @@ const SLUGS = [
   'percent',
   'unemployment-benefit',
   'take-home-pay',
+  'annual-leave',
 ];
 const LANGS = ['ko', 'en'];
 const GUIDE_SLUGS = {
-  ko: ['severance', 'unemployment-benefit', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi', 'char-count'],
+  ko: ['severance', 'unemployment-benefit', 'annual-leave', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi', 'char-count'],
   en: ['korean-severance-pay', 'korean-age-explained', 'korean-bmi-categories'],
 };
 

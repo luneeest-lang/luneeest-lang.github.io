@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="naver-site-verification" content="039452e4a2ed6ef92166e9a02eaa07735279ac95" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+  <title>연차 계산기 | 입사일 기준 연차 일수와 연차수당 계산</title>
+  <meta name="description" content="입사일을 넣으면 근로기준법 기준으로 지금까지 생긴 연차와 다음 연차 발생일을 계산합니다. 월 통상임금과 미사용 일수로 연차수당도 계산합니다.">
+  <link rel="canonical" href="https://moatool.com/ko/annual-leave/">
+    <link rel="alternate" hreflang="ko" href="https://moatool.com/ko/annual-leave/">
+    <link rel="alternate" hreflang="en" href="https://moatool.com/en/annual-leave/">
+    <link rel="alternate" hreflang="x-default" href="https://moatool.com/ko/annual-leave/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="무료 도구">
+  <meta property="og:title" content="연차 계산기 | 입사일 기준 연차 일수와 연차수당 계산">
+  <meta property="og:description" content="입사일을 넣으면 근로기준법 기준으로 지금까지 생긴 연차와 다음 연차 발생일을 계산합니다. 월 통상임금과 미사용 일수로 연차수당도 계산합니다.">
+  <meta property="og:url" content="https://moatool.com/ko/annual-leave/">
+  <meta property="og:image" content="https://moatool.com/assets/og-ko.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/style.css?v=68d39ac2">
+  <link rel="icon" href="/assets/favicon.svg?v=68d39ac2" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=68d39ac2">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-name" href="/ko/">무료 도구</a>
+  <nav class="site-nav" aria-label="주 메뉴"><a href="/ko/">도구</a><a href="/ko/guides/">가이드</a><a href="/ko/about/">소개</a></nav>
+  <a class="lang-switch" href="/en/annual-leave/" hreflang="en" lang="en">English</a>
+</header>
+<main class="tool" data-category="calc">
+  <h1>연차 계산기</h1>
+  <div class="intro"><p>입사일을 넣으면 올해 받은 연차가 며칠인지, 입사 후 모두 몇 일이 생겼는지, 다음 연차는 언제 며칠 생기는지 계산합니다. 근로기준법 제60조의 입사일 기준 계산 방식을 따릅니다.</p>
+<p>월 통상임금과 쓰지 못한 연차 일수를 넣으면 연차수당도 함께 계산합니다. 퇴사를 앞두고 있다면 기준일에 마지막 근무일을 넣어 보세요.</p></div>
+  <form class="tool-form" id="tool-form">
+    <div class="field">
+  <label for="hireDate">입사일</label>
+  <div class="field-row">
+    <input id="hireDate" name="hireDate" type="date">
+    
+  </div>
+</div>
+<div class="field">
+  <label for="on">기준일 (퇴사 예정이면 마지막 근무일)</label>
+  <div class="field-row">
+    <input id="on" name="on" type="date" data-no-share>
+    
+  </div>
+</div>
+<div class="field">
+  <label for="monthlyWage">월 통상임금 (선택)</label>
+  <div class="field-row">
+    <input id="monthlyWage" name="monthlyWage" type="text" inputmode="decimal">
+    <span class="unit">원</span>
+  </div>
+</div>
+<div class="field">
+  <label for="unusedDays">미사용 연차 일수 (선택)</label>
+  <div class="field-row">
+    <input id="unusedDays" name="unusedDays" type="text" inputmode="decimal">
+    <span class="unit">일</span>
+  </div>
+</div>
+    <div class="results" aria-live="polite">
+      <div class="output output-primary">
+  <span class="output-label">올해 연차</span>
+  <output id="leaveNow"></output>
+</div>
+<div class="output">
+  <span class="output-label">근속 기간</span>
+  <output id="yearsCompleted"></output>
+</div>
+<div class="output">
+  <span class="output-label">입사 후 총 발생 연차</span>
+  <output id="totalAccrued"></output>
+</div>
+<div class="output">
+  <span class="output-label">다음 연차 발생</span>
+  <output id="nextGrant"></output>
+</div>
+<div class="output">
+  <span class="output-label">연차수당</span>
+  <output id="leavePay"></output>
+</div>
+    </div>
+    <p class="error" data-error="errorInvalidDate" role="alert" hidden>올바른 날짜를 입력해 주세요.</p>
+<p class="error" data-error="errorHireAfterBase" role="alert" hidden>입사일이 기준일보다 늦습니다.</p>
+<p class="error" data-error="errorInvalidWage" role="alert" hidden>월 통상임금을 0보다 큰 숫자로 입력해 주세요.</p>
+<p class="error" data-error="errorInvalidDays" role="alert" hidden>미사용 연차 일수는 0 이상, 0.5일 단위로 입력해 주세요.</p>
+  </form>
+  <div class="share">
+    <button type="button" class="copy-btn" data-share data-label="결과 링크 복사" data-copied="링크를 복사했습니다">결과 링크 복사</button>
+    <p class="share-hint">입력한 값이 링크에 담깁니다. 링크를 받은 사람도 같은 결과를 볼 수 있습니다.</p>
+  </div>
+  
+  <section class="howto">
+    <h2>사용 방법</h2>
+    <ol><li>입사일을 선택합니다.</li><li>기준일을 확인합니다. 처음에는 오늘 날짜가 들어 있고, 퇴사 예정이면 마지막 근무일로 바꿉니다.</li><li>연차수당이 궁금하면 월 통상임금(기본급과 고정 수당)과 미사용 연차 일수를 입력합니다. 반차는 0.5일로 넣습니다.</li><li>올해 연차, 총 발생 연차, 다음 발생일과 연차수당을 확인합니다.</li></ol>
+  </section>
+  <section class="formula">
+    <h2>계산·처리 방식</h2>
+    <p>입사 후 1년 미만: 1개월 개근할 때마다 1일, 최대 11일이 생깁니다(근로기준법 제60조 제2항).</p>
+<p>1년 이상: 1년간 80% 이상 출근하면 15일이 생기고, 3년 이상 근무하면 최초 1년을 넘는 근속 2년마다 1일을 더해 최대 25일까지 늘어납니다(제60조 제1항, 제4항). 근속 3년차·4년차 16일, 5년차·6년차 17일, 21년차 이후 25일입니다.</p>
+<p>연차는 기간을 다 채운 다음 날 생깁니다. 예를 들어 1월 2일 입사자는 매달 2일에 1일씩, 다음 해 1월 2일에 15일이 생깁니다. 31일 입사처럼 해당 날짜가 없는 달은 민법 제160조에 따라 그 달 말일 다음 날 생깁니다.</p>
+<p>연차수당 = 미사용 일수 × (월 통상임금 ÷ 209 × 8)입니다.</p>
+  </section>
+  <section class="example">
+    <h2>예시</h2>
+    <p>2024년 3월 2일에 입사해 2026년 11월 13일 현재 만 2년을 근무했다면, 첫해 월차 11일, 2025년 3월 2일 15일, 2026년 3월 2일 15일이 생겨 총 41일이 발생했습니다. 다음 연차는 2027년 3월 2일에 16일 생깁니다.</p>
+<p>월 통상임금이 300만 원이면 1일 통상임금은 300만 ÷ 209 × 8 ≈ 114,832원이고, 미사용 연차 5일의 연차수당은 574,162원입니다.</p>
+  </section>
+  <section class="notes">
+    <h2>알아 두세요</h2>
+    <ul><li>상시 근로자 4명 이하 사업장에는 연차휴가 규정이 적용되지 않습니다. 4주 평균 주 15시간 미만으로 일하는 근로자도 연차가 생기지 않습니다.</li><li>1년간 출근율이 80% 미만이면 15일 대신 1개월 개근마다 1일씩 생깁니다. 이 계산기는 출근율 80% 이상을 가정합니다.</li><li>회사가 입사일이 아닌 회계연도(1월 1일) 기준으로 연차를 관리하면 계산 방식이 다를 수 있으니 취업규칙을 확인하세요.</li><li>연차는 생긴 날부터 1년 안에 쓰지 않으면 소멸합니다. 회사가 법에 정한 사용 촉진 절차를 거쳤다면 미사용 수당을 주지 않아도 될 수 있습니다.</li><li>결과는 참고용이며 실제 연차와 수당은 취업규칙과 근로계약을 따릅니다.</li></ul>
+  </section>
+  <section class="related-guide">
+    <h2>관련 가이드</h2>
+    <p><a href="/ko/guides/annual-leave/">연차 계산법과 연차수당 총정리</a></p>
+  </section>
+  <section class="related-tools">
+    <h2>함께 쓰면 좋은 도구</h2>
+    <div class="grid"><a class="tool-card" data-category="calc" href="/ko/severance/">
+  <span class="tool-card-title">퇴직금 계산기</span>
+  <span class="tool-card-desc">입사일과 퇴직일, 3개월 임금, 상여금, 연차수당을 넣으면 고용노동부 계산 방식으로 퇴직금 개략액을 계산합니다.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/ko/take-home-pay/">
+  <span class="tool-card-title">연봉 실수령액 계산기</span>
+  <span class="tool-card-desc">연봉을 넣으면 국민연금, 건강보험, 장기요양, 고용보험과 국세청 간이세액표 소득세를 뺀 월 실수령액을 계산합니다. 부양가족과 자녀 공제도 반영합니다.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/ko/hourly-wage/">
+  <span class="tool-card-title">시급 월급 계산기</span>
+  <span class="tool-card-desc">시급을 월급으로, 월급을 시급으로 바꿉니다. 주 근무시간에 따라 주휴수당과 월 환산 시간(주 40시간이면 209시간)을 자동으로 계산합니다.</span>
+</a></div>
+  </section>
+  <section class="faq">
+    <h2>자주 묻는 질문</h2>
+    <details><summary>입사 첫해에는 연차가 몇 일인가요?</summary><p>1년 미만 동안은 1개월 개근할 때마다 1일씩, 최대 11일이 생깁니다. 이 휴가는 입사 후 1년이 끝날 때까지 써야 합니다.</p></details>
+<details><summary>딱 1년 일하고 퇴사하면 15일을 받나요?</summary><p>받지 못합니다. 대법원은 15일의 연차가 1년 근로를 마친 다음 날 생긴다고 보아, 1년 계약이 끝나 퇴사하면 최대 11일만 생긴다고 판단했습니다(2021다227100). 1년을 넘겨 하루라도 더 근로관계가 이어지면 15일이 더해져 최대 26일이 됩니다.</p></details>
+<details><summary>연차수당은 어떻게 계산하나요?</summary><p>미사용 연차 일수 × 1일 통상임금입니다. 주 40시간 근무라면 1일 통상임금은 월 통상임금 ÷ 209시간 × 8시간입니다. 회사가 연차 사용 촉진 절차를 제대로 거쳤다면 수당을 주지 않아도 될 수 있습니다.</p></details>
+  </section>
+  <section class="sources">
+    <h2>참고 자료</h2>
+    <ul><li><a href="https://www.law.go.kr/법령/근로기준법" target="_blank" rel="noopener noreferrer">국가법령정보센터: 근로기준법 (제60조 연차 유급휴가, 제61조 사용 촉진, 제18조 단시간근로자)</a></li><li><a href="https://scourt.go.kr/supreme/news/NewsViewAction2.work?gubun=4&amp;seqnum=8782" target="_blank" rel="noopener noreferrer">대법원 주요판결: 1년 초과 2년 이하 근로자의 연차휴가 최대 26일 (2021다227100 인용)</a></li><li><a href="https://www.law.go.kr/법령/근로기준법시행령" target="_blank" rel="noopener noreferrer">국가법령정보센터: 근로기준법 시행령 (별표 1 상시 4명 이하 사업장 적용 범위)</a></li></ul>
+  </section>
+  <p class="updated">최종 수정일: 2026-11-13</p>
+</main>
+<footer class="site-footer">
+  <p>입력하신 값은 저장되거나 서버로 전송되지 않습니다. 광고 서비스는 쿠키를 사용할 수 있습니다.</p>
+  <p><a href="/ko/guides/">가이드</a> · <a href="/ko/about/">사이트 소개</a> · <a href="/ko/privacy/">개인정보처리방침</a></p>
+</footer>
+<script type="application/json" id="tool-labels">{"hireDateLabel":"입사일","onLabel":"기준일 (퇴사 예정이면 마지막 근무일)","monthlyWageLabel":"월 통상임금 (선택)","unusedDaysLabel":"미사용 연차 일수 (선택)","unitWon":"원","unitDays":"일","wonFormat":"{n}원","daysFormat":"{n}일","yearsFormat":"만 {n}년","leaveNowLabel":"올해 연차","leaveYearFormat":"{n} ({date} 발생)","leaveMonthlyFormat":"{n} (1년 미만, 월 1일씩 발생 중)","yearsCompletedLabel":"근속 기간","totalAccruedLabel":"입사 후 총 발생 연차","nextGrantLabel":"다음 연차 발생","nextGrantFormat":"{date}에 {n}","leavePayLabel":"연차수당","leavePayFormat":"{pay} (1일 통상임금 {daily})","leavePayHint":"월 통상임금과 미사용 일수를 넣으면 계산합니다","errorInvalidDate":"올바른 날짜를 입력해 주세요.","errorHireAfterBase":"입사일이 기준일보다 늦습니다.","errorInvalidWage":"월 통상임금을 0보다 큰 숫자로 입력해 주세요.","errorInvalidDays":"미사용 연차 일수는 0 이상, 0.5일 단위로 입력해 주세요."}</script>
+<script src="/assets/logic/date.js?v=68d39ac2"></script>
+<script src="/assets/common.js?v=68d39ac2"></script>
+<script src="/assets/tools/annual-leave.js?v=68d39ac2" defer></script>
+</body>
+</html>

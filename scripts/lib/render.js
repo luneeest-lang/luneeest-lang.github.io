@@ -12,6 +12,7 @@ const LOGIC_FILE = {
   'hourly-wage': 'finance',
   'unemployment-benefit': 'finance',
   'take-home-pay': 'salary',
+  'annual-leave': 'date',
   'korean-age': 'date',
   'discharge-date': 'date',
   pyeong: 'units',

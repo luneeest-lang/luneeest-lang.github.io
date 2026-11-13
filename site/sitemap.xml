@@ -91,6 +91,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/take-home-pay/"/>
   </url>
   <url>
+    <loc>https://moatool.com/ko/annual-leave/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/annual-leave/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/annual-leave/"/>
+  </url>
+  <url>
     <loc>https://moatool.com/en/loan-calculator/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/loan-calculator/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/loan-calculator/"/>
@@ -171,6 +176,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/take-home-pay/"/>
   </url>
   <url>
+    <loc>https://moatool.com/en/annual-leave/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/annual-leave/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/annual-leave/"/>
+  </url>
+  <url>
     <loc>https://moatool.com/ko/guides/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/"/>
@@ -188,6 +198,10 @@
   <url>
     <loc>https://moatool.com/ko/guides/unemployment-benefit/</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/unemployment-benefit/"/>
+  </url>
+  <url>
+    <loc>https://moatool.com/ko/guides/annual-leave/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/annual-leave/"/>
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/loan-repayment-methods/</loc>

@@ -144,6 +144,22 @@ const TOOL_FORMS = {
     ],
     errorKeys: ['errorInvalidSalary', 'errorInvalidNonTaxable', 'errorInvalidFamily', 'errorInvalidChildren'],
   },
+  'annual-leave': {
+    inputs: [
+      { id: 'hireDate', labelKey: 'hireDateLabel', type: 'date' },
+      { id: 'on', labelKey: 'onLabel', type: 'date', noShare: true },
+      { id: 'monthlyWage', labelKey: 'monthlyWageLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
+      { id: 'unusedDays', labelKey: 'unusedDaysLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitDays' },
+    ],
+    outputs: [
+      { id: 'leaveNow', labelKey: 'leaveNowLabel', primary: true },
+      { id: 'yearsCompleted', labelKey: 'yearsCompletedLabel' },
+      { id: 'totalAccrued', labelKey: 'totalAccruedLabel' },
+      { id: 'nextGrant', labelKey: 'nextGrantLabel' },
+      { id: 'leavePay', labelKey: 'leavePayLabel' },
+    ],
+    errorKeys: ['errorInvalidDate', 'errorHireAfterBase', 'errorInvalidWage', 'errorInvalidDays'],
+  },
   'unemployment-benefit': {
     inputs: [
       { id: 'lastWorkDay', labelKey: 'lastWorkDayLabel', type: 'date' },
@@ -275,6 +291,7 @@ const CALC_SLUGS = [
   'loan-calculator',
   'severance',
   'unemployment-benefit',
+  'annual-leave',
   'hourly-wage',
   'date-diff',
   'date-add',
@@ -291,10 +308,11 @@ module.exports = { TOOL_FORMS, CALC_SLUGS, TEXT_SLUGS };
 // Two or three tools a visitor is likely to need next, shown under each tool.
 const RELATED_TOOLS = {
   'loan-calculator': ['percent', 'date-diff', 'severance'],
-  severance: ['unemployment-benefit', 'hourly-wage', 'date-diff'],
+  severance: ['unemployment-benefit', 'annual-leave', 'hourly-wage'],
+  'annual-leave': ['severance', 'take-home-pay', 'hourly-wage'],
   'unemployment-benefit': ['severance', 'take-home-pay', 'hourly-wage'],
   'hourly-wage': ['take-home-pay', 'severance', 'unemployment-benefit'],
-  'take-home-pay': ['hourly-wage', 'severance', 'unemployment-benefit'],
+  'take-home-pay': ['hourly-wage', 'annual-leave', 'severance'],
   'date-diff': ['date-add', 'korean-age', 'discharge-date'],
   'date-add': ['date-diff', 'discharge-date', 'korean-age'],
   'korean-age': ['date-diff', 'date-add', 'bmi'],

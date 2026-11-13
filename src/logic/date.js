@@ -132,6 +132,61 @@ function militaryService({ enlist, branch, on }) {
   };
 }
 
-const api = { dateDiff, addDays, koreanAge, dischargeDate, militaryService };
+// Labor Standards Act Article 60: one day per full month in the first year (up to 11),
+// then 15 days a year, plus one day for every two years beyond the first, up to 25.
+function yearlyGrant(years) {
+  return Math.min(15 + Math.floor((years - 1) / 2), 25);
+}
+
+// Leave for a period arises the day after the period ends (Civil Act Article 160).
+function grantTime(hireDate, months) {
+  return parseDate(dischargeDate({ enlist: hireDate, months })) + DAY_MS;
+}
+
+function annualLeave({ hireDate, on }) {
+  const hire = parseDate(hireDate);
+  const onTime = parseDate(on);
+  if (hire === null || onTime === null) {
+    return { error: 'invalid_date' };
+  }
+  if (hire > onTime) {
+    return { error: 'hire_after_base' };
+  }
+  let months = 0;
+  while (months < 12 && grantTime(hireDate, months + 1) <= onTime) months += 1;
+  let years = 0;
+  while (grantTime(hireDate, (years + 1) * 12) <= onTime) years += 1;
+
+  const firstYearDays = Math.min(months, 11);
+  let totalAccrued = firstYearDays;
+  for (let y = 1; y <= years; y += 1) totalAccrued += yearlyGrant(y);
+
+  const inFirstMonths = years === 0 && months < 11;
+  const nextTime = inFirstMonths ? grantTime(hireDate, months + 1) : grantTime(hireDate, (years + 1) * 12);
+  return {
+    error: null,
+    yearsCompleted: years,
+    firstYearDays,
+    currentGrant: years > 0 ? yearlyGrant(years) : 0,
+    currentGrantDate: years > 0 ? new Date(grantTime(hireDate, years * 12)).toISOString().slice(0, 10) : null,
+    totalAccrued,
+    nextGrantDate: new Date(nextTime).toISOString().slice(0, 10),
+    nextGrantDays: inFirstMonths ? 1 : yearlyGrant(years + 1),
+  };
+}
+
+// Daily ordinary wage for a 40-hour week: monthly ordinary wage ÷ 209 hours × 8 hours.
+function leavePay({ monthlyOrdinaryWage, unusedDays }) {
+  if (!Number.isFinite(monthlyOrdinaryWage) || monthlyOrdinaryWage <= 0) {
+    return { error: 'invalid_wage' };
+  }
+  if (!Number.isFinite(unusedDays) || unusedDays < 0 || !Number.isInteger(unusedDays * 2)) {
+    return { error: 'invalid_days' };
+  }
+  const daily = (monthlyOrdinaryWage / 209) * 8;
+  return { error: null, dailyWage: Math.floor(daily + 1e-9), pay: Math.floor(daily * unusedDays + 1e-9) };
+}
+
+const api = { dateDiff, addDays, koreanAge, dischargeDate, militaryService, annualLeave, leavePay };
 if (typeof module !== 'undefined') module.exports = api;
 if (typeof window !== 'undefined') window.ToolLogic = Object.assign(window.ToolLogic || {}, api);

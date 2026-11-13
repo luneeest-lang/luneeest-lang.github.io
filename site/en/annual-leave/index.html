@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="naver-site-verification" content="039452e4a2ed6ef92166e9a02eaa07735279ac95" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+  <title>Korean Annual Leave Calculator | Days and Unused Leave Pay</title>
+  <meta name="description" content="Find how many paid annual leave days you have under Korean labor law based on your hire date, when the next days arrive, and your unused leave pay.">
+  <link rel="canonical" href="https://moatool.com/en/annual-leave/">
+    <link rel="alternate" hreflang="ko" href="https://moatool.com/ko/annual-leave/">
+    <link rel="alternate" hreflang="en" href="https://moatool.com/en/annual-leave/">
+    <link rel="alternate" hreflang="x-default" href="https://moatool.com/ko/annual-leave/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Toolbox">
+  <meta property="og:title" content="Korean Annual Leave Calculator | Days and Unused Leave Pay">
+  <meta property="og:description" content="Find how many paid annual leave days you have under Korean labor law based on your hire date, when the next days arrive, and your unused leave pay.">
+  <meta property="og:url" content="https://moatool.com/en/annual-leave/">
+  <meta property="og:image" content="https://moatool.com/assets/og-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/style.css?v=68d39ac2">
+  <link rel="icon" href="/assets/favicon.svg?v=68d39ac2" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=68d39ac2">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-name" href="/en/">Toolbox</a>
+  <nav class="site-nav" aria-label="Main menu"><a href="/en/">Tools</a><a href="/en/guides/">Guides</a><a href="/en/about/">About</a></nav>
+  <a class="lang-switch" href="/ko/annual-leave/" hreflang="ko" lang="ko">한국어</a>
+</header>
+<main class="tool" data-category="calc">
+  <h1>Korean annual leave calculator</h1>
+  <div class="intro"><p>Enter your hire date to see how many paid annual leave days you have under the Korean Labor Standards Act, how many have accrued since you joined, and when the next days arrive. The calculation follows Article 60, counted from your hire date.</p>
+<p>Add your monthly ordinary wage and unused days to estimate unused leave pay. If you are leaving, set the reference date to your last working day.</p></div>
+  <form class="tool-form" id="tool-form">
+    <div class="field">
+  <label for="hireDate">Hire date</label>
+  <div class="field-row">
+    <input id="hireDate" name="hireDate" type="date">
+    
+  </div>
+</div>
+<div class="field">
+  <label for="on">Reference date (last working day if leaving)</label>
+  <div class="field-row">
+    <input id="on" name="on" type="date" data-no-share>
+    
+  </div>
+</div>
+<div class="field">
+  <label for="monthlyWage">Monthly ordinary wage (optional)</label>
+  <div class="field-row">
+    <input id="monthlyWage" name="monthlyWage" type="text" inputmode="decimal">
+    <span class="unit">won</span>
+  </div>
+</div>
+<div class="field">
+  <label for="unusedDays">Unused leave days (optional)</label>
+  <div class="field-row">
+    <input id="unusedDays" name="unusedDays" type="text" inputmode="decimal">
+    <span class="unit">days</span>
+  </div>
+</div>
+    <div class="results" aria-live="polite">
+      <div class="output output-primary">
+  <span class="output-label">Leave this year</span>
+  <output id="leaveNow"></output>
+</div>
+<div class="output">
+  <span class="output-label">Length of service</span>
+  <output id="yearsCompleted"></output>
+</div>
+<div class="output">
+  <span class="output-label">Total leave accrued since hire</span>
+  <output id="totalAccrued"></output>
+</div>
+<div class="output">
+  <span class="output-label">Next leave grant</span>
+  <output id="nextGrant"></output>
+</div>
+<div class="output">
+  <span class="output-label">Unused leave pay</span>
+  <output id="leavePay"></output>
+</div>
+    </div>
+    <p class="error" data-error="errorInvalidDate" role="alert" hidden>Enter a valid date.</p>
+<p class="error" data-error="errorHireAfterBase" role="alert" hidden>The hire date is after the reference date.</p>
+<p class="error" data-error="errorInvalidWage" role="alert" hidden>Enter a monthly wage greater than 0.</p>
+<p class="error" data-error="errorInvalidDays" role="alert" hidden>Enter unused days of 0 or more, in steps of 0.5.</p>
+  </form>
+  <div class="share">
+    <button type="button" class="copy-btn" data-share data-label="Copy result link" data-copied="Link copied">Copy result link</button>
+    <p class="share-hint">The link contains the values you entered, so anyone you send it to sees the same result.</p>
+  </div>
+  
+  <section class="howto">
+    <h2>How to use</h2>
+    <ol><li>Pick your hire date.</li><li>Check the reference date. It starts as today; use your last working day if you are leaving.</li><li>To estimate leave pay, enter your monthly ordinary wage (base pay and fixed allowances) and unused days. Enter half days as 0.5.</li><li>Read this year&#39;s leave, total accrued leave, the next grant, and the leave pay.</li></ol>
+  </section>
+  <section class="formula">
+    <h2>How it works</h2>
+    <p>Under one year of service: one day for each full month worked, up to 11 days (Labor Standards Act Article 60(2)).</p>
+<p>One year or more: 15 days for 80% or better attendance over the year. From three years of service, one day is added for every two years beyond the first, up to 25 days (Article 60(1) and (4)). That is 16 days in years 3 and 4, 17 in years 5 and 6, and 25 from year 21.</p>
+<p>Leave arises the day after each period is completed. Someone hired on January 2 gains a day on the 2nd of each month and 15 days the next January 2. If the month has no matching date, such as a hire on the 31st, it arises the day after that month&#39;s last day (Civil Act Article 160).</p>
+<p>Unused leave pay = unused days × (monthly ordinary wage ÷ 209 × 8).</p>
+  </section>
+  <section class="example">
+    <h2>Example</h2>
+    <p>Someone hired on March 2, 2024 has worked two full years as of November 13, 2026. They gained 11 days in the first year, 15 days on March 2, 2025, and 15 days on March 2, 2026, 41 days in total. The next 16 days arrive on March 2, 2027.</p>
+<p>With a monthly ordinary wage of 3,000,000 won, the daily wage is 3,000,000 ÷ 209 × 8 ≈ 114,832 won, and 5 unused days are worth 574,162 won.</p>
+  </section>
+  <section class="notes">
+    <h2>Good to know</h2>
+    <ul><li>The annual leave rules do not apply to workplaces with four or fewer regular employees, or to people working under 15 hours a week on average.</li><li>With attendance under 80% in a year, you get one day per full month instead of 15. This calculator assumes 80% or better.</li><li>Some employers manage leave by calendar year instead of hire date. Check your company rules.</li><li>Leave expires if unused within a year of being granted.</li><li>Results are estimates. Your employment contract and company rules decide the actual leave and pay.</li></ul>
+  </section>
+  
+  <section class="related-tools">
+    <h2>Related tools</h2>
+    <div class="grid"><a class="tool-card" data-category="calc" href="/en/severance/">
+  <span class="tool-card-title">Severance pay calculator</span>
+  <span class="tool-card-desc">Enter your start and leaving dates, recent wages, bonuses, and leave pay for an estimate of Korean severance pay.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/en/take-home-pay/">
+  <span class="tool-card-title">Korean take-home pay calculator</span>
+  <span class="tool-card-desc">Estimate monthly take-home pay in South Korea after the four social insurances and income tax from the official NTS withholding table, with family deductions.</span>
+</a>
+<a class="tool-card" data-category="calc" href="/en/hourly-wage/">
+  <span class="tool-card-title">Korean hourly and monthly wage calculator</span>
+  <span class="tool-card-desc">Convert an hourly wage to a monthly wage in Korea and back, including weekly holiday pay (juhyu sudang) and the 209-hour monthly standard.</span>
+</a></div>
+  </section>
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+    <details><summary>How much leave do I get in my first year?</summary><p>One day for each full month worked, up to 11 days. These days must be used before your first year ends.</p></details>
+<details><summary>Do I get 15 days if I leave after exactly one year?</summary><p>No. Korea&#39;s Supreme Court ruled that the 15 days arise the day after the first year ends, so someone whose one-year contract ends gets at most 11 days. If employment continues even one more day, the 15 days are added, for up to 26.</p></details>
+<details><summary>How is unused leave pay calculated?</summary><p>Unused days × daily ordinary wage. For a 40-hour week, the daily wage is the monthly ordinary wage ÷ 209 hours × 8 hours. If the employer properly followed the legal procedure to encourage leave use, it may not have to pay.</p></details>
+  </section>
+  <section class="sources">
+    <h2>Sources</h2>
+    <ul><li><a href="https://www.law.go.kr/법령/근로기준법" target="_blank" rel="noopener noreferrer">National Law Information Center: Labor Standards Act, Articles 18, 60, and 61 (in Korean)</a></li><li><a href="https://scourt.go.kr/supreme/news/NewsViewAction2.work?gubun=4&amp;seqnum=8782" target="_blank" rel="noopener noreferrer">Supreme Court of Korea: annual leave for workers employed one to two years (in Korean)</a></li><li><a href="https://www.law.go.kr/법령/근로기준법시행령" target="_blank" rel="noopener noreferrer">National Law Information Center: Labor Standards Act Enforcement Decree, Table 1 (in Korean)</a></li></ul>
+  </section>
+  <p class="updated">Last updated: 2026-11-13</p>
+</main>
+<footer class="site-footer">
+  <p>Values you enter are never stored or sent to a server. Advertising partners may use cookies.</p>
+  <p><a href="/en/guides/">Guides</a> · <a href="/en/about/">About this site</a> · <a href="/en/privacy/">Privacy policy</a></p>
+</footer>
+<script type="application/json" id="tool-labels">{"hireDateLabel":"Hire date","onLabel":"Reference date (last working day if leaving)","monthlyWageLabel":"Monthly ordinary wage (optional)","unusedDaysLabel":"Unused leave days (optional)","unitWon":"won","unitDays":"days","wonFormat":"{n} won","daysFormat":"{n} days","yearsFormat":"{n} full years","leaveNowLabel":"Leave this year","leaveYearFormat":"{n} (granted {date})","leaveMonthlyFormat":"{n} (first year, 1 day a month)","yearsCompletedLabel":"Length of service","totalAccruedLabel":"Total leave accrued since hire","nextGrantLabel":"Next leave grant","nextGrantFormat":"{n} on {date}","leavePayLabel":"Unused leave pay","leavePayFormat":"{pay} (daily wage {daily})","leavePayHint":"Enter monthly wage and unused days to calculate","errorInvalidDate":"Enter a valid date.","errorHireAfterBase":"The hire date is after the reference date.","errorInvalidWage":"Enter a monthly wage greater than 0.","errorInvalidDays":"Enter unused days of 0 or more, in steps of 0.5."}</script>
+<script src="/assets/logic/date.js?v=68d39ac2"></script>
+<script src="/assets/common.js?v=68d39ac2"></script>
+<script src="/assets/tools/annual-leave.js?v=68d39ac2" defer></script>
+</body>
+</html>

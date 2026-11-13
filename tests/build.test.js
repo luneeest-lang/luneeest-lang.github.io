@@ -58,9 +58,9 @@ test('계산기 페이지에 폼 입력 칸이 있다', () => {
   assert.match(page, /id="months"/);
 });
 
-test('페이지 수는 52 (루트 1, 404 1, 언어 홈 2, 도구 32, 개인정보 2, 소개 2, 가이드 목록 2, 가이드 10)', () => {
+test('페이지 수는 55 (루트 1, 404 1, 언어 홈 2, 도구 34, 개인정보 2, 소개 2, 가이드 목록 2, 가이드 11)', () => {
   const result = buildSite({ rootDir: ROOT, outDir: fs.mkdtempSync(path.join(os.tmpdir(), 'site-count-')) });
-  assert.equal(result.pages, 52);
+  assert.equal(result.pages, 55);
 });
 
 test('로직 파일이 site/assets/logic에 복사된다', () => {
@@ -560,7 +560,7 @@ test('가이드 RSS가 언어별로 생성되고 페이지에서 연결된다', 
   assert.match(ko, /<link>https:\/\/moatool\.com\/ko\/guides\/<\/link>/);
   assert.match(ko, /<item>[\s\S]*<link>https:\/\/moatool\.com\/ko\/guides\/weekly-holiday-pay\/<\/link>[\s\S]*<\/item>/);
   assert.match(ko, /<pubDate>[A-Z][a-z]{2}, \d{2} [A-Z][a-z]{2} \d{4} 00:00:00 \+0900<\/pubDate>/);
-  assert.equal((ko.match(/<item>/g) || []).length, 7);
+  assert.equal((ko.match(/<item>/g) || []).length, 8);
   assert.equal((read('en/guides/rss.xml').match(/<item>/g) || []).length, 3);
   assert.match(read('ko/guides/index.html'), /<link rel="alternate" type="application\/rss\+xml" title="[^"]+" href="https:\/\/moatool\.com\/ko\/guides\/rss\.xml">/);
   assert.match(read('ko/guides/severance/index.html'), /type="application\/rss\+xml"/);
@@ -631,4 +631,15 @@ test('연봉 실수령액 계산기가 두 언어로 생성되고 국세청 표�
   }
   assert.ok(fs.existsSync(path.join(outDir, 'assets', 'logic', 'salary.js')));
   assert.match(read('ko/index.html'), /href="\/ko\/take-home-pay\/"/);
+});
+
+test('연차 계산기가 두 언어로 생성되고 기준일은 공유 링크에서 빠지며 가이드와 연결된다', () => {
+  for (const lang of ['ko', 'en']) {
+    const page = read(`${lang}/annual-leave/index.html`);
+    assert.match(page, /\/assets\/logic\/date\.js/);
+    assert.match(page, /<input id="on" name="on" type="date" data-no-share>/);
+    assert.match(page, /<output id="leaveNow">/);
+  }
+  assert.match(read('ko/annual-leave/index.html'), /href="\/ko\/guides\/annual-leave\/"/);
+  assert.match(read('ko/guides/annual-leave/index.html'), /class="cta" href="\/ko\/annual-leave\/"/);
 });

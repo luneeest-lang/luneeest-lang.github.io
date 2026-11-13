@@ -1,0 +1,76 @@
+{
+  "slug": "annual-leave",
+  "title": "Korean Annual Leave Calculator | Days and Unused Leave Pay",
+  "description": "Find how many paid annual leave days you have under Korean labor law based on your hire date, when the next days arrive, and your unused leave pay.",
+  "h1": "Korean annual leave calculator",
+  "intro": "Enter your hire date to see how many paid annual leave days you have under the Korean Labor Standards Act, how many have accrued since you joined, and when the next days arrive. The calculation follows Article 60, counted from your hire date.\n\nAdd your monthly ordinary wage and unused days to estimate unused leave pay. If you are leaving, set the reference date to your last working day.",
+  "howTo": [
+    "Pick your hire date.",
+    "Check the reference date. It starts as today; use your last working day if you are leaving.",
+    "To estimate leave pay, enter your monthly ordinary wage (base pay and fixed allowances) and unused days. Enter half days as 0.5.",
+    "Read this year's leave, total accrued leave, the next grant, and the leave pay."
+  ],
+  "faq": [
+    {
+      "q": "How much leave do I get in my first year?",
+      "a": "One day for each full month worked, up to 11 days. These days must be used before your first year ends."
+    },
+    {
+      "q": "Do I get 15 days if I leave after exactly one year?",
+      "a": "No. Korea's Supreme Court ruled that the 15 days arise the day after the first year ends, so someone whose one-year contract ends gets at most 11 days. If employment continues even one more day, the 15 days are added, for up to 26."
+    },
+    {
+      "q": "How is unused leave pay calculated?",
+      "a": "Unused days × daily ordinary wage. For a 40-hour week, the daily wage is the monthly ordinary wage ÷ 209 hours × 8 hours. If the employer properly followed the legal procedure to encourage leave use, it may not have to pay."
+    }
+  ],
+  "labels": {
+    "hireDateLabel": "Hire date",
+    "onLabel": "Reference date (last working day if leaving)",
+    "monthlyWageLabel": "Monthly ordinary wage (optional)",
+    "unusedDaysLabel": "Unused leave days (optional)",
+    "unitWon": "won",
+    "unitDays": "days",
+    "wonFormat": "{n} won",
+    "daysFormat": "{n} days",
+    "yearsFormat": "{n} full years",
+    "leaveNowLabel": "Leave this year",
+    "leaveYearFormat": "{n} (granted {date})",
+    "leaveMonthlyFormat": "{n} (first year, 1 day a month)",
+    "yearsCompletedLabel": "Length of service",
+    "totalAccruedLabel": "Total leave accrued since hire",
+    "nextGrantLabel": "Next leave grant",
+    "nextGrantFormat": "{n} on {date}",
+    "leavePayLabel": "Unused leave pay",
+    "leavePayFormat": "{pay} (daily wage {daily})",
+    "leavePayHint": "Enter monthly wage and unused days to calculate",
+    "errorInvalidDate": "Enter a valid date.",
+    "errorHireAfterBase": "The hire date is after the reference date.",
+    "errorInvalidWage": "Enter a monthly wage greater than 0.",
+    "errorInvalidDays": "Enter unused days of 0 or more, in steps of 0.5."
+  },
+  "formula": "Under one year of service: one day for each full month worked, up to 11 days (Labor Standards Act Article 60(2)).\n\nOne year or more: 15 days for 80% or better attendance over the year. From three years of service, one day is added for every two years beyond the first, up to 25 days (Article 60(1) and (4)). That is 16 days in years 3 and 4, 17 in years 5 and 6, and 25 from year 21.\n\nLeave arises the day after each period is completed. Someone hired on January 2 gains a day on the 2nd of each month and 15 days the next January 2. If the month has no matching date, such as a hire on the 31st, it arises the day after that month's last day (Civil Act Article 160).\n\nUnused leave pay = unused days × (monthly ordinary wage ÷ 209 × 8).",
+  "example": "Someone hired on March 2, 2024 has worked two full years as of November 13, 2026. They gained 11 days in the first year, 15 days on March 2, 2025, and 15 days on March 2, 2026, 41 days in total. The next 16 days arrive on March 2, 2027.\n\nWith a monthly ordinary wage of 3,000,000 won, the daily wage is 3,000,000 ÷ 209 × 8 ≈ 114,832 won, and 5 unused days are worth 574,162 won.",
+  "notes": [
+    "The annual leave rules do not apply to workplaces with four or fewer regular employees, or to people working under 15 hours a week on average.",
+    "With attendance under 80% in a year, you get one day per full month instead of 15. This calculator assumes 80% or better.",
+    "Some employers manage leave by calendar year instead of hire date. Check your company rules.",
+    "Leave expires if unused within a year of being granted.",
+    "Results are estimates. Your employment contract and company rules decide the actual leave and pay."
+  ],
+  "sources": [
+    {
+      "title": "National Law Information Center: Labor Standards Act, Articles 18, 60, and 61 (in Korean)",
+      "url": "https://www.law.go.kr/법령/근로기준법"
+    },
+    {
+      "title": "Supreme Court of Korea: annual leave for workers employed one to two years (in Korean)",
+      "url": "https://scourt.go.kr/supreme/news/NewsViewAction2.work?gubun=4&seqnum=8782"
+    },
+    {
+      "title": "National Law Information Center: Labor Standards Act Enforcement Decree, Table 1 (in Korean)",
+      "url": "https://www.law.go.kr/법령/근로기준법시행령"
+    }
+  ],
+  "updated": "2026-11-13"
+}

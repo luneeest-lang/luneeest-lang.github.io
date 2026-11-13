@@ -114,3 +114,58 @@ test('알 수 없는 군 종류나 잘못된 날짜는 오류', () => {
   assert.equal(militaryService({ enlist: '2026-03-15', branch: 'space', on: '2026-03-15' }).error, 'invalid_branch');
   assert.equal(militaryService({ enlist: '2026-13-15', branch: 'army', on: '2026-03-15' }).error, 'invalid_date');
 });
+
+const { annualLeave, leavePay } = require('../../src/logic/date');
+
+test('입사 1년 미만은 1개월 개근마다 1일씩 생긴다', () => {
+  const r = annualLeave({ hireDate: '2026-01-02', on: '2026-05-10' });
+  assert.equal(r.error, null);
+  assert.equal(r.yearsCompleted, 0);
+  assert.equal(r.firstYearDays, 4);
+  assert.equal(r.currentGrant, 0);
+  assert.equal(r.totalAccrued, 4);
+  assert.equal(r.nextGrantDate, '2026-06-02');
+  assert.equal(r.nextGrantDays, 1);
+});
+
+test('첫해 월차는 최대 11일이고, 1년을 마친 다음 날 15일이 생긴다', () => {
+  const before = annualLeave({ hireDate: '2026-01-02', on: '2027-01-01' });
+  assert.equal(before.firstYearDays, 11);
+  assert.equal(before.nextGrantDate, '2027-01-02');
+  assert.equal(before.nextGrantDays, 15);
+  const after = annualLeave({ hireDate: '2026-01-02', on: '2027-01-02' });
+  assert.equal(after.yearsCompleted, 1);
+  assert.equal(after.currentGrant, 15);
+  assert.equal(after.currentGrantDate, '2027-01-02');
+  assert.equal(after.totalAccrued, 26);
+});
+
+test('3년차부터 2년마다 1일씩 늘고 최대 25일이다', () => {
+  assert.equal(annualLeave({ hireDate: '2023-01-02', on: '2026-01-02' }).currentGrant, 16);
+  assert.equal(annualLeave({ hireDate: '2023-01-02', on: '2026-01-02' }).totalAccrued, 11 + 15 + 15 + 16);
+  assert.equal(annualLeave({ hireDate: '2021-01-02', on: '2026-01-02' }).currentGrant, 17);
+  assert.equal(annualLeave({ hireDate: '2000-01-03', on: '2026-06-01' }).currentGrant, 25);
+  assert.equal(annualLeave({ hireDate: '2000-01-03', on: '2026-06-01' }).nextGrantDays, 25);
+});
+
+test('말일 입사는 민법 기간 계산대로 해당일이 없는 달의 다음 날 생긴다', () => {
+  assert.equal(annualLeave({ hireDate: '2026-01-31', on: '2026-02-28' }).firstYearDays, 0);
+  assert.equal(annualLeave({ hireDate: '2026-01-31', on: '2026-02-28' }).nextGrantDate, '2026-03-01');
+  assert.equal(annualLeave({ hireDate: '2026-01-31', on: '2026-03-01' }).firstYearDays, 1);
+});
+
+test('입사일이 기준일보다 늦거나 날짜가 잘못되면 오류', () => {
+  assert.equal(annualLeave({ hireDate: '2026-02-01', on: '2026-01-01' }).error, 'hire_after_base');
+  assert.equal(annualLeave({ hireDate: '2026-02-30', on: '2026-03-01' }).error, 'invalid_date');
+});
+
+test('연차수당은 월 통상임금 ÷ 209 × 8시간 × 미사용 일수', () => {
+  const r = leavePay({ monthlyOrdinaryWage: 2236300, unusedDays: 5 });
+  assert.equal(r.error, null);
+  assert.equal(r.dailyWage, 85600);
+  assert.equal(r.pay, 428000);
+  assert.equal(leavePay({ monthlyOrdinaryWage: 3000000, unusedDays: 3 }).pay, Math.floor((3000000 / 209) * 8 * 3));
+  assert.equal(leavePay({ monthlyOrdinaryWage: 0, unusedDays: 3 }).error, 'invalid_wage');
+  assert.equal(leavePay({ monthlyOrdinaryWage: 2236300, unusedDays: 2.5 }).pay, 214000);
+  assert.equal(leavePay({ monthlyOrdinaryWage: 3000000, unusedDays: 1.25 }).error, 'invalid_days');
+});
