@@ -3,7 +3,7 @@
   "title": "About moatool and How We Check Our Tools",
   "description": "Why these free calculators and text tools exist, how your input is handled, how results and explanations are checked, and what to keep in mind.",
   "h1": "About this site",
-  "updated": "2026-11-13",
+  "updated": "2026-11-15",
   "intro": "moatool is a free collection of calculators and text tools for everyday and workplace tasks. Everything works right away, with no install or sign-up.\n\nThis page explains how the site is run and how we check the results and explanations.",
   "sections": [
     {
@@ -45,6 +45,7 @@
         "Major changes to the site."
       ],
       "items": [
+        "2026-11-15: Unified the moatool name, added structured data, guide bylines, a take-home pay table by salary, a contact page, and comparison tables in guides.",
         "2026-11-13: Added a Korean annual leave calculator and legal age information on the Korean age pages.",
         "2026-11-04: Added Korean take-home pay and unemployment benefit calculators, related tools on every tool page, and a helpful 404 page.",
         "2026-10-29: Added wage, Korean age, discharge date, pyeong, percent, and date-add calculators, more loan repayment methods with a monthly schedule, shareable result links, and English guides.",

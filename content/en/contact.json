@@ -1,0 +1,33 @@
+{
+  "slug": "contact",
+  "title": "Contact | moatool",
+  "description": "Report errors, outdated rates, or ideas for new calculators and guides on moatool. We check reports against official sources before fixing them.",
+  "h1": "Contact",
+  "updated": "2026-11-15",
+  "intro": "moatool is a free calculator site built and maintained by its operator. If a result differs from official sources, or a rule has changed and is not reflected yet, please let us know.",
+  "sections": [
+    {
+      "heading": "What to send",
+      "paragraphs": [
+        "These reports help most. Mention the page and the values you entered so we can check quickly."
+      ],
+      "items": [
+        "Results or explanations that differ from Korean law or official sources",
+        "Rates or rules that have changed but are not updated yet",
+        "Typos, broken layouts, or features that do not work",
+        "Calculators or guides you would like to see"
+      ]
+    },
+    {
+      "heading": "How we handle reports",
+      "paragraphs": [
+        "We verify each report against official sources, fix the page, and update its last-updated date and the update history on the About page.",
+        "We cannot give legal or tax advice for individual cases. For that, contact official services such as the Ministry of Employment and Labor call center (1350) or the National Tax Service (126)."
+      ]
+    }
+  ],
+  "contact": {
+    "heading": "Email",
+    "text": "Send your message to this address."
+  }
+}

@@ -58,9 +58,9 @@ test('계산기 페이지에 폼 입력 칸이 있다', () => {
   assert.match(page, /id="months"/);
 });
 
-test('페이지 수는 55 (루트 1, 404 1, 언어 홈 2, 도구 34, 개인정보 2, 소개 2, 가이드 목록 2, 가이드 11)', () => {
+test('페이지 수는 57 (루트 1, 404 1, 언어 홈 2, 도구 34, 개인정보 2, 소개 2, 연락처 2, 가이드 목록 2, 가이드 11)', () => {
   const result = buildSite({ rootDir: ROOT, outDir: fs.mkdtempSync(path.join(os.tmpdir(), 'site-count-')) });
-  assert.equal(result.pages, 55);
+  assert.equal(result.pages, 57);
 });
 
 test('로직 파일이 site/assets/logic에 복사된다', () => {
@@ -717,5 +717,46 @@ test('사이트맵의 모든 주소에 수정일(lastmod)이 있다', () => {
   for (const url of urls) {
     assert.match(url, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, url.slice(0, 80));
   }
-  assert.match(sitemap, /<loc>https:\/\/moatool\.com\/ko\/guides\/annual-leave\/<\/loc>\s*<lastmod>2026-11-13<\/lastmod>/);
+  const { updated } = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'ko', 'guides', 'annual-leave.json'), 'utf8'));
+  assert.ok(sitemap.includes(`<loc>https://moatool.com/ko/guides/annual-leave/</loc>\n    <lastmod>${updated}</lastmod>`));
+});
+
+test('도구 페이지의 발행자는 같은 구조화 데이터 안에서 모아툴로 확인된다', () => {
+  const graph = jsonLdOf(read('ko/take-home-pay/index.html'))[0]['@graph'];
+  const org = graph.find((n) => n['@type'] === 'Organization');
+  assert.equal(org.name, 'moatool');
+  assert.equal(graph.find((n) => n['@type'] === 'WebApplication').publisher['@id'], org['@id']);
+});
+
+test('연봉 실수령액 페이지에 연봉별 실수령액 표가 있다', () => {
+  const { takeHomePay } = require('../src/logic/salary');
+  const expected = takeHomePay({ annualSalary: 40000000, monthlyNonTaxable: 200000, family: 1, children: 0 });
+  const ko = read('ko/take-home-pay/index.html');
+  assert.match(ko, /<section class="salary-table">[\s\S]*<table class="data-table">/);
+  assert.ok(ko.includes(expected.monthlyNet.toLocaleString('ko-KR')), 'ko row for 40,000,000');
+  assert.equal((ko.match(/<tr>/g) || []).length >= 12, true);
+  assert.match(read('en/take-home-pay/index.html'), /<section class="salary-table">/);
+  assert.doesNotMatch(read('ko/hourly-wage/index.html'), /class="salary-table"/);
+});
+
+test('연락처 페이지가 두 언어로 있고 푸터와 사이트맵에서 연결된다', () => {
+  for (const lang of ['ko', 'en']) {
+    const page = read(`${lang}/contact/index.html`);
+    assert.match(page, /<main class="about">/);
+    assert.match(page, /mailto:/);
+    const footer = read(`${lang}/bmi/index.html`).match(/<footer[\s\S]*<\/footer>/)[0];
+    assert.ok(footer.includes(`href="/${lang}/contact/"`), `${lang} footer contact link`);
+    assert.ok(read('sitemap.xml').includes(`<loc>https://moatool.com/${lang}/contact/</loc>`));
+  }
+});
+
+test('개인정보처리방침에 시행일과 개인정보 문의처가 있다', () => {
+  assert.match(read('ko/privacy/index.html'), /시행일: 2026-10-20/);
+  assert.match(read('en/privacy/index.html'), /Effective date: 2026-10-20/);
+});
+
+test('가이드 비교 자료는 표로 렌더링된다', () => {
+  for (const slug of ['annual-leave', 'unemployment-benefit', 'severance', 'weekly-holiday-pay']) {
+    assert.match(read(`ko/guides/${slug}/index.html`), /<table class="data-table">[\s\S]*<th[^>]*>/, slug);
+  }
 });

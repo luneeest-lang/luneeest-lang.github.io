@@ -337,6 +337,38 @@ textarea {
   box-shadow: inset 0 0 0 1px var(--cat-fill);
 }
 
+.data-table {
+  width: 100%;
+  max-width: 680px;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table th,
+.data-table td {
+  padding: 8px 10px;
+  text-align: right;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.data-table th:first-child,
+.data-table td:first-child {
+  text-align: left;
+}
+
+.data-table th {
+  color: var(--text-secondary);
+  font-weight: 500;
+  background: var(--surface-1);
+}
+
+.salary-table .table-wrap,
+.guide .table-wrap {
+  margin: 12px 0 8px;
+  max-height: none;
+}
+
 .byline {
   margin: -4px 0 16px;
   font-size: 13px;

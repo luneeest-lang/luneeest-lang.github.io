@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://moatool.com/ko/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/"/>
   </url>
   <url>
     <loc>https://moatool.com/en/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/"/>
   </url>
@@ -68,7 +68,7 @@
   </url>
   <url>
     <loc>https://moatool.com/ko/hourly-wage/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/hourly-wage/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/hourly-wage/"/>
   </url>
@@ -104,7 +104,7 @@
   </url>
   <url>
     <loc>https://moatool.com/ko/take-home-pay/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/take-home-pay/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/take-home-pay/"/>
   </url>
@@ -170,7 +170,7 @@
   </url>
   <url>
     <loc>https://moatool.com/en/hourly-wage/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/hourly-wage/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/hourly-wage/"/>
   </url>
@@ -206,7 +206,7 @@
   </url>
   <url>
     <loc>https://moatool.com/en/take-home-pay/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/take-home-pay/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/take-home-pay/"/>
   </url>
@@ -218,30 +218,30 @@
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/"/>
   </url>
   <url>
     <loc>https://moatool.com/en/guides/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/"/>
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/severance/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/severance/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korean-severance-pay/"/>
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/unemployment-benefit/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/unemployment-benefit/"/>
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/annual-leave/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/annual-leave/"/>
   </url>
   <url>
@@ -251,7 +251,7 @@
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/weekly-holiday-pay/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/weekly-holiday-pay/"/>
   </url>
   <url>
@@ -278,7 +278,7 @@
   </url>
   <url>
     <loc>https://moatool.com/en/guides/korean-age-explained/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/korean-age/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korean-age-explained/"/>
   </url>
@@ -289,25 +289,37 @@
   </url>
   <url>
     <loc>https://moatool.com/ko/about/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/about/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/about/"/>
   </url>
   <url>
     <loc>https://moatool.com/en/about/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/about/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/about/"/>
   </url>
   <url>
+    <loc>https://moatool.com/ko/contact/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/contact/"/>
+  </url>
+  <url>
+    <loc>https://moatool.com/en/contact/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/contact/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/contact/"/>
+  </url>
+  <url>
     <loc>https://moatool.com/ko/privacy/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/privacy/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/privacy/"/>
   </url>
   <url>
     <loc>https://moatool.com/en/privacy/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/privacy/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/privacy/"/>
   </url>

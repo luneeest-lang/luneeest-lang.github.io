@@ -430,3 +430,15 @@ test('홈 제목과 설명이 충분히 구체적이다', () => {
     assert.ok(ui.homeDescription.length >= 70 && ui.homeDescription.length <= 160, `${lang} homeDescription length`);
   }
 });
+
+test('영어 법적 나이 가이드는 성년·음주·투표·운전·혼인·형사책임 나이를 다룬다', () => {
+  const text = JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, 'en', 'guides', 'korean-age-explained.json'), 'utf8')));
+  for (const word of ['vote', 'driver', 'marry', 'criminal', 'alcohol', 'adulthood']) {
+    assert.ok(text.toLowerCase().includes(word), `mentions ${word}`);
+  }
+});
+
+test('시급 계산기는 2026년과 2027년 최저임금을 모두 안내한다', () => {
+  const text = JSON.stringify(load('ko', 'hourly-wage'));
+  assert.ok(text.includes('10,320') && text.includes('10,700'));
+});

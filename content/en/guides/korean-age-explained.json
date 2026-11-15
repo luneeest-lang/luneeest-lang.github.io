@@ -2,10 +2,10 @@
   "slug": "korean-age-explained",
   "pair": "korean-age",
   "title": "Legal Age in Korea: Drinking Age and Korean Age Explained",
-  "description": "What is the legal age in Korea? Adulthood starts at 19, and alcohol and tobacco are legal from January 1 of the year you turn 19. How Korean age works.",
+  "description": "What is the legal age in Korea? Adulthood is 19, voting 18, alcohol from January 1 of the year you turn 19. How Korean age works, with legal sources.",
   "h1": "Legal age in Korea and Korean age explained",
   "published": "2026-10-29",
-  "updated": "2026-11-09",
+  "updated": "2026-11-15",
   "toolSlug": "korean-age",
   "ctaText": "Calculate your Korean age",
   "intro": "If you have ever been told you are a year or two older in Korea, you have met Korean age. Korea has used three different ways to count age, and they can differ by up to two years for the same person.\n\nOn June 28, 2023, Korea made international age the default in law. This guide explains the three systems, what changed, and where the older year age still applies, based on the text of Korean law and guidance from the Ministry of Government Legislation.",
@@ -13,11 +13,15 @@
     {
       "heading": "Legal age in Korea at a glance",
       "paragraphs": [
-        "Two ages come up most often when people ask about the legal age in Korea. They are counted differently, so the same person can reach them on different days."
+        "Different laws set different ages, and some count by your birthday while others count by calendar year. Here are the ones people ask about most."
       ],
       "items": [
         "Legal adulthood: 19 in international age, counted from your birthday (Civil Act, Article 4).",
-        "Buying alcohol and tobacco: allowed from January 1 of the year you turn 19, whatever your birthday. The Juvenile Protection Act stops treating people as minors from that date, so this follows year age."
+        "Buying alcohol and tobacco: allowed from January 1 of the year you turn 19, whatever your birthday. The Juvenile Protection Act stops treating people as minors from that date, so this follows year age.",
+        "Voting: you can vote in presidential and National Assembly elections from 18 (Public Official Election Act, Article 15).",
+        "Driver's license: you can get a license from 18, or from 16 for motorized bicycles such as small scooters (Road Traffic Act, Article 82).",
+        "Marriage: you can marry from 18, but until 19, the age of adulthood, you need parental consent (Civil Act, Articles 807 and 808).",
+        "Criminal responsibility: acts of children under 14 are not punished under the Criminal Act (Article 9); separate juvenile rules apply to older minors."
       ]
     },
     {
@@ -69,7 +73,7 @@
   ],
   "sources": [
     {
-      "title": "National Law Information Center: Civil Act, Articles 4, 158, and 160 (in Korean)",
+      "title": "National Law Information Center: Civil Act, Articles 4, 158, 160, 807, and 808 (in Korean)",
       "url": "https://www.law.go.kr/법령/민법"
     },
     {
@@ -83,6 +87,18 @@
     {
       "title": "Seoul Metropolitan Government: Q&A on the international age reform, citing the Ministry of Government Legislation (in Korean)",
       "url": "https://mediahub.seoul.go.kr/archives/2008356"
+    },
+    {
+      "title": "National Law Information Center: Public Official Election Act, Article 15 (in Korean)",
+      "url": "https://www.law.go.kr/법령/공직선거법"
+    },
+    {
+      "title": "National Law Information Center: Road Traffic Act, Article 82 (in Korean)",
+      "url": "https://www.law.go.kr/법령/도로교통법"
+    },
+    {
+      "title": "National Law Information Center: Criminal Act, Article 9 (in Korean)",
+      "url": "https://www.law.go.kr/법령/형법"
     }
   ]
 }

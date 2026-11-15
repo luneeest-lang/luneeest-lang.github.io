@@ -143,6 +143,7 @@ const TOOL_FORMS = {
       { id: 'localTax', labelKey: 'localTaxLabel' },
     ],
     errorKeys: ['errorInvalidSalary', 'errorInvalidNonTaxable', 'errorInvalidFamily', 'errorInvalidChildren'],
+    salaryTable: true,
   },
   'annual-leave': {
     inputs: [

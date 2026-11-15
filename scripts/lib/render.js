@@ -1,4 +1,5 @@
 const { TOOL_FORMS, CALC_SLUGS, TEXT_SLUGS } = require('./forms');
+const { takeHomePay } = require('../../src/logic/salary');
 
 function categoryOf(slug) {
   return CALC_SLUGS.includes(slug) ? 'calc' : 'text';
@@ -172,7 +173,7 @@ function footer(ui, lang) {
   const text = siteConfig.adsenseClient ? `${ui.footer} ${ui.footerAds}` : ui.footer;
   return `<footer class="site-footer">
   <p>${escapeHtml(text)}</p>
-  <p><a href="/${lang}/guides/">${escapeHtml(ui.guidesLink)}</a> · <a href="/${lang}/about/">${escapeHtml(ui.aboutLink)}</a> · <a href="/${lang}/privacy/">${escapeHtml(ui.privacyLink)}</a></p>
+  <p><a href="/${lang}/guides/">${escapeHtml(ui.guidesLink)}</a> · <a href="/${lang}/about/">${escapeHtml(ui.aboutLink)}</a> · <a href="/${lang}/contact/">${escapeHtml(ui.contactLink)}</a> · <a href="/${lang}/privacy/">${escapeHtml(ui.privacyLink)}</a></p>
 </footer>`;
 }
 
@@ -373,6 +374,7 @@ function renderToolPage({ lang, tool, ui, alternates, origin, relatedGuide, rela
         dateModified: tool.updated,
         publisher: { '@id': `${origin}/#organization` },
       },
+      organizationNode(origin),
       breadcrumbNode([
         [ui.home, `${origin}/${lang}/`],
         [tool.h1, origin + alternates.paths[lang]],
@@ -392,6 +394,7 @@ ${header({ lang, ui, alternates: alternates.paths })}
   </form>
   ${CALC_SLUGS.includes(tool.slug) ? renderShare(ui) : ''}
   ${form.schedule ? renderSchedule(labels) : ''}
+  ${form.salaryTable ? renderSalaryTable(tool, lang) : ''}
   <div class="intro">${paragraphs(tool.intro)}</div>
   <section class="howto">
     <h2>${escapeHtml(ui.howToHeading)}</h2>
@@ -477,6 +480,32 @@ ${footer(ui, lang)}
 `;
 }
 
+function dataTable(headers, rows) {
+  const head = headers.map((h) => `<th scope="col">${escapeHtml(h)}</th>`).join('');
+  const body = rows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('\n');
+  return `<div class="table-wrap"><table class="data-table">
+      <thead><tr>${head}</tr></thead>
+      <tbody>${body}</tbody>
+    </table></div>`;
+}
+
+// Take-home pay for common salaries, computed at build time with the calculator's own logic.
+const SALARY_TABLE_STEPS = [24, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90, 100].map((n) => n * 1000000);
+
+function renderSalaryTable(tool, lang) {
+  const labels = tool.labels;
+  const fmt = (n) => new Intl.NumberFormat(lang === 'ko' ? 'ko-KR' : 'en-US').format(n);
+  const rows = SALARY_TABLE_STEPS.map((annualSalary) => {
+    const r = takeHomePay({ annualSalary, monthlyNonTaxable: 200000, family: 1, children: 0 });
+    return [fmt(annualSalary), fmt(r.monthlyNet), fmt(r.totalDeduction), fmt(r.annualNet)];
+  });
+  return `<section class="salary-table">
+    <h2>${escapeHtml(labels.salaryTableHeading)}</h2>
+    <p>${escapeHtml(labels.salaryTableNote)}</p>
+    ${dataTable([labels.colSalary, labels.colMonthlyNet, labels.colDeduction, labels.colAnnualNet], rows)}
+  </section>`;
+}
+
 function renderTextSections(sections) {
   return sections
     .map((section) => {
@@ -488,6 +517,7 @@ function renderTextSections(sections) {
     <h2>${escapeHtml(section.heading)}</h2>
     ${paragraphsHtml}
     ${items}
+    ${section.table ? dataTable(section.table.headers, section.table.rows) : ''}
   </section>`;
     })
     .join('\n  ');
@@ -574,7 +604,7 @@ ${footer(ui, lang)}
 `;
 }
 
-function renderAboutPage({ lang, page, ui, alternates, origin }) {
+function renderAboutPage({ lang, page, ui, alternates, origin, schemaType = 'AboutPage' }) {
   const contact = siteConfig.contactEmail
     ? `<section class="contact">
     <h2>${escapeHtml(page.contact.heading)}</h2>
@@ -591,7 +621,7 @@ function renderAboutPage({ lang, page, ui, alternates, origin }) {
     siteName: ui.siteName,
     jsonLd: graph([
       {
-        '@type': 'AboutPage',
+        '@type': schemaType,
         name: page.h1,
         url: origin + alternates.paths[lang],
         inLanguage: lang,
@@ -663,6 +693,7 @@ ${header({ lang, ui, alternates: alternates.paths })}
   <h1>${escapeHtml(page.h1)}</h1>
   ${sections}
   ${contact}
+  ${page.effective ? `<p class="updated">${escapeHtml(ui.effectiveLabel)}: ${escapeHtml(page.effective)}</p>` : ''}
   <p class="updated">${escapeHtml(ui.updatedLabel)}: ${escapeHtml(page.updated)}</p>
 </main>
 ${footer(ui, lang)}

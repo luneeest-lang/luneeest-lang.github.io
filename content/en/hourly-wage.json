@@ -3,7 +3,7 @@
   "title": "Korean Hourly to Monthly Wage | Weekly Holiday Pay",
   "description": "Convert an hourly wage to a monthly wage in Korea and back, including weekly holiday pay (juhyu sudang) and the 209-hour monthly standard.",
   "h1": "Korean hourly and monthly wage calculator",
-  "intro": "Convert an hourly wage to a monthly wage under Korean labor rules, or a monthly wage back to an hourly rate. The calculator adds paid weekly holiday hours (주휴수당, juhyu sudang) based on your weekly contractual hours, so it works for part-time and full-time jobs.\n\nThe 2027 Korean minimum wage is 10,700 won per hour. For a 40-hour week that is 2,236,300 won per month, according to the Ministry of Employment and Labor.",
+  "intro": "Convert an hourly wage to a monthly wage under Korean labor rules, or a monthly wage back to an hourly rate. The calculator adds paid weekly holiday hours (주휴수당, juhyu sudang) based on your weekly contractual hours, so it works for part-time and full-time jobs.\n\nThe Korean minimum wage is 10,320 won per hour in 2026 (2,156,880 won a month for a 40-hour week) and 10,700 won from January 1, 2027 (2,236,300 won a month), according to the Ministry of Employment and Labor.",
   "howTo": [
     "Choose hourly → monthly or monthly → hourly.",
     "Enter the hourly or monthly wage in won.",
@@ -45,7 +45,7 @@
     "hoursFormat": "{n} hours"
   },
   "formula": "Weekly holiday hours = weekly contractual hours ÷ 40 × 8, only when weekly hours are 15 or more.\n\nMonthly paid hours = (weekly hours + holiday hours) × 365 ÷ 7 ÷ 12, rounded to a whole hour. For a 40-hour week that is (40 + 8) × 4.345 ≈ 208.6, or 209 hours.\n\nMonthly wage = hourly wage × monthly paid hours. Hourly wage = monthly wage ÷ monthly paid hours, rounded to the nearest won. Weekly holiday pay = hourly wage × holiday hours.",
-  "example": "At the 2027 minimum wage of 10,700 won and 40 hours a week, monthly paid hours are 209 and the monthly wage is 10,700 × 209 = 2,236,300 won. Weekly holiday pay is 10,700 × 8 = 85,600 won.\n\nAt the same rate for 20 hours a week, holiday hours are 4, monthly paid hours are about 104, and the monthly wage is 1,112,800 won. At 14 hours a week there is no holiday pay and monthly paid hours are about 61.",
+  "example": "At the 2027 minimum wage of 10,700 won and 40 hours a week, monthly paid hours are 209 and the monthly wage is 10,700 × 209 = 2,236,300 won. Weekly holiday pay is 10,700 × 8 = 85,600 won.\n\nAt the same rate for 20 hours a week, holiday hours are 4, monthly paid hours are about 104, and the monthly wage is 1,112,800 won. At 14 hours a week there is no holiday pay and monthly paid hours are about 61.\n\nAt the 2026 minimum wage of 10,320 won and 40 hours a week, the monthly wage is 10,320 × 209 = 2,156,880 won and weekly holiday pay is 82,560 won.",
   "notes": [
     "Weekly holiday pay requires full attendance on your scheduled working days that week.",
     "Whether you reach 15 hours a week is judged on the average over four weeks.",
@@ -62,5 +62,5 @@
       "url": "https://www.law.go.kr/법령/근로기준법"
     }
   ],
-  "updated": "2026-10-29"
+  "updated": "2026-11-15"
 }

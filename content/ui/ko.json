@@ -37,5 +37,7 @@
   "notFoundHomeLink": "전체 도구 보기",
   "notFoundPopular": "자주 쓰는 도구",
   "homeTitle": "모아툴 | 연봉 실수령액·퇴직금·실업급여 무료 계산기",
-  "byline": "글: 모아툴 운영자 · 게시일 {published} · 최종 수정일 {updated}"
+  "byline": "글: 모아툴 운영자 · 게시일 {published} · 최종 수정일 {updated}",
+  "contactLink": "문의",
+  "effectiveLabel": "시행일"
 }

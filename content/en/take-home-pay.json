@@ -44,7 +44,13 @@
     "errorInvalidSalary": "Enter a salary greater than 0.",
     "errorInvalidNonTaxable": "Non-taxable pay must be 0 or more and less than monthly pay.",
     "errorInvalidFamily": "Enter 1 to 11 family members, including yourself.",
-    "errorInvalidChildren": "Children must be 0 or more and fewer than the family members."
+    "errorInvalidChildren": "Children must be 0 or more and fewer than the family members.",
+    "salaryTableHeading": "Take-home pay by salary (2026)",
+    "salaryTableNote": "Calculated with 200,000 won a month of tax-free meal allowance and one family member (yourself), using 2026 social insurance rates and the NTS withholding table. Dependants or children aged 8 to 20 lower the income tax and raise take-home pay.",
+    "colSalary": "Annual salary (won)",
+    "colMonthlyNet": "Monthly take-home",
+    "colDeduction": "Monthly deductions",
+    "colAnnualNet": "Annual take-home"
   },
   "formula": "Monthly pay = annual salary ÷ 12, and taxable pay = monthly pay − non-taxable pay. Insurance and tax are based on taxable pay, with amounts under 10 won dropped.\n\nNational pension = pension income × 4.75%, where pension income is rounded down to the thousand won and kept between 410,000 and 6,590,000 won (July 2026 to June 2027). Health insurance = taxable pay × 3.595%. Long-term care = health premium × (0.9448 ÷ 7.19). Employment insurance = taxable pay × 0.9%.\n\nIncome tax is the amount in the National Tax Service simplified withholding table for your taxable pay and family size, minus 12,500 won for one child aged 8 to 20, 29,160 won for two, and 25,000 won more for each additional child. Local income tax is 10% of income tax.",
   "example": "A salary of 42,000,000 won with 200,000 won non-taxable and one family member gives monthly pay of 3,500,000 won and taxable pay of 3,300,000 won. After national pension 156,750, health insurance 118,630, long-term care 15,580, employment insurance 29,700, income tax 102,770, and local income tax 10,270 won, take-home pay is 3,066,300 won a month.\n\nWith a spouse and two children aged 8 to 20 (four family members), income tax drops to 7,420 won and take-home pay is 3,171,180 won. A salary of 60,000,000 won for one person gives 4,195,410 won a month.",
@@ -77,5 +83,5 @@
       "url": "https://www.law.go.kr/법령/고용보험및산업재해보상보험의보험료징수등에관한법률시행령"
     }
   ],
-  "updated": "2026-11-04"
+  "updated": "2026-11-15"
 }

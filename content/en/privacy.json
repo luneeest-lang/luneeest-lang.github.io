@@ -3,7 +3,7 @@
   "title": "Privacy Policy | moatool",
   "description": "How this free tools site handles your input, cookies, advertising, and third-party services.",
   "h1": "Privacy policy",
-  "updated": "2026-10-29",
+  "updated": "2026-11-15",
   "sections": [
     {
       "heading": "1. Information we collect",
@@ -70,7 +70,8 @@
     }
   ],
   "contact": {
-    "heading": "6. Contact",
-    "text": "Send questions about this policy to the email address below."
-  }
+    "heading": "6. Privacy contact",
+    "text": "This site is run directly by its operator. Send questions about personal data, or requests to access, correct, or delete it, to the email address below."
+  },
+  "effective": "2026-10-20"
 }

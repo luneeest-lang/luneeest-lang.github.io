@@ -301,6 +301,18 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
     sitemapEntries.push({ lang, paths: aboutPaths.paths, lastmod: about[lang].updated });
   }
 
+  const contactPaths = { paths: { ko: '/ko/contact/', en: '/en/contact/' } };
+  for (const lang of LANGS) {
+    const page = readJson(path.join(rootDir, 'content', lang, 'contact.json'));
+    writePage(
+      outDir,
+      `${lang}/contact/index.html`,
+      renderAboutPage({ lang, page, ui: ui[lang], alternates: contactPaths, origin, schemaType: 'ContactPage' })
+    );
+    pages += 1;
+    sitemapEntries.push({ lang, paths: contactPaths.paths, lastmod: page.updated });
+  }
+
   const privacyPaths = { paths: { ko: '/ko/privacy/', en: '/en/privacy/' } };
   for (const lang of LANGS) {
     writePage(

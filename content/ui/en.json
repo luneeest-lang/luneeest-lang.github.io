@@ -37,5 +37,7 @@
   "notFoundHomeLink": "See all English tools",
   "notFoundPopular": "Popular tools",
   "homeTitle": "moatool | Korean Salary, Severance and Age Calculators",
-  "byline": "By moatool · Published {published} · Updated {updated}"
+  "byline": "By moatool · Published {published} · Updated {updated}",
+  "contactLink": "Contact",
+  "effectiveLabel": "Effective date"
 }

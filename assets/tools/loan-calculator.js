@@ -8,7 +8,16 @@
     return ToolUI.fmtMoney(value, decimals);
   }
 
+  const schedule = document.getElementById('schedule');
+  let pendingRows = [];
+
+  // Up to 1,200 rows: only draw them while the schedule is open, so typing stays responsive.
   function renderRows(rows) {
+    pendingRows = rows;
+    if (!schedule.open) {
+      scheduleBody.innerHTML = '';
+      return;
+    }
     scheduleBody.innerHTML = rows
       .map(
         (row) =>
@@ -24,6 +33,7 @@
     const method = document.getElementById('method').value;
 
     scheduleBody.innerHTML = '';
+    pendingRows = [];
 
     if (principal === null && rate === null && months === null) {
       ToolUI.clearErrors(form);
@@ -54,5 +64,6 @@
   ToolUI.bindAmount('principal');
   form.addEventListener('input', update);
   form.addEventListener('change', update);
+  schedule.addEventListener('toggle', () => renderRows(pendingRows));
   update();
 })();
