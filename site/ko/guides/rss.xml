@@ -3,9 +3,16 @@
   <channel>
     <title>퇴직금·실업급여·연차 계산 가이드 | 모아툴</title>
     <link>https://moatool.com/ko/guides/</link>
-    <description>퇴직금, 실업급여, 연차, 주휴수당, 대출 상환방식, 만 나이, BMI, 글자수 세기를 공식 자료 기준으로 쉽게 설명한 가이드 모음입니다.</description>
+    <description>연말정산, 퇴직금, 실업급여, 연차, 주휴수당, 대출 상환방식, 만 나이, BMI를 공식 자료 기준으로 쉽게 설명한 가이드 모음입니다.</description>
     <language>ko</language>
     <lastBuildDate>Sun, 15 Nov 2026 00:00:00 +0900</lastBuildDate>
+    <item>
+      <title>연말정산 준비 가이드</title>
+      <link>https://moatool.com/ko/guides/year-end-tax-settlement/</link>
+      <guid isPermaLink="true">https://moatool.com/ko/guides/year-end-tax-settlement/</guid>
+      <description>2026년 소득분 연말정산을 앞두고 일정 흐름, 소득공제와 세액공제 차이, 부양가족 요건, 주요 공제 기준, 12월 전에 점검할 것을 법령 기준으로 정리했습니다.</description>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0900</pubDate>
+    </item>
     <item>
       <title>퇴직금 계산 방법 총정리</title>
       <link>https://moatool.com/ko/guides/severance/</link>

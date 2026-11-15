@@ -58,9 +58,9 @@ test('계산기 페이지에 폼 입력 칸이 있다', () => {
   assert.match(page, /id="months"/);
 });
 
-test('페이지 수는 61 (루트 1, 404 1, 언어 홈 2, 도구 34, 개인정보 2, 소개 2, 연락처 2, 가이드 목록 2, 가이드 15)', () => {
+test('페이지 수는 62 (루트 1, 404 1, 언어 홈 2, 도구 34, 개인정보 2, 소개 2, 연락처 2, 가이드 목록 2, 가이드 16)', () => {
   const result = buildSite({ rootDir: ROOT, outDir: fs.mkdtempSync(path.join(os.tmpdir(), 'site-count-')) });
-  assert.equal(result.pages, 61);
+  assert.equal(result.pages, 62);
 });
 
 test('로직 파일이 site/assets/logic에 복사된다', () => {
@@ -560,7 +560,7 @@ test('가이드 RSS가 언어별로 생성되고 페이지에서 연결된다', 
   assert.match(ko, /<link>https:\/\/moatool\.com\/ko\/guides\/<\/link>/);
   assert.match(ko, /<item>[\s\S]*<link>https:\/\/moatool\.com\/ko\/guides\/weekly-holiday-pay\/<\/link>[\s\S]*<\/item>/);
   assert.match(ko, /<pubDate>[A-Z][a-z]{2}, \d{2} [A-Z][a-z]{2} \d{4} 00:00:00 \+0900<\/pubDate>/);
-  assert.equal((ko.match(/<item>/g) || []).length, 8);
+  assert.equal((ko.match(/<item>/g) || []).length, 9);
   assert.equal((read('en/guides/rss.xml').match(/<item>/g) || []).length, 7);
   assert.match(read('ko/guides/index.html'), /<link rel="alternate" type="application\/rss\+xml" title="[^"]+" href="https:\/\/moatool\.com\/ko\/guides\/rss\.xml">/);
   assert.match(read('ko/guides/severance/index.html'), /type="application\/rss\+xml"/);
@@ -768,4 +768,11 @@ test('외국인 근로자용 영어 가이드가 도구와 한국어 짝 가이�
   assert.match(read('en/take-home-pay/index.html'), /href="\/en\/guides\/korea-take-home-pay\/"/);
   assert.match(read('ko/guides/annual-leave/index.html'), /hreflang="en" href="https:\/\/moatool\.com\/en\/guides\/korea-annual-leave\/"/);
   assert.match(read('en/guides/korea-unemployment-benefits/index.html'), /<table class="data-table">/);
+});
+
+test('연말정산 가이드가 실수령액 계산기와 연결되고 비교표를 가진다', () => {
+  assert.match(read('ko/take-home-pay/index.html'), /href="\/ko\/guides\/year-end-tax-settlement\/"/);
+  const page = read('ko/guides/year-end-tax-settlement/index.html');
+  assert.match(page, /class="cta" href="\/ko\/take-home-pay\/"/);
+  assert.ok((page.match(/<table class="data-table">/g) || []).length >= 3);
 });
