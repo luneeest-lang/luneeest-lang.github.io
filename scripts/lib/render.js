@@ -40,6 +40,18 @@ function setSiteConfig(config) {
   };
 }
 
+// Web fonts load without blocking the first paint: the stylesheet starts as a print
+// stylesheet and switches to all media once loaded. Only the 400 weight is used.
+const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap';
+
+function fontTags() {
+  return `  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="${FONT_CSS}">
+  <link rel="stylesheet" href="${FONT_CSS}" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="${FONT_CSS}"></noscript>`;
+}
+
 function iconTags() {
   return `
   <link rel="icon" href="${asset('/assets/favicon.svg')}" type="image/svg+xml">
@@ -144,9 +156,7 @@ function head({ lang, title, description, origin, alternates, siteName, type = '
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">${verificationTag()}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+${fontTags()}
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(description)}">
   <link rel="canonical" href="${escapeHtml(url)}">
@@ -324,9 +334,7 @@ function renderNotFound({ ui, tools }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>${escapeHtml(ui.ko.notFoundTitle)} | ${escapeHtml(ui.ko.siteName)}</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+${fontTags()}
   <link rel="stylesheet" href="${asset('/assets/style.css')}">${iconTags()}
 </head>
 <body>

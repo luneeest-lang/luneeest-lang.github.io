@@ -776,3 +776,21 @@ test('연말정산 가이드가 실수령액 계산기와 연결되고 비교표
   assert.match(page, /class="cta" href="\/ko\/take-home-pay\/"/);
   assert.ok((page.match(/<table class="data-table">/g) || []).length >= 3);
 });
+
+test('웹폰트는 화면 표시를 막지 않게 불러오고 쓰지 않는 굵기는 받지 않는다', () => {
+  for (const page of ['ko/index.html', 'en/take-home-pay/index.html', 'ko/guides/annual-leave/index.html', '404.html']) {
+    const html = read(page);
+    const fontLinks = html.match(/<link[^>]+fonts\.googleapis\.com\/css2[^>]*>/g) || [];
+    assert.ok(fontLinks.length >= 2, page);
+    for (const link of fontLinks) {
+      assert.doesNotMatch(link, /wght@400;700/, page);
+      const blocking = /rel="stylesheet"/.test(link) && !/media="print"/.test(link);
+      if (blocking) {
+        // The only blocking copy is the no-JavaScript fallback.
+        assert.ok(html.includes(`<noscript>${link}</noscript>`), page);
+      }
+    }
+    assert.match(html, /<link rel="preload" as="style" href="https:\/\/fonts\.googleapis\.com\/css2[^"]+">/, page);
+    assert.match(html, /media="print" onload="this\.media='all'"/, page);
+  }
+});
