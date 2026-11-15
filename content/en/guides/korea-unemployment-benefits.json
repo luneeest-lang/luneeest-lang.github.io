@@ -1,0 +1,137 @@
+{
+  "slug": "korea-unemployment-benefits",
+  "pair": "unemployment-benefit",
+  "title": "Unemployment Benefits in Korea for Foreign Workers (2026)",
+  "description": "Who can get Korean unemployment benefits, including foreign workers by visa type, how the daily amount is calculated, and how many days it is paid.",
+  "h1": "Unemployment benefits in Korea for foreign workers",
+  "published": "2026-11-15",
+  "updated": "2026-11-15",
+  "toolSlug": "unemployment-benefit",
+  "ctaText": "Estimate your Korean unemployment benefit",
+  "intro": "Korea's Employment Insurance pays a job-seeking allowance (구직급여, often called unemployment benefit or 실업급여) to insured workers who lose their job involuntarily and are looking for work. Foreign workers can qualify too, but whether you are covered depends on your visa.\n\nThis guide explains coverage by visa type, the eligibility rules, the daily amount for 2026 and 2027, and how long it is paid, based on the Employment Insurance Act, its Enforcement Decree, and Ministry of Employment and Labor guidance. It is general information, not legal advice.",
+  "sections": [
+    {
+      "heading": "Are foreign workers covered?",
+      "paragraphs": [
+        "Coverage depends on your residence status. Article 10-2 of the Employment Insurance Act and Article 3-3 of its Enforcement Decree set the rules.",
+        "If you are not sure whether you are insured, ask your employer or check your insurance history with the employment center. Benefits are only paid for periods when you were insured."
+      ],
+      "table": {
+        "headers": [
+          "Who",
+          "Unemployment benefit coverage"
+        ],
+        "rows": [
+          [
+            "Workers hired under the Employment Permit System (e.g. E-9, H-2)",
+            "Only if you apply for it (Act, Article 10-2(1))"
+          ],
+          [
+            "Permanent residents (F-5) and some other resident statuses",
+            "Covered automatically"
+          ],
+          [
+            "Intra-company, investment and trade visas (D-7, D-8, D-9)",
+            "Covered, unless your home country does not cover Koreans in return"
+          ],
+          [
+            "Overseas Koreans (F-4) and other work visas such as E-7",
+            "Only if you apply for it"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Who qualifies",
+      "paragraphs": [
+        "Under Article 40 of the Employment Insurance Act you need all of the following:"
+      ],
+      "items": [
+        "At least 180 insured days in total in the 18 months before your last day of work.",
+        "You left involuntarily. Quitting for personal reasons or being dismissed for serious misconduct generally disqualifies you, though recognized reasons such as unpaid wages can count.",
+        "You are able and willing to work but have not found a job.",
+        "You actively look for work and report it at each unemployment check-in."
+      ]
+    },
+    {
+      "heading": "How much you get per day",
+      "paragraphs": [
+        "The daily benefit is 60% of your average daily wage, which is your total pay in the three months before leaving divided by the calendar days in that period.",
+        "There is a cap and a floor. Only up to 113,500 won of daily wage counts (Enforcement Decree, Article 68), so the maximum is 68,100 won a day. The floor is 80% of the minimum wage for your contractual daily hours, and you receive the floor whenever 60% of your wage is lower (Act, Article 46).",
+        "For an 8-hour day the floor is 66,048 won in 2026 and 68,480 won in 2027. Because the 2027 floor is above the 68,100 won cap, current law pays full-time workers who leave in 2027 the floor of 68,480 won. A reform proposed in September 2026 would change the cap and pay on a six-day-week basis, but it has not been passed yet."
+      ]
+    },
+    {
+      "heading": "How long it is paid",
+      "paragraphs": [
+        "The number of benefit days depends on your age on your last day and how long you were insured (Act, Table 1, for people leaving on or after October 1, 2019)."
+      ],
+      "table": {
+        "headers": [
+          "Insured period",
+          "Under 50",
+          "50 or older, or disabled"
+        ],
+        "rows": [
+          [
+            "Under 1 year",
+            "120 days",
+            "120 days"
+          ],
+          [
+            "1 to under 3 years",
+            "150 days",
+            "180 days"
+          ],
+          [
+            "3 to under 5 years",
+            "180 days",
+            "210 days"
+          ],
+          [
+            "5 to under 10 years",
+            "210 days",
+            "240 days"
+          ],
+          [
+            "10 years or more",
+            "240 days",
+            "270 days"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "A worked example",
+      "paragraphs": [
+        "A 40-year-old full-time worker leaves on July 15, 2026 after two years of insured work, having earned 9,000,000 won in the three months from April 16 (91 days). The average daily wage is about 98,901 won, and 60% is 59,340 won.",
+        "That is below the 66,048 won floor, so the benefit is 66,048 won a day for 150 days, or 9,907,200 won in total. With 15,000,000 won in three-month pay, the average wage exceeds the cap and the benefit is 68,100 won a day instead."
+      ]
+    },
+    {
+      "heading": "Things to know before you apply",
+      "paragraphs": [
+        "The first 7 days after you file are a waiting period with no benefit. After that, benefits are paid for the days recognized at each unemployment check-in.",
+        "Your visa status matters beyond insurance: staying in Korea while unemployed has its own immigration rules. Check both with the employment center and immigration office. For questions in English, the Ministry of Employment and Labor call center is 1350."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "National Law Information Center: Employment Insurance Act, Articles 10-2, 40, 46 and Table 1 (in Korean)",
+      "url": "https://www.law.go.kr/법령/고용보험법"
+    },
+    {
+      "title": "National Law Information Center: Employment Insurance Act Enforcement Decree, Articles 3-3 and 68 (in Korean)",
+      "url": "https://www.law.go.kr/법령/고용보험법시행령"
+    },
+    {
+      "title": "Ministry of Employment and Labor: unemployment benefit days and amount (in Korean)",
+      "url": "https://www.moel.go.kr/faq/faqView.do?seqRepeat=204"
+    },
+    {
+      "title": "Ministry of Employment and Labor: 2027 minimum wage of 10,700 won per hour (in Korean)",
+      "url": "https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=19744"
+    }
+  ]
+}

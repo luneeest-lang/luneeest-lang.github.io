@@ -1,0 +1,102 @@
+{
+  "slug": "korea-annual-leave",
+  "pair": "annual-leave",
+  "title": "Annual Leave in Korea: How Many Days and Unused Leave Pay",
+  "description": "Paid annual leave under Korean labor law: 11 days in the first year, 15 after, up to 25, what happens after exactly one year, and unused leave pay.",
+  "h1": "Annual leave in Korea: days and unused leave pay",
+  "published": "2026-11-15",
+  "updated": "2026-11-15",
+  "toolSlug": "annual-leave",
+  "ctaText": "Calculate your annual leave days",
+  "intro": "Paid annual leave (연차 유급휴가) is a legal minimum under Korea's Labor Standards Act, so your employer cannot give you less than the law sets. The rules apply to foreign workers too: Article 6 of the Act bans different working conditions because of nationality.\n\nThis guide explains how many days you get each year, what happens if you leave after exactly one year, and how unused leave pay is calculated, based on Article 60 of the Labor Standards Act and Supreme Court rulings.",
+  "sections": [
+    {
+      "heading": "Your first year: one day per month, up to 11",
+      "paragraphs": [
+        "If you have worked for less than a year, you get one paid day off for each full month of attendance, up to 11 days (Article 60(2)). Someone hired on January 2 gains a day on February 2, another on March 2, and so on.",
+        "These first-year days expire if not used before your first year of work ends (Article 60(7))."
+      ]
+    },
+    {
+      "heading": "After one year: 15 days, growing to 25",
+      "paragraphs": [
+        "With 80% or better attendance over a year, you get 15 days (Article 60(1)). From three years of service, one day is added for every two years beyond the first, up to 25 days (Article 60(4))."
+      ],
+      "table": {
+        "headers": [
+          "Years of service",
+          "Leave for that year"
+        ],
+        "rows": [
+          [
+            "Under 1 year",
+            "1 day per full month (up to 11)"
+          ],
+          [
+            "1 and 2",
+            "15 days"
+          ],
+          [
+            "3 and 4",
+            "16 days"
+          ],
+          [
+            "5 and 6",
+            "17 days"
+          ],
+          [
+            "7 and 8",
+            "18 days"
+          ],
+          [
+            "11 and 12",
+            "20 days"
+          ],
+          [
+            "21 or more",
+            "25 days (maximum)"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Leaving after exactly one year",
+      "paragraphs": [
+        "Korea's Supreme Court ruled that the 15 days for the first year arise on the day after that year is completed. So if a one-year contract ends and you leave, you get at most the 11 monthly days, not the 15 (Supreme Court 2021Da227100).",
+        "If your employment continues past one year, even briefly, the 15 days are added, for up to 26 days in total. The Court applied this to a worker employed for one year and three months.",
+        "When you choose a last day of work, whether employment continues past the one-year mark can make a real difference to your leave and leave pay."
+      ]
+    },
+    {
+      "heading": "Unused leave pay",
+      "paragraphs": [
+        "Leave you could not use can be paid out. Unused leave pay is the number of unused days times your daily ordinary wage.",
+        "For a 40-hour week, the daily ordinary wage is your monthly ordinary wage ÷ 209 hours × 8 hours. With a monthly ordinary wage of 3,000,000 won, that is about 114,832 won a day, so 5 unused days are worth about 574,162 won.",
+        "If your employer properly followed the legal procedure to encourage you to use your leave (Article 61) and you still did not use it, the employer does not have to pay for those days."
+      ]
+    },
+    {
+      "heading": "When the rules differ",
+      "paragraphs": [
+        "The standard rules above do not apply in a few cases.",
+        "Some absences still count as attendance when working out the 80% rule, including time off for a work-related injury or illness, maternity leave, and parental leave (Article 60(6)). This is general information; for your own case, the Ministry of Employment and Labor call center (1350) can help."
+      ],
+      "items": [
+        "Workplaces with four or fewer regular employees are not covered by the annual leave article.",
+        "People whose contractual hours average under 15 a week over four weeks do not get annual leave (Article 18).",
+        "With attendance under 80% in a year, you get one day per full month instead of 15.",
+        "Some employers manage leave by calendar year rather than hire date. Check your company rules."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "National Law Information Center: Labor Standards Act, Articles 6, 18, 55, 60 and 61 (in Korean)",
+      "url": "https://www.law.go.kr/법령/근로기준법"
+    },
+    {
+      "title": "Supreme Court of Korea: annual leave for workers employed one to two years, citing 2021Da227100 (in Korean)",
+      "url": "https://scourt.go.kr/supreme/news/NewsViewAction2.work?gubun=4&seqnum=8782"
+    }
+  ]
+}

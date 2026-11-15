@@ -238,11 +238,13 @@
     <loc>https://moatool.com/ko/guides/unemployment-benefit/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/unemployment-benefit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korea-unemployment-benefits/"/>
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/annual-leave/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/annual-leave/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korea-annual-leave/"/>
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/loan-repayment-methods/</loc>
@@ -253,6 +255,7 @@
     <loc>https://moatool.com/ko/guides/weekly-holiday-pay/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/weekly-holiday-pay/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korea-weekly-holiday-pay/"/>
   </url>
   <url>
     <loc>https://moatool.com/ko/guides/korean-age/</loc>
@@ -271,10 +274,33 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/char-count/"/>
   </url>
   <url>
+    <loc>https://moatool.com/en/guides/korea-take-home-pay/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korea-take-home-pay/"/>
+  </url>
+  <url>
     <loc>https://moatool.com/en/guides/korean-severance-pay/</loc>
     <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/severance/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korean-severance-pay/"/>
+  </url>
+  <url>
+    <loc>https://moatool.com/en/guides/korea-unemployment-benefits/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/unemployment-benefit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korea-unemployment-benefits/"/>
+  </url>
+  <url>
+    <loc>https://moatool.com/en/guides/korea-annual-leave/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/annual-leave/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korea-annual-leave/"/>
+  </url>
+  <url>
+    <loc>https://moatool.com/en/guides/korea-weekly-holiday-pay/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://moatool.com/ko/guides/weekly-holiday-pay/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moatool.com/en/guides/korea-weekly-holiday-pay/"/>
   </url>
   <url>
     <loc>https://moatool.com/en/guides/korean-age-explained/</loc>

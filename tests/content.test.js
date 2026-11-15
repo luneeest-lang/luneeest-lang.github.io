@@ -376,7 +376,7 @@ test('대출 라벨에 상환 방식과 상환표 항목이 있다', () => {
   }
 });
 
-const EN_GUIDE_SLUGS = ['korean-severance-pay', 'korean-age-explained', 'korean-bmi-categories'];
+const EN_GUIDE_SLUGS = ['korea-take-home-pay', 'korean-severance-pay', 'korea-unemployment-benefits', 'korea-annual-leave', 'korea-weekly-holiday-pay', 'korean-age-explained', 'korean-bmi-categories'];
 
 function loadEnGuide(slug) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, 'en', 'guides', `${slug}.json`), 'utf8'));

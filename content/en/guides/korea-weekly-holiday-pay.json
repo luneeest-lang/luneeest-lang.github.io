@@ -1,0 +1,108 @@
+{
+  "slug": "korea-weekly-holiday-pay",
+  "pair": "weekly-holiday-pay",
+  "title": "Weekly Holiday Pay in Korea (Juhyu Sudang) Explained",
+  "description": "What juhyu sudang (weekly holiday pay) is, who gets it in Korea, how it is calculated for part-time work, and why a full-time monthly wage uses 209 hours.",
+  "h1": "Weekly holiday pay in Korea (juhyu sudang)",
+  "published": "2026-11-15",
+  "updated": "2026-11-15",
+  "toolSlug": "hourly-wage",
+  "ctaText": "Convert your hourly wage with holiday pay",
+  "intro": "Weekly holiday pay (주휴수당, juhyu sudang) is one paid day off per week for workers who meet the conditions. It is why a Korean monthly wage is based on 209 hours rather than the 174 hours you actually work, and it matters a lot for part-time jobs paid by the hour.\n\nIt applies to foreign workers the same way as to Korean workers. This guide explains the conditions, the formula, and examples at the 2026 and 2027 minimum wages, based on the Labor Standards Act and Ministry of Employment and Labor notices.",
+  "sections": [
+    {
+      "heading": "Who gets weekly holiday pay",
+      "paragraphs": [
+        "Article 55 of the Labor Standards Act requires at least one paid day off per week on average. To receive it you need both of the following:"
+      ],
+      "items": [
+        "Contractual working hours of at least 15 a week, averaged over four weeks. Below that, Article 18 says the weekly holiday rule does not apply.",
+        "Full attendance on your scheduled working days that week."
+      ]
+    },
+    {
+      "heading": "How it is calculated",
+      "paragraphs": [
+        "A full-time worker on 40 hours a week gets 8 paid hours, one day's pay. Part-time workers get holiday hours in proportion to their hours: weekly holiday hours = weekly contractual hours ÷ 40 × 8.",
+        "Weekly holiday pay = hourly wage × weekly holiday hours. Working more than 40 hours does not raise it above 8 hours, and overtime is not counted."
+      ]
+    },
+    {
+      "heading": "Examples at the 2026 and 2027 minimum wage",
+      "paragraphs": [
+        "The minimum wage is 10,320 won an hour in 2026 and 10,700 won from January 1, 2027. The monthly figures below use 2027 rates and monthly paid hours = (weekly hours + holiday hours) × 365 ÷ 7 ÷ 12, rounded."
+      ],
+      "table": {
+        "headers": [
+          "Weekly hours",
+          "Holiday hours",
+          "Weekly holiday pay",
+          "Monthly paid hours",
+          "Monthly wage"
+        ],
+        "rows": [
+          [
+            "40",
+            "8",
+            "85,600 won",
+            "209",
+            "2,236,300 won"
+          ],
+          [
+            "30",
+            "6",
+            "64,200 won",
+            "156",
+            "1,669,200 won"
+          ],
+          [
+            "20",
+            "4",
+            "42,800 won",
+            "104",
+            "1,112,800 won"
+          ],
+          [
+            "15",
+            "3",
+            "32,100 won",
+            "78",
+            "834,600 won"
+          ],
+          [
+            "14",
+            "none",
+            "none",
+            "61",
+            "652,700 won"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Why a monthly wage uses 209 hours",
+      "paragraphs": [
+        "Forty working hours plus 8 holiday hours is 48 hours a week. Multiplied by the average number of weeks in a month (365 ÷ 7 ÷ 12 ≈ 4.345), that is about 208.6 hours, rounded to 209. The Ministry of Employment and Labor states the monthly minimum wage on this 209-hour basis: 2,156,880 won in 2026 and 2,236,300 won in 2027.",
+        "So a monthly salary already includes weekly holiday pay. To check whether a monthly salary meets the minimum wage, divide it by 209, not by 174.",
+        "For example, a full-time monthly salary of 2,000,000 won works out to 2,000,000 ÷ 209 ≈ 9,569 won an hour. That is below the 2026 minimum wage of 10,320 won, so the salary is too low for a 40-hour week. The same salary divided by 174 hours would look like about 11,494 won and could wrongly appear to be legal."
+      ]
+    },
+    {
+      "heading": "Common questions",
+      "paragraphs": [
+        "You are entitled to weekly holiday pay if you meet the conditions, even if your contract does not mention it. If an employer says it is included in your hourly rate, divide your monthly pay by 209 and check that the result is at least the minimum wage.",
+        "Edge cases, such as the week you leave or weeks with absences or leave, can be judged differently. The Ministry of Employment and Labor call center (1350) can help."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "National Law Information Center: Labor Standards Act, Articles 6, 18, 55, 60 and 61 (in Korean)",
+      "url": "https://www.law.go.kr/법령/근로기준법"
+    },
+    {
+      "title": "Ministry of Employment and Labor: 2027 minimum wage of 10,700 won per hour (in Korean)",
+      "url": "https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=19744"
+    }
+  ]
+}

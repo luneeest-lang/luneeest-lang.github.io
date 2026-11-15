@@ -1,0 +1,112 @@
+{
+  "slug": "korea-take-home-pay",
+  "title": "Take-Home Pay in Korea: Deductions Explained for Foreigners",
+  "description": "What comes out of a Korean salary: national pension, health and employment insurance, income tax, and rules for foreign workers such as the 19% flat tax.",
+  "h1": "Take-home pay in Korea: what is deducted",
+  "published": "2026-11-15",
+  "updated": "2026-11-15",
+  "toolSlug": "take-home-pay",
+  "ctaText": "Calculate your Korean take-home pay",
+  "intro": "A Korean salary offer is quoted before deductions. Each month your employer withholds four social insurance contributions and income tax, so the amount that reaches your bank account is noticeably lower.\n\nThis guide explains each deduction at 2026 rates, how income tax withholding works, and the rules that differ for foreign workers, based on Korean law and National Tax Service guidance. It is general information, not tax advice.",
+  "sections": [
+    {
+      "heading": "The monthly deductions at 2026 rates",
+      "paragraphs": [
+        "Social insurance is split between you and your employer. These are the employee shares, applied to your taxable monthly pay. Amounts under 10 won are dropped."
+      ],
+      "table": {
+        "headers": [
+          "Deduction",
+          "Employee share (2026)",
+          "Notes"
+        ],
+        "rows": [
+          [
+            "National pension",
+            "4.75%",
+            "Of pension income, between 410,000 and 6,590,000 won a month"
+          ],
+          [
+            "Health insurance",
+            "3.595%",
+            "Total rate 7.19%"
+          ],
+          [
+            "Long-term care insurance",
+            "About 13.14% of the health premium",
+            "0.9448% of pay in total"
+          ],
+          [
+            "Employment insurance",
+            "0.9%",
+            "Total 1.8% for unemployment benefits"
+          ],
+          [
+            "Income tax",
+            "From the NTS withholding table",
+            "Depends on pay and family size"
+          ],
+          [
+            "Local income tax",
+            "10% of income tax",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "How income tax is withheld",
+      "paragraphs": [
+        "Each month your employer looks up your income tax in the National Tax Service simplified withholding table, using your taxable monthly pay and the number of family members you claim, including yourself. Children aged 8 to 20 reduce the amount further.",
+        "Monthly withholding is a prepayment. Your actual tax is settled in the year-end tax settlement (연말정산) the following January or February, after deductions such as card spending, insurance, and medical costs, so you may get a refund or owe more."
+      ]
+    },
+    {
+      "heading": "Rules that differ for foreign workers",
+      "paragraphs": [
+        "Most deductions apply to foreign employees the same way, with a few exceptions written into law."
+      ],
+      "items": [
+        "National pension: foreign employees are covered as a rule, but not if their home country's pension law does not cover Koreans in return (National Pension Act, Article 126).",
+        "Employment insurance: coverage depends on your visa. Some statuses are covered automatically and others only if you apply (Employment Insurance Act, Article 10-2, and its Enforcement Decree, Article 3-3).",
+        "Flat 19% income tax: foreign employees who first started working in Korea on or before December 31, 2026 can apply to have employment income taxed at a single 19% rate for up to 20 years, instead of the normal progressive rates. If you choose it, the usual deductions and credits do not apply (Restriction of Special Taxation Act, Article 18-2). Local income tax of 10% of the tax is added on top."
+      ]
+    },
+    {
+      "heading": "An example",
+      "paragraphs": [
+        "On a salary of 42,000,000 won with the 200,000 won tax-free meal allowance and one family member, monthly pay is 3,500,000 won and taxable pay is 3,300,000 won.",
+        "The deductions are national pension 156,750 won, health insurance 118,630 won, long-term care 15,580 won, employment insurance 29,700 won, income tax 102,770 won, and local income tax 10,270 won. Take-home pay is 3,066,300 won a month."
+      ]
+    },
+    {
+      "heading": "Comparing offers",
+      "paragraphs": [
+        "When comparing job offers, check whether the salary includes severance pay, how bonuses are paid, and which allowances are tax-free. These change the monthly amount even at the same annual salary.",
+        "Whether the flat 19% tax helps depends on your pay and family situation, since it removes deductions. Compare both methods, or ask a tax professional or the National Tax Service (126), before choosing."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "National Tax Service: monthly withholding with the simplified tax table (in Korean)",
+      "url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=6583&cntntsId=7862"
+    },
+    {
+      "title": "National Law Information Center: National Pension Act, Articles 88 and 126 (in Korean)",
+      "url": "https://www.law.go.kr/법령/국민연금법"
+    },
+    {
+      "title": "National Law Information Center: Restriction of Special Taxation Act, Article 18-2 (in Korean)",
+      "url": "https://www.law.go.kr/법령/조세특례제한법"
+    },
+    {
+      "title": "National Law Information Center: Employment Insurance Act, Articles 10-2, 40, 46 and Table 1 (in Korean)",
+      "url": "https://www.law.go.kr/법령/고용보험법"
+    },
+    {
+      "title": "National Law Information Center: Enforcement Decree on employment insurance premiums, Article 12 (in Korean)",
+      "url": "https://www.law.go.kr/법령/고용보험및산업재해보상보험의보험료징수등에관한법률시행령"
+    }
+  ]
+}
