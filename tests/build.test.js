@@ -794,3 +794,23 @@ test('웹폰트는 화면 표시를 막지 않게 불러오고 쓰지 않는 굵
     assert.match(html, /media="print" onload="this\.media='all'"/, page);
   }
 });
+
+test('IndexNow 키가 있으면 사이트 루트에 키 파일을 만든다', () => {
+  const key = '09b252cc281956ac9db34ac5cc63f3d8';
+  const dir = buildWithConfig({ adsensePublisherId: '', contactEmail: '', naverSiteVerification: '', indexNowKey: key });
+  assert.equal(fs.readFileSync(path.join(dir, `${key}.txt`), 'utf8'), key);
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('IndexNow 키가 없으면 키 파일을 만들지 않고, 형식이 틀리면 빌드를 멈춘다', () => {
+  const dir = buildWithConfig({ adsensePublisherId: '', contactEmail: '', naverSiteVerification: '' });
+  assert.equal(fs.readdirSync(dir).filter((name) => /^[0-9a-f]{32}\.txt$/.test(name)).length, 0);
+  fs.rmSync(dir, { recursive: true, force: true });
+  assert.throws(() => buildWithConfig({ adsensePublisherId: '', contactEmail: '', naverSiteVerification: '', indexNowKey: 'not a key!' }), /indexNowKey/);
+});
+
+test('실제 설정의 IndexNow 키 파일이 배포 결과에 들어간다', () => {
+  const { indexNowKey } = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
+  assert.match(indexNowKey, /^[0-9a-f]{32}$/);
+  assert.equal(read(`${indexNowKey}.txt`), indexNowKey);
+});

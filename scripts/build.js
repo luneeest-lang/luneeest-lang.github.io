@@ -72,6 +72,7 @@ function loadConfig(rootDir) {
     adsensePublisherId: config.adsensePublisherId || '',
     contactEmail: config.contactEmail || '',
     naverSiteVerification: config.naverSiteVerification || '',
+    indexNowKey: config.indexNowKey || '',
   };
 }
 
@@ -84,6 +85,10 @@ function validateConfig(config) {
   }
   if (config.naverSiteVerification && !/^[A-Za-z0-9_-]{10,100}$/.test(config.naverSiteVerification)) {
     throw new Error('naverSiteVerification must contain only letters, digits, "-" and "_"');
+  }
+  // IndexNow keys are 8 to 128 letters, digits, or dashes.
+  if (config.indexNowKey && !/^[A-Za-z0-9-]{8,128}$/.test(config.indexNowKey)) {
+    throw new Error('indexNowKey must be 8 to 128 letters, digits, or "-"');
   }
 }
 
@@ -327,6 +332,10 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
 
   if (config.adsensePublisherId) {
     writePage(outDir, 'ads.txt', `google.com, ${config.adsensePublisherId}, DIRECT, f08c47fec0942fa0\n`);
+  }
+  // IndexNow proves site ownership with a key file at the root that contains the key.
+  if (config.indexNowKey) {
+    writePage(outDir, `${config.indexNowKey}.txt`, config.indexNowKey);
   }
 
   const assetsDir = path.join(rootDir, 'assets');
