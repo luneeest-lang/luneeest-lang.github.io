@@ -101,7 +101,38 @@ function rssLink(lang, ui, origin) {
   return { title: `${ui.siteName} ${ui.guidesHeading}`, url: `${origin}/${lang}/guides/rss.xml` };
 }
 
-function head({ lang, title, description, origin, alternates, siteName, type = 'website', rss }) {
+// Schema.org JSON-LD. "<" is escaped so page text can never close the script tag.
+function jsonLdTag(data) {
+  if (!data) return '';
+  return `
+  <script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
+}
+
+const BRAND = { name: 'moatool', alternateName: '모아툴' };
+
+function organizationNode(origin) {
+  return {
+    '@type': 'Organization',
+    '@id': `${origin}/#organization`,
+    name: BRAND.name,
+    alternateName: BRAND.alternateName,
+    url: `${origin}/`,
+    logo: `${origin}/assets/apple-touch-icon.png`,
+  };
+}
+
+function breadcrumbNode(items) {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map(([name, item], index) => ({ '@type': 'ListItem', position: index + 1, name, item })),
+  };
+}
+
+function graph(nodes) {
+  return { '@context': 'https://schema.org', '@graph': nodes };
+}
+
+function head({ lang, title, description, origin, alternates, siteName, type = 'website', rss, jsonLd }) {
   const hreflangs = ['ko', 'en']
     .filter((code) => alternates[code])
     .map((code) => `<link rel="alternate" hreflang="${code}" href="${escapeHtml(origin + alternates[code])}">`)
@@ -119,7 +150,7 @@ function head({ lang, title, description, origin, alternates, siteName, type = '
   <meta name="description" content="${escapeHtml(description)}">
   <link rel="canonical" href="${escapeHtml(url)}">
     ${hreflangs}
-    <link rel="alternate" hreflang="x-default" href="${escapeHtml(origin + (alternates.ko || alternates[lang]))}">${openGraphTags({ lang, title, description, url, origin, siteName, type })}${rssTag(rss)}
+    <link rel="alternate" hreflang="x-default" href="${escapeHtml(origin + (alternates.ko || alternates[lang]))}">${openGraphTags({ lang, title, description, url, origin, siteName, type })}${rssTag(rss)}${jsonLdTag(jsonLd)}
   <link rel="stylesheet" href="${asset('/assets/style.css')}">${iconTags()}${adsenseTag()}
 </head>`;
 }
@@ -327,12 +358,31 @@ function renderToolPage({ lang, tool, ui, alternates, origin, relatedGuide, rela
     origin,
     alternates: alternates.paths,
     siteName: ui.siteName,
+    jsonLd: graph([
+      {
+        '@type': 'WebApplication',
+        name: tool.h1,
+        description: tool.description,
+        url: origin + alternates.paths[lang],
+        inLanguage: lang,
+        applicationCategory: 'UtilitiesApplication',
+        operatingSystem: 'Any',
+        browserRequirements: 'Requires JavaScript',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
+        dateModified: tool.updated,
+        publisher: { '@id': `${origin}/#organization` },
+      },
+      breadcrumbNode([
+        [ui.home, `${origin}/${lang}/`],
+        [tool.h1, origin + alternates.paths[lang]],
+      ]),
+    ]),
   })}
 <body>
 ${header({ lang, ui, alternates: alternates.paths })}
 <main class="tool" data-category="${categoryOf(tool.slug)}">
   <h1>${escapeHtml(tool.h1)}</h1>
-  <div class="intro">${paragraphs(tool.intro)}</div>
   <form class="tool-form" id="tool-form">
     ${inputs}
     <div class="results" aria-live="polite">
@@ -342,6 +392,7 @@ ${header({ lang, ui, alternates: alternates.paths })}
   </form>
   ${CALC_SLUGS.includes(tool.slug) ? renderShare(ui) : ''}
   ${form.schedule ? renderSchedule(labels) : ''}
+  <div class="intro">${paragraphs(tool.intro)}</div>
   <section class="howto">
     <h2>${escapeHtml(ui.howToHeading)}</h2>
     <ol>${tool.howTo.map((step) => `<li>${escapeHtml(step)}</li>`).join('')}</ol>
@@ -389,9 +440,21 @@ function renderHome({ lang, ui, tools, alternates, origin, guides = [] }) {
   <h2>${escapeHtml(heading)}</h2>
   <div class="grid">${slugs.map(card).join('\n')}</div>
 </section>`;
-  const title = `${ui.siteName} | ${ui.home}`;
+  const title = ui.homeTitle;
   const description = ui.homeDescription;
-  return `${head({ lang, title, description, origin, alternates: alternates.paths, siteName: ui.siteName })}
+  const jsonLd = graph([
+    {
+      '@type': 'WebSite',
+      '@id': `${origin}/#website`,
+      name: BRAND.name,
+      alternateName: BRAND.alternateName,
+      url: `${origin}/`,
+      inLanguage: ['ko', 'en'],
+      publisher: { '@id': `${origin}/#organization` },
+    },
+    organizationNode(origin),
+  ]);
+  return `${head({ lang, title, description, origin, alternates: alternates.paths, siteName: ui.siteName, jsonLd })}
 <body>
 ${header({ lang, ui, alternates: alternates.paths })}
 <main class="home">
@@ -441,11 +504,33 @@ function renderGuidePage({ lang, guide, ui, alternates, origin }) {
     siteName: ui.siteName,
     type: 'article',
     rss: rssLink(lang, ui, origin),
+    jsonLd: graph([
+      {
+        '@type': 'Article',
+        headline: guide.h1,
+        description: guide.description,
+        url: origin + alternates.paths[lang],
+        mainEntityOfPage: origin + alternates.paths[lang],
+        inLanguage: lang,
+        datePublished: guide.published,
+        dateModified: guide.updated,
+        image: `${origin}/assets/og-${lang}.png`,
+        author: { '@id': `${origin}/#organization` },
+        publisher: organizationNode(origin),
+        citation: (guide.sources || []).map((source) => source.url),
+      },
+      breadcrumbNode([
+        [ui.home, `${origin}/${lang}/`],
+        [ui.guidesHeading, `${origin}/${lang}/guides/`],
+        [guide.h1, origin + alternates.paths[lang]],
+      ]),
+    ]),
   })}
 <body>
 ${header({ lang, ui, alternates: alternates.paths, fallback: `/${lang === 'ko' ? 'en' : 'ko'}/guides/` })}
 <main class="guide" data-category="${categoryOf(guide.toolSlug)}">
   <h1>${escapeHtml(guide.h1)}</h1>
+  <p class="byline">${escapeHtml(ui.byline.replace('{published}', guide.published).replace('{updated}', guide.updated))}</p>
   <div class="intro">${paragraphs(guide.intro)}</div>
   ${cta}
   ${renderTextSections(guide.sections)}
@@ -467,6 +552,12 @@ function renderGuidesHub({ lang, hub, guides, ui, alternates, origin }) {
     alternates: alternates.paths,
     siteName: ui.siteName,
     rss: rssLink(lang, ui, origin),
+    jsonLd: graph([
+      breadcrumbNode([
+        [ui.home, `${origin}/${lang}/`],
+        [ui.guidesHeading, `${origin}/${lang}/guides/`],
+      ]),
+    ]),
   })}
 <body>
 ${header({ lang, ui, alternates: alternates.paths })}
@@ -498,6 +589,20 @@ function renderAboutPage({ lang, page, ui, alternates, origin }) {
     origin,
     alternates: alternates.paths,
     siteName: ui.siteName,
+    jsonLd: graph([
+      {
+        '@type': 'AboutPage',
+        name: page.h1,
+        url: origin + alternates.paths[lang],
+        inLanguage: lang,
+        dateModified: page.updated,
+        about: organizationNode(origin),
+      },
+      breadcrumbNode([
+        [ui.home, `${origin}/${lang}/`],
+        [page.h1, origin + alternates.paths[lang]],
+      ]),
+    ]),
   })}
 <body>
 ${header({ lang, ui, alternates: alternates.paths })}

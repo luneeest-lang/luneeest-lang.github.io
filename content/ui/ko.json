@@ -1,12 +1,12 @@
 {
-  "siteName": "무료 도구",
+  "siteName": "모아툴",
   "home": "홈",
   "languageSwitch": "English",
   "footer": "입력하신 값은 저장되거나 서버로 전송되지 않습니다.",
   "toolsHeading": "도구 목록",
   "categoryCalc": "계산기",
   "categoryText": "텍스트 도구",
-  "homeDescription": "설치 없이 브라우저에서 바로 쓰는 무료 계산기와 텍스트 도구 모음입니다.",
+  "homeDescription": "연봉 실수령액, 퇴직금, 실업급여, 연차, 시급 월급, 대출 이자, 만 나이 계산기 등 무료 도구를 설치 없이 바로 씁니다. 2026년 요율과 공식 자료를 기준으로 계산합니다.",
   "heroTitle": "필요한 계산과 글 정리를 바로 끝내세요",
   "heroLead": "입력한 값은 기기 밖으로 나가지 않습니다. 가입도, 설치도 필요 없습니다.",
   "howToHeading": "사용 방법",
@@ -35,5 +35,7 @@
   "notFoundTitle": "페이지를 찾을 수 없습니다",
   "notFoundLead": "주소가 바뀌었거나 없는 페이지입니다. 아래에서 필요한 도구를 찾아보세요.",
   "notFoundHomeLink": "전체 도구 보기",
-  "notFoundPopular": "자주 쓰는 도구"
+  "notFoundPopular": "자주 쓰는 도구",
+  "homeTitle": "모아툴 | 연봉 실수령액·퇴직금·실업급여 무료 계산기",
+  "byline": "글: 모아툴 운영자 · 게시일 {published} · 최종 수정일 {updated}"
 }

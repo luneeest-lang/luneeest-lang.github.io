@@ -101,6 +101,11 @@ function homePaths() {
   return { paths: { ko: '/ko/', en: '/en/' } };
 }
 
+// Latest `updated` date among pages, used for list pages such as the home and guides hub.
+function newest(items) {
+  return items.map((item) => item.updated).sort().pop();
+}
+
 function sitemapXml(origin, entries) {
   const urls = entries
     .map((entry) => {
@@ -109,6 +114,7 @@ function sitemapXml(origin, entries) {
         .join('\n');
       return `  <url>
     <loc>${origin}${entry.paths[entry.lang]}</loc>
+    <lastmod>${entry.lastmod}</lastmod>
 ${links}
   </url>`;
     })
@@ -230,7 +236,7 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
     });
     writePage(outDir, `${lang}/index.html`, html);
     pages += 1;
-    sitemapEntries.push({ lang, paths: home.paths });
+    sitemapEntries.push({ lang, paths: home.paths, lastmod: newest([...Object.values(tools[lang]), ...guides[lang]]) });
     // GitHub Pages cannot redirect on the server, and search robots treat a script
     // redirect as a warning, so the root serves the Korean home with /ko/ as canonical.
     if (lang === 'ko') {
@@ -256,7 +262,7 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
         })
       );
       pages += 1;
-      sitemapEntries.push({ lang, paths: alternates.paths });
+      sitemapEntries.push({ lang, paths: alternates.paths, lastmod: tools[lang][slug].updated });
     }
   }
 
@@ -268,7 +274,7 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
       renderGuidesHub({ lang, hub: guideHub[lang], guides: guides[lang], ui: ui[lang], alternates: hubPaths, origin })
     );
     pages += 1;
-    sitemapEntries.push({ lang, paths: hubPaths.paths });
+    sitemapEntries.push({ lang, paths: hubPaths.paths, lastmod: newest(guides[lang]) });
   }
 
   for (const lang of LANGS) {
@@ -280,7 +286,7 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
         renderGuidePage({ lang, guide, ui: ui[lang], alternates, origin })
       );
       pages += 1;
-      sitemapEntries.push({ lang, paths: alternates.paths });
+      sitemapEntries.push({ lang, paths: alternates.paths, lastmod: guide.updated });
     }
   }
 
@@ -292,7 +298,7 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
       renderAboutPage({ lang, page: about[lang], ui: ui[lang], alternates: aboutPaths, origin })
     );
     pages += 1;
-    sitemapEntries.push({ lang, paths: aboutPaths.paths });
+    sitemapEntries.push({ lang, paths: aboutPaths.paths, lastmod: about[lang].updated });
   }
 
   const privacyPaths = { paths: { ko: '/ko/privacy/', en: '/en/privacy/' } };
@@ -303,7 +309,7 @@ function buildSite({ rootDir, outDir, origin = SITE_ORIGIN, config = loadConfig(
       renderPrivacyPage({ lang, page: privacy[lang], ui: ui[lang], alternates: privacyPaths, origin })
     );
     pages += 1;
-    sitemapEntries.push({ lang, paths: privacyPaths.paths });
+    sitemapEntries.push({ lang, paths: privacyPaths.paths, lastmod: privacy[lang].updated });
   }
 
 

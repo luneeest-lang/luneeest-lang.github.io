@@ -412,3 +412,21 @@ test('영어 가이드 글에 필수 항목과 충분한 분량, 공식 출처�
     if (guide.pair) assert.ok(koGuides.has(guide.pair), `en ${slug} pair`);
   }
 });
+
+test('가이드에는 게시일(published)이 있고 수정일보다 늦지 않다', () => {
+  for (const [lang, slugs] of [['ko', GUIDE_SLUGS], ['en', EN_GUIDE_SLUGS]]) {
+    for (const slug of slugs) {
+      const guide = JSON.parse(fs.readFileSync(path.join(ROOT, lang, 'guides', `${slug}.json`), 'utf8'));
+      assert.match(guide.published || '', /^\d{4}-\d{2}-\d{2}$/, `${lang}/${slug} published`);
+      assert.ok(guide.published <= guide.updated, `${lang}/${slug} published <= updated`);
+    }
+  }
+});
+
+test('홈 제목과 설명이 충분히 구체적이다', () => {
+  for (const lang of LANGS) {
+    const ui = JSON.parse(fs.readFileSync(path.join(ROOT, 'ui', `${lang}.json`), 'utf8'));
+    assert.ok(ui.homeTitle.length >= 20 && ui.homeTitle.length <= 60, `${lang} homeTitle length`);
+    assert.ok(ui.homeDescription.length >= 70 && ui.homeDescription.length <= 160, `${lang} homeDescription length`);
+  }
+});

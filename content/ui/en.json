@@ -1,12 +1,12 @@
 {
-  "siteName": "Toolbox",
+  "siteName": "moatool",
   "home": "Home",
   "languageSwitch": "한국어",
   "footer": "Values you enter are never stored or sent to a server.",
   "toolsHeading": "All tools",
   "categoryCalc": "Calculators",
   "categoryText": "Text tools",
-  "homeDescription": "A free collection of calculators and text tools that run right in your browser.",
+  "homeDescription": "Free calculators for working and living in Korea: take-home pay, severance, unemployment benefits, annual leave, Korean age and more, from official sources.",
   "heroTitle": "Get your calculations and text cleanup done in seconds",
   "heroLead": "Values you enter never leave your device. No sign-up or install needed.",
   "howToHeading": "How to use",
@@ -35,5 +35,7 @@
   "notFoundTitle": "Page not found",
   "notFoundLead": "This page does not exist or has moved.",
   "notFoundHomeLink": "See all English tools",
-  "notFoundPopular": "Popular tools"
+  "notFoundPopular": "Popular tools",
+  "homeTitle": "moatool | Korean Salary, Severance and Age Calculators",
+  "byline": "By moatool · Published {published} · Updated {updated}"
 }

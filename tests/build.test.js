@@ -643,3 +643,79 @@ test('연차 계산기가 두 언어로 생성되고 기준일은 공유 링크�
   assert.match(read('ko/annual-leave/index.html'), /href="\/ko\/guides\/annual-leave\/"/);
   assert.match(read('ko/guides/annual-leave/index.html'), /class="cta" href="\/ko\/annual-leave\/"/);
 });
+
+function jsonLdOf(html) {
+  const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  return blocks.map((m) => JSON.parse(m[1]));
+}
+
+function graphTypes(html) {
+  return jsonLdOf(html).flatMap((d) => (d['@graph'] || [d]).map((n) => n['@type']));
+}
+
+test('사이트 이름은 한국어 모아툴, 영어 moatool로 통일된다', () => {
+  assert.match(read('ko/index.html'), /<meta property="og:site_name" content="모아툴">/);
+  assert.match(read('en/index.html'), /<meta property="og:site_name" content="moatool">/);
+  assert.match(read('ko/index.html'), /<title>모아툴 \| [^<]+<\/title>/);
+  assert.doesNotMatch(read('ko/about/index.html'), /무료 도구<\/title>/);
+  assert.doesNotMatch(read('en/guides/index.html'), /Toolbox/);
+});
+
+test('홈에는 WebSite와 Organization 구조화 데이터가 있다', () => {
+  const types = graphTypes(read('ko/index.html'));
+  assert.ok(types.includes('WebSite') && types.includes('Organization'), types.join(','));
+  const graph = jsonLdOf(read('ko/index.html'))[0]['@graph'];
+  const site = graph.find((n) => n['@type'] === 'WebSite');
+  assert.equal(site.name, 'moatool');
+  assert.equal(site.url, 'https://moatool.com/');
+});
+
+test('도구 페이지에는 WebApplication과 BreadcrumbList가 있다', () => {
+  const html = read('ko/take-home-pay/index.html');
+  const graph = jsonLdOf(html)[0]['@graph'];
+  const app = graph.find((n) => n['@type'] === 'WebApplication');
+  assert.equal(app.url, 'https://moatool.com/ko/take-home-pay/');
+  assert.equal(app.isAccessibleForFree, true);
+  assert.equal(app.offers.price, '0');
+  const crumbs = graph.find((n) => n['@type'] === 'BreadcrumbList');
+  assert.equal(crumbs.itemListElement.length, 2);
+  assert.equal(crumbs.itemListElement[1].item, 'https://moatool.com/ko/take-home-pay/');
+});
+
+test('가이드에는 Article 구조화 데이터와 작성·게시·수정 정보가 있다', () => {
+  const html = read('ko/guides/annual-leave/index.html');
+  const graph = jsonLdOf(html)[0]['@graph'];
+  const article = graph.find((n) => n['@type'] === 'Article');
+  assert.equal(article.datePublished, '2026-11-13');
+  assert.match(article.dateModified, /^\d{4}-\d{2}-\d{2}$/);
+  assert.ok(article.citation.length >= 2);
+  assert.equal(graph.find((n) => n['@type'] === 'BreadcrumbList').itemListElement.length, 3);
+  assert.match(html, /<p class="byline">[^<]*모아툴[^<]*2026-11-13[^<]*<\/p>/);
+  assert.match(read('en/guides/korean-age-explained/index.html'), /<p class="byline">By moatool/);
+});
+
+test('소개 페이지는 AboutPage, 구조화 데이터 JSON은 </script>를 깨지 않게 이스케이프한다', () => {
+  assert.ok(graphTypes(read('ko/about/index.html')).includes('AboutPage'));
+  for (const page of ['ko/index.html', 'ko/take-home-pay/index.html', 'en/guides/korean-severance-pay/index.html']) {
+    const html = read(page);
+    const raw = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1];
+    assert.doesNotMatch(raw, /</, page);
+  }
+});
+
+test('도구 페이지는 계산기를 제목 바로 아래에 두고 설명은 그 뒤에 둔다', () => {
+  const html = read('ko/unemployment-benefit/index.html');
+  const h1 = html.indexOf('<h1>');
+  const form = html.indexOf('<form class="tool-form"');
+  const intro = html.indexOf('<div class="intro">');
+  assert.ok(h1 < form && form < intro, `h1 ${h1}, form ${form}, intro ${intro}`);
+});
+
+test('사이트맵의 모든 주소에 수정일(lastmod)이 있다', () => {
+  const sitemap = read('sitemap.xml');
+  const urls = sitemap.match(/<url>[\s\S]*?<\/url>/g);
+  for (const url of urls) {
+    assert.match(url, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, url.slice(0, 80));
+  }
+  assert.match(sitemap, /<loc>https:\/\/moatool\.com\/ko\/guides\/annual-leave\/<\/loc>\s*<lastmod>2026-11-13<\/lastmod>/);
+});
