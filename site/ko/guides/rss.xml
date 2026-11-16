@@ -3,9 +3,9 @@
   <channel>
     <title>퇴직금·실업급여·연차 계산 가이드 | 모아툴</title>
     <link>https://moatool.com/ko/guides/</link>
-    <description>연말정산, 퇴직금, 실업급여, 연차, 주휴수당, 대출 상환방식, 만 나이, BMI를 공식 자료 기준으로 쉽게 설명한 가이드 모음입니다.</description>
+    <description>연말정산, 퇴직금, 실업급여, 연차, 주휴수당, 군 복무기간, 대출 상환방식, 만 나이, BMI를 공식 자료 기준으로 쉽게 설명한 가이드 모음입니다.</description>
     <language>ko</language>
-    <lastBuildDate>Sun, 15 Nov 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 00:00:00 +0900</lastBuildDate>
     <item>
       <title>연말정산 준비 가이드</title>
       <link>https://moatool.com/ko/guides/year-end-tax-settlement/</link>
@@ -47,6 +47,13 @@
       <guid isPermaLink="true">https://moatool.com/ko/guides/weekly-holiday-pay/</guid>
       <description>주휴수당을 받는 조건과 계산식, 주 근무시간별 예시, 월 209시간의 의미를 2027년 최저임금 10,700원 기준으로 정리했습니다.</description>
       <pubDate>Sun, 15 Nov 2026 00:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>군 복무기간과 전역일 계산법</title>
+      <link>https://moatool.com/ko/guides/military-service-period/</link>
+      <guid isPermaLink="true">https://moatool.com/ko/guides/military-service-period/</guid>
+      <description>육군·해병대 18개월, 해군 20개월, 공군·사회복무요원 21개월 복무기간과 전역일 세는 법, 입대 시기별 전역 예정일 표, 전역 나이, 조기전역 제도를 병역법 기준으로 정리했습니다.</description>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>만 나이, 연 나이, 세는 나이 차이</title>
