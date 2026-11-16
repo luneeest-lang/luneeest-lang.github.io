@@ -60,7 +60,7 @@ test('계산기 페이지에 폼 입력 칸이 있다', () => {
 
 test('페이지 수는 62 (루트 1, 404 1, 언어 홈 2, 도구 34, 개인정보 2, 소개 2, 연락처 2, 가이드 목록 2, 가이드 16)', () => {
   const result = buildSite({ rootDir: ROOT, outDir: fs.mkdtempSync(path.join(os.tmpdir(), 'site-count-')) });
-  assert.equal(result.pages, 62);
+  assert.equal(result.pages, 63);
 });
 
 test('로직 파일이 site/assets/logic에 복사된다', () => {
@@ -560,7 +560,7 @@ test('가이드 RSS가 언어별로 생성되고 페이지에서 연결된다', 
   assert.match(ko, /<link>https:\/\/moatool\.com\/ko\/guides\/<\/link>/);
   assert.match(ko, /<item>[\s\S]*<link>https:\/\/moatool\.com\/ko\/guides\/weekly-holiday-pay\/<\/link>[\s\S]*<\/item>/);
   assert.match(ko, /<pubDate>[A-Z][a-z]{2}, \d{2} [A-Z][a-z]{2} \d{4} 00:00:00 \+0900<\/pubDate>/);
-  assert.equal((ko.match(/<item>/g) || []).length, 9);
+  assert.equal((ko.match(/<item>/g) || []).length, 10);
   assert.equal((read('en/guides/rss.xml').match(/<item>/g) || []).length, 7);
   assert.match(read('ko/guides/index.html'), /<link rel="alternate" type="application\/rss\+xml" title="[^"]+" href="https:\/\/moatool\.com\/ko\/guides\/rss\.xml">/);
   assert.match(read('ko/guides/severance/index.html'), /type="application\/rss\+xml"/);

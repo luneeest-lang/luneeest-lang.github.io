@@ -213,8 +213,8 @@ test('개인정보처리방침 외부 링크는 https 주소다', () => {
   }
 });
 
-const GUIDE_SLUGS = ['year-end-tax-settlement', 'severance', 'unemployment-benefit', 'annual-leave', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi', 'char-count'];
-const GUIDE_SOURCE_SLUGS = ['year-end-tax-settlement', 'severance', 'unemployment-benefit', 'annual-leave', 'loan-repayment-methods', 'weekly-holiday-pay', 'korean-age', 'bmi'];
+const GUIDE_SLUGS = ['year-end-tax-settlement', 'severance', 'unemployment-benefit', 'annual-leave', 'loan-repayment-methods', 'weekly-holiday-pay', 'military-service-period', 'korean-age', 'bmi', 'char-count'];
+const GUIDE_SOURCE_SLUGS = ['year-end-tax-settlement', 'severance', 'unemployment-benefit', 'annual-leave', 'loan-repayment-methods', 'weekly-holiday-pay', 'military-service-period', 'korean-age', 'bmi'];
 
 function loadGuide(slug) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, 'ko', 'guides', `${slug}.json`), 'utf8'));
