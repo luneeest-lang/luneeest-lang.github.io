@@ -1,6 +1,12 @@
-# 무료 도구 사이트
+# 모아툴 (moatool)
 
-계산기 4종과 텍스트 도구 4종을 한국어와 영어로 제공하는 정적 사이트입니다. 서버와 데이터베이스가 없고, 모든 계산은 브라우저에서 이뤄집니다.
+**사이트: [https://moatool.com](https://moatool.com)**
+
+연봉 실수령액, 퇴직금, 실업급여, 연차, 대출 이자, 전역일, 만 나이, 날짜 계산 같은 생활 계산기와 텍스트 도구를 한국어와 영어로 제공하는 무료 사이트입니다. 계산 기준은 법령 원문과 정부 기관 자료로 확인하고 출처를 함께 적습니다. 서버와 데이터베이스가 없고, 모든 계산은 브라우저에서 이뤄집니다.
+
+- 한국어: [https://moatool.com/ko/](https://moatool.com/ko/)
+- English: [https://moatool.com/en/](https://moatool.com/en/)
+- 가이드: [https://moatool.com/ko/guides/](https://moatool.com/ko/guides/)
 
 설계 문서는 [docs/superpowers/specs/2026-10-19-free-tools-site-design.md](docs/superpowers/specs/2026-10-19-free-tools-site-design.md), 구현 계획은 [docs/superpowers/plans/2026-10-19-free-tools-site.md](docs/superpowers/plans/2026-10-19-free-tools-site.md)에 있습니다.
 
@@ -20,7 +26,7 @@ npm test
 npm run build
 ```
 
-`site/` 폴더를 새로 만듭니다. 페이지 19개(루트 1, 언어 홈 2, 도구 16), `sitemap.xml`, `robots.txt`가 생성됩니다.
+`site/` 폴더를 새로 만듭니다. 언어별 홈, 도구, 가이드, 소개·문의·개인정보처리방침 페이지와 `sitemap.xml`, `robots.txt`, 가이드 RSS가 생성됩니다.
 
 ## 폴더 구조
 
