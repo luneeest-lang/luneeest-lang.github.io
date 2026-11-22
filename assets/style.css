@@ -321,6 +321,75 @@ textarea {
   letter-spacing: -0.02em;
 }
 
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.presets-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-right: 4px;
+}
+
+.preset {
+  padding: 6px 12px;
+  border: 0.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.preset:hover {
+  border-color: var(--cat-fill);
+  color: var(--cat-text);
+}
+
+.milestones {
+  margin: 24px 0 32px;
+}
+
+.milestones-wrap {
+  overflow-x: auto;
+}
+
+.milestones table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.milestones caption {
+  text-align: left;
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding-bottom: 8px;
+}
+
+.milestones th,
+.milestones td {
+  padding: 10px 8px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.milestones thead th {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.milestones tbody th {
+  font-weight: 500;
+}
+
 .copy-btn {
   margin-top: 8px;
   padding: 6px 14px;
@@ -555,7 +624,8 @@ textarea {
   }
 
   .tool-form > .field,
-  .tool-form > .field-check {
+  .tool-form > .field-check,
+  .tool-form > .presets {
     grid-column: 1;
   }
 
@@ -586,6 +656,12 @@ textarea {
 
   .schedule {
     padding: 14px 10px;
+  }
+
+  .milestones th,
+  .milestones td {
+    padding: 8px 4px;
+    font-size: 14px;
   }
 
   .schedule table {

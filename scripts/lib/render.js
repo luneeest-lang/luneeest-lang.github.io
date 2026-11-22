@@ -294,6 +294,35 @@ function renderSchedule(labels) {
   </details>`;
 }
 
+// Buttons that fill the days field with common values such as +100 and -1000.
+function renderPresets(presets, labels) {
+  const gap = /^[a-z]/i.test(labels.unitDays) ? ' ' : '';
+  const buttons = presets
+    .map((days) => `<button type="button" class="preset" data-days="${days}">${days > 0 ? '+' : ''}${days}${gap}${escapeHtml(labels.unitDays)}</button>`)
+    .join('');
+  return `<div class="presets" role="group" aria-label="${escapeHtml(labels.presetsLabel)}">
+      <span class="presets-label">${escapeHtml(labels.presetsLabel)}</span>
+      ${buttons}
+    </div>`;
+}
+
+// Filled in the browser from the start date, so it always shows the visitor's own dates.
+function renderMilestones(labels) {
+  const columns = ['colPeriod', 'colBefore', 'colAfter']
+    .map((key) => `<th scope="col">${escapeHtml(labels[key])}</th>`)
+    .join('');
+  return `<section class="milestones" id="milestones" hidden>
+    <h2>${escapeHtml(labels.milestonesHeading)}</h2>
+    <div class="milestones-wrap">
+      <table>
+        <caption id="milestones-caption"></caption>
+        <thead><tr>${columns}</tr></thead>
+        <tbody id="milestones-body"></tbody>
+      </table>
+    </div>
+  </section>`;
+}
+
 // The share link keeps inputs after "#", which browsers never send to the server.
 function renderShare(ui) {
   return `<div class="share">
@@ -395,6 +424,7 @@ ${header({ lang, ui, alternates: alternates.paths })}
   <h1>${escapeHtml(tool.h1)}</h1>
   <form class="tool-form" id="tool-form">
     ${inputs}
+    ${form.presets ? renderPresets(form.presets, labels) : ''}
     <div class="results" aria-live="polite">
       ${outputs}
     </div>
@@ -402,6 +432,7 @@ ${header({ lang, ui, alternates: alternates.paths })}
   </form>
   ${CALC_SLUGS.includes(tool.slug) ? renderShare(ui) : ''}
   ${form.schedule ? renderSchedule(labels) : ''}
+  ${form.milestones ? renderMilestones(labels) : ''}
   ${form.salaryTable ? renderSalaryTable(tool, lang) : ''}
   <div class="intro">${paragraphs(tool.intro)}</div>
   <section class="howto">

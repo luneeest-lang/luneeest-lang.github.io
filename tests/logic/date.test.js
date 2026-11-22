@@ -169,3 +169,29 @@ test('연차수당은 월 통상임금 ÷ 209 × 8시간 × 미사용 일수', (
   assert.equal(leavePay({ monthlyOrdinaryWage: 2236300, unusedDays: 2.5 }).pay, 214000);
   assert.equal(leavePay({ monthlyOrdinaryWage: 3000000, unusedDays: 1.25 }).error, 'invalid_days');
 });
+
+const { milestones } = require('../../src/logic/date');
+
+test('기준 날짜에서 주요 일수의 전후 날짜를 한 번에 구한다', () => {
+  const r = milestones({ start: '2026-11-22', periods: [100, 1000] });
+  assert.equal(r.error, null);
+  assert.deepEqual(r.rows, [
+    { days: 100, before: { date: '2026-08-14', weekday: 5 }, after: { date: '2027-03-02', weekday: 2 } },
+    { days: 1000, before: { date: '2024-02-26', weekday: 1 }, after: { date: '2029-08-18', weekday: 6 } },
+  ]);
+});
+
+test('주요 날짜 표도 시작일을 1일로 세는 방식을 따른다', () => {
+  const r = milestones({ start: '2023-04-11', periods: [1000], includeStart: true });
+  assert.equal(r.rows[0].after.date, '2026-01-04');
+  assert.equal(r.rows[0].before.date, '2020-07-16');
+});
+
+test('주요 날짜 표의 기본 일수는 100, 200, 300, 500, 1000일', () => {
+  const r = milestones({ start: '2026-11-22' });
+  assert.deepEqual(r.rows.map((row) => row.days), [100, 200, 300, 500, 1000]);
+});
+
+test('주요 날짜 표는 날짜가 올바르지 않으면 오류', () => {
+  assert.equal(milestones({ start: '2025-02-30' }).error, 'invalid_date');
+});

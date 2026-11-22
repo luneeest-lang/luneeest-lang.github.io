@@ -442,3 +442,13 @@ test('시급 계산기는 2026년과 2027년 최저임금을 모두 안내한다
   const text = JSON.stringify(load('ko', 'hourly-wage'));
   assert.ok(text.includes('10,320') && text.includes('10,700'));
 });
+
+test('날짜 더하기 페이지에 빠른 입력과 주요 날짜 표 문구가 있다', () => {
+  for (const lang of ['ko', 'en']) {
+    const { labels } = load(lang, 'date-add');
+    for (const key of ['presetsLabel', 'milestonesHeading', 'milestonesCaption', 'colPeriod', 'colBefore', 'colAfter']) {
+      assert.ok(key in labels, `${lang} date-add label ${key}`);
+    }
+    assert.match(labels.milestonesCaption, /\{date\}/, `${lang} caption placeholder`);
+  }
+});

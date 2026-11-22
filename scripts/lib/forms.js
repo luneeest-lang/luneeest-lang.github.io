@@ -47,6 +47,8 @@ const TOOL_FORMS = {
       { id: 'weekday', labelKey: 'weekdayLabel' },
     ],
     errorKeys: ['errorInvalidDate', 'errorInvalidDays'],
+    presets: [100, 1000, -100, -1000],
+    milestones: true,
   },
   bmi: {
     inputs: [

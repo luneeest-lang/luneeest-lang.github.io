@@ -455,6 +455,18 @@ test('날짜 더하기 페이지가 두 언어로 생성되고 홈과 사이트�
   assert.match(read('sitemap.xml'), /https:\/\/moatool\.com\/ko\/date-add\//);
 });
 
+test('날짜 더하기 페이지에 빠른 입력 버튼과 주요 날짜 표가 있다', () => {
+  for (const lang of ['ko', 'en']) {
+    const page = read(`${lang}/date-add/index.html`);
+    for (const days of ['100', '1000', '-100', '-1000']) {
+      assert.match(page, new RegExp(`<button type="button" class="preset" data-days="${days}">`), `${lang} ${days}`);
+    }
+    assert.match(page, /<section class="milestones" id="milestones"/, lang);
+    assert.match(page, /<caption id="milestones-caption">/, lang);
+    assert.match(page, /<tbody id="milestones-body">/, lang);
+  }
+});
+
 test('글자수 세기 페이지에 바이트 결과 칸이 있다', () => {
   const page = read('ko/char-count/index.html');
   assert.match(page, /<output id="bytesKr">/);

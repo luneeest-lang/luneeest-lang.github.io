@@ -7,6 +7,7 @@
   "howTo": [
     "Pick a start date.",
     "Enter the number of days. Use a minus sign, such as -100, to go back in time.",
+    "Use the buttons for common values such as 100 or 1,000 days. The table below lists the dates 100 to 1,000 days before and after your start date.",
     "Turn on \"Count the start date as day 1\" for anniversary-style counting.",
     "Read the resulting date and weekday."
   ],
@@ -32,7 +33,13 @@
     "resultDateLabel": "Resulting date",
     "weekdayLabel": "Weekday",
     "errorInvalidDate": "Enter a valid date.",
-    "errorInvalidDays": "Enter a whole number of days between -100,000 and 100,000."
+    "errorInvalidDays": "Enter a whole number of days between -100,000 and 100,000.",
+    "presetsLabel": "Quick picks",
+    "milestonesHeading": "Dates 100 to 1,000 days before and after",
+    "milestonesCaption": "From {date}",
+    "colPeriod": "Period",
+    "colBefore": "Before",
+    "colAfter": "After"
   },
   "formula": "The start date is set to midnight UTC, and the number of days is added one 24-hour day at a time. Time zones and daylight saving time do not affect the result, and leap years and month lengths follow the real calendar.\n\nWith \"Count the start date as day 1\" turned on, the start date itself is day 1, so the calculator adds one day fewer than you entered. For negative numbers it subtracts one day fewer.\n\nThe weekday is shown for the resulting date.",
   "example": "Adding 100 days to January 1, 2026 gives Saturday, April 11, 2026. Counting January 1 as day 1, day 100 is one day earlier: Friday, April 10, 2026.\n\nEntering -100 from January 1, 2026 gives September 23, 2025. Adding one day to February 28, 2024 gives February 29, because 2024 is a leap year.",
@@ -40,5 +47,5 @@
     "Legal and contract deadlines often have their own rules about whether the first day counts. Check the rules that apply to you.",
     "To count the days between two dates, use the date difference calculator instead."
   ],
-  "updated": "2026-10-29"
+  "updated": "2026-11-22"
 }

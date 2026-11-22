@@ -50,6 +50,23 @@ function addDays({ start, days, includeStart = false }) {
   };
 }
 
+const MILESTONE_DAYS = [100, 200, 300, 500, 1000];
+
+// Dates N days before and after the start, for a quick "100 days ago / 1000 days later" table.
+function milestones({ start, periods = MILESTONE_DAYS, includeStart = false }) {
+  if (parseDate(start) === null) {
+    return { error: 'invalid_date' };
+  }
+  const pick = (days) => {
+    const { date, weekday } = addDays({ start, days, includeStart });
+    return { date, weekday };
+  };
+  return {
+    error: null,
+    rows: periods.map((days) => ({ days, before: pick(-days), after: pick(days) })),
+  };
+}
+
 function ymdParts(time) {
   const date = new Date(time);
   return { year: date.getUTCFullYear(), month: date.getUTCMonth() + 1, day: date.getUTCDate() };
@@ -187,6 +204,6 @@ function leavePay({ monthlyOrdinaryWage, unusedDays }) {
   return { error: null, dailyWage: Math.floor(daily + 1e-9), pay: Math.floor(daily * unusedDays + 1e-9) };
 }
 
-const api = { dateDiff, addDays, koreanAge, dischargeDate, militaryService, annualLeave, leavePay };
+const api = { dateDiff, addDays, milestones, koreanAge, dischargeDate, militaryService, annualLeave, leavePay };
 if (typeof module !== 'undefined') module.exports = api;
 if (typeof window !== 'undefined') window.ToolLogic = Object.assign(window.ToolLogic || {}, api);
