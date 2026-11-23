@@ -1,7 +1,7 @@
 {
   "slug": "date-add",
-  "title": "Add Days to a Date Calculator | Date After N Days",
-  "description": "Add or subtract days from a date to find the date and weekday N days later or earlier. Supports counting the start date as day 1.",
+  "title": "Date Calculator: What Date Is 100 or 1,000 Days From Today?",
+  "description": "Find the date and weekday N days from today or any date, or N days ago. See 100 to 1,000 days before and after at a glance, with anniversary counting.",
   "h1": "Add days to a date",
   "intro": "Find the date that falls a given number of days after or before a start date. Use it for deadlines, countdowns, medication schedules, or anniversaries like \"100 days since we met\".\n\nCounting the start date as day 1 gives a result one day earlier than plain addition. A checkbox lets you choose either way.",
   "howTo": [

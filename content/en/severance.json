@@ -1,7 +1,7 @@
 {
   "slug": "severance",
-  "title": "Severance Pay Calculator | Korean Rules, Estimate",
-  "description": "Enter your start and leaving dates, recent wages, bonuses, and leave pay for an estimate of Korean severance pay.",
+  "title": "Korea Severance Pay Calculator | 30 Days of Pay per Year",
+  "description": "Estimate Korean severance pay (toejikgeum): average daily wage × 30 days for each year worked. Enter your dates and last three months of wages.",
   "h1": "Severance pay calculator",
   "intro": "This Korean severance pay calculator (퇴직금) works out your days employed and the average wage period from your start and leaving dates. It then adds bonuses and unused annual leave pay the way the Korean Ministry of Employment and Labor describes, and shows your average daily wage and estimated severance pay. This calculator follows Korean severance pay rules.\n\nThe actual amount depends on your company rules and pay details. Use this as an estimate only.",
   "howTo": [

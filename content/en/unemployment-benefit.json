@@ -1,7 +1,7 @@
 {
   "slug": "unemployment-benefit",
-  "title": "Korean Unemployment Benefit Calculator | Daily Amount, Days",
-  "description": "Estimate South Korean unemployment benefits (job-seeking allowance): the daily amount, number of benefit days, and total, with the 2026 and 2027 limits.",
+  "title": "Korea Unemployment Benefit Calculator 2026: Daily Amount",
+  "description": "Estimate Korean unemployment benefits: 60% of average daily wage, 66,048 to 68,100 won a day for full-time work in 2026, for 120 to 270 days. 2027 included.",
   "h1": "Korean unemployment benefit calculator",
   "intro": "Estimate the job-seeking allowance (구직급여) paid by South Korea's Employment Insurance: how much per day, for how many days, and in total. The calculator uses your wages for the three months before leaving, the legal daily cap and floor, and the benefit-day table based on age and insured period.\n\nIt covers people who left a job in 2026 or 2027. Your local employment center makes the final decision on eligibility and amount.",
   "howTo": [
