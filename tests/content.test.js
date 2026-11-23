@@ -452,3 +452,8 @@ test('날짜 더하기 페이지에 빠른 입력과 주요 날짜 표 문구가
     assert.match(labels.milestonesCaption, /\{date\}/, `${lang} caption placeholder`);
   }
 });
+
+test('한국어 첫 화면 설명은 네이버 권장 길이(80자) 이내다', () => {
+  const ui = JSON.parse(fs.readFileSync(path.join(ROOT, 'ui', 'ko.json'), 'utf8'));
+  assert.ok(ui.homeDescription.length <= 80, `ko homeDescription ${ui.homeDescription.length}자`);
+});
