@@ -1,9 +1,9 @@
 const TOOL_FORMS = {
   'loan-calculator': {
     inputs: [
-      { id: 'principal', labelKey: 'principalLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
-      { id: 'rate', labelKey: 'rateLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitPercent' },
-      { id: 'months', labelKey: 'monthsLabel', type: 'text', inputmode: 'numeric', unitKey: 'unitMonths' },
+      { id: 'principal', labelKey: 'principalLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon', value: '100,000,000', example: true },
+      { id: 'rate', labelKey: 'rateLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitPercent', value: '4.5', example: true },
+      { id: 'months', labelKey: 'monthsLabel', type: 'text', inputmode: 'numeric', unitKey: 'unitMonths', value: '360', example: true },
       {
         id: 'method',
         labelKey: 'methodLabel',
@@ -26,8 +26,8 @@ const TOOL_FORMS = {
   },
   'date-diff': {
     inputs: [
-      { id: 'start', labelKey: 'startLabel', type: 'date' },
-      { id: 'end', labelKey: 'endLabel', type: 'date' },
+      { id: 'start', labelKey: 'startLabel', type: 'date', value: '2026-01-01', example: true },
+      { id: 'end', labelKey: 'endLabel', type: 'date', value: '2026-12-25', example: true },
     ],
     outputs: [
       { id: 'days', labelKey: 'daysLabel', primary: true },
@@ -39,7 +39,7 @@ const TOOL_FORMS = {
   'date-add': {
     inputs: [
       { id: 'start', labelKey: 'startLabel', type: 'date' },
-      { id: 'days', labelKey: 'daysLabel', type: 'text', inputmode: 'numeric', unitKey: 'unitDays' },
+      { id: 'days', labelKey: 'daysLabel', type: 'text', inputmode: 'numeric', unitKey: 'unitDays', value: '100', example: true },
       { id: 'includeStart', labelKey: 'includeStartLabel', type: 'checkbox' },
     ],
     outputs: [
@@ -52,8 +52,8 @@ const TOOL_FORMS = {
   },
   bmi: {
     inputs: [
-      { id: 'height', labelKey: 'heightLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitCm' },
-      { id: 'weight', labelKey: 'weightLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitKg' },
+      { id: 'height', labelKey: 'heightLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitCm', value: '170', example: true },
+      { id: 'weight', labelKey: 'weightLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitKg', value: '65', example: true },
     ],
     outputs: [
       { id: 'bmi', labelKey: 'resultLabel', primary: true },
@@ -63,9 +63,9 @@ const TOOL_FORMS = {
   },
   severance: {
     inputs: [
-      { id: 'hireDate', labelKey: 'hireDateLabel', type: 'date' },
-      { id: 'leaveDate', labelKey: 'leaveDateLabel', type: 'date' },
-      { id: 'wages', labelKey: 'wagesLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
+      { id: 'hireDate', labelKey: 'hireDateLabel', type: 'date', value: '2023-03-02', example: true },
+      { id: 'leaveDate', labelKey: 'leaveDateLabel', type: 'date', value: '2026-03-01', example: true },
+      { id: 'wages', labelKey: 'wagesLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon', value: '9,000,000', example: true },
       { id: 'annualBonus', labelKey: 'annualBonusLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
       { id: 'annualLeavePay', labelKey: 'annualLeavePayLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
     ],
@@ -128,7 +128,7 @@ const TOOL_FORMS = {
   },
   'take-home-pay': {
     inputs: [
-      { id: 'annualSalary', labelKey: 'annualSalaryLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
+      { id: 'annualSalary', labelKey: 'annualSalaryLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon', value: '40,000,000', example: true },
       { id: 'nonTaxable', labelKey: 'nonTaxableLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon', value: '200,000' },
       { id: 'family', labelKey: 'familyLabel', type: 'text', inputmode: 'numeric', unitKey: 'unitPeople', value: '1' },
       { id: 'children', labelKey: 'childrenLabel', type: 'text', inputmode: 'numeric', unitKey: 'unitPeople', value: '0' },
@@ -149,7 +149,7 @@ const TOOL_FORMS = {
   },
   'annual-leave': {
     inputs: [
-      { id: 'hireDate', labelKey: 'hireDateLabel', type: 'date' },
+      { id: 'hireDate', labelKey: 'hireDateLabel', type: 'date', value: '2024-03-04', example: true },
       { id: 'on', labelKey: 'onLabel', type: 'date', noShare: true },
       { id: 'monthlyWage', labelKey: 'monthlyWageLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
       { id: 'unusedDays', labelKey: 'unusedDaysLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitDays' },
@@ -165,11 +165,12 @@ const TOOL_FORMS = {
   },
   'unemployment-benefit': {
     inputs: [
-      { id: 'lastWorkDay', labelKey: 'lastWorkDayLabel', type: 'date' },
-      { id: 'wages', labelKey: 'wagesLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
+      { id: 'lastWorkDay', labelKey: 'lastWorkDayLabel', type: 'date', value: '2026-10-30', example: true },
+      { id: 'wages', labelKey: 'wagesLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon', value: '9,000,000', example: true },
       { id: 'dailyHours', labelKey: 'dailyHoursLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitHours', value: '8' },
       {
         id: 'insuredBand',
+        value: '1to3',
         labelKey: 'insuredBandLabel',
         type: 'select',
         options: [
@@ -202,8 +203,8 @@ const TOOL_FORMS = {
           { value: 'monthlyToHourly', labelKey: 'modeMonthlyToHourly' },
         ],
       },
-      { id: 'amount', labelKey: 'amountLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon' },
-      { id: 'weeklyHours', labelKey: 'weeklyHoursLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitHours' },
+      { id: 'amount', labelKey: 'amountLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitWon', value: '10,320', example: true },
+      { id: 'weeklyHours', labelKey: 'weeklyHoursLabel', type: 'text', inputmode: 'decimal', unitKey: 'unitHours', value: '40', example: true },
       { id: 'includeHoliday', labelKey: 'includeHolidayLabel', type: 'checkbox', checked: true },
     ],
     outputs: [
@@ -216,7 +217,7 @@ const TOOL_FORMS = {
   },
   'korean-age': {
     inputs: [
-      { id: 'birth', labelKey: 'birthLabel', type: 'date' },
+      { id: 'birth', labelKey: 'birthLabel', type: 'date', value: '2000-05-10', example: true },
       { id: 'on', labelKey: 'onLabel', type: 'date', noShare: true },
     ],
     outputs: [
@@ -229,7 +230,7 @@ const TOOL_FORMS = {
   },
   'discharge-date': {
     inputs: [
-      { id: 'enlist', labelKey: 'enlistLabel', type: 'date' },
+      { id: 'enlist', labelKey: 'enlistLabel', type: 'date', value: '2026-01-15', example: true },
       {
         id: 'branch',
         labelKey: 'branchLabel',
@@ -263,7 +264,7 @@ const TOOL_FORMS = {
           { value: 'sqmToPyeong', labelKey: 'modeSqmToPyeong' },
         ],
       },
-      { id: 'value', labelKey: 'valueLabel', type: 'text', inputmode: 'decimal' },
+      { id: 'value', labelKey: 'valueLabel', type: 'text', inputmode: 'decimal', value: '33', example: true },
     ],
     outputs: [{ id: 'result', labelKey: 'resultLabel', primary: true }],
     errorKeys: ['errorInvalid'],
@@ -281,8 +282,8 @@ const TOOL_FORMS = {
           { value: 'applyChange', labelKey: 'modeApplyChange' },
         ],
       },
-      { id: 'a', labelKey: 'aLabel', type: 'text', inputmode: 'decimal' },
-      { id: 'b', labelKey: 'bLabel', type: 'text', inputmode: 'decimal' },
+      { id: 'a', labelKey: 'aLabel', type: 'text', inputmode: 'decimal', value: '200', example: true },
+      { id: 'b', labelKey: 'bLabel', type: 'text', inputmode: 'decimal', value: '15', example: true },
     ],
     outputs: [{ id: 'result', labelKey: 'resultLabel', primary: true }],
     errorKeys: ['errorInvalid', 'errorDivideByZero'],

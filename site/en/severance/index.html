@@ -26,10 +26,10 @@
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Severance pay calculator","description":"Estimate Korean severance pay (toejikgeum): average daily wage × 30 days for each year worked. Enter your dates and last three months of wages.","url":"https://moatool.com/en/severance/","inLanguage":"en","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"dateModified":"2026-10-29","publisher":{"@id":"https://moatool.com/#organization"}},{"@type":"Organization","@id":"https://moatool.com/#organization","name":"moatool","alternateName":"모아툴","url":"https://moatool.com/","logo":"https://moatool.com/assets/apple-touch-icon.png"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://moatool.com/en/"},{"@type":"ListItem","position":2,"name":"Severance pay calculator","item":"https://moatool.com/en/severance/"}]}]}</script>
-  <link rel="stylesheet" href="/assets/style.css?v=d980c936">
-  <link rel="icon" href="/assets/favicon.svg?v=d980c936" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/style.css?v=6268db92">
+  <link rel="icon" href="/assets/favicon.svg?v=6268db92" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=d980c936">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=6268db92">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -41,24 +41,25 @@
 <main class="tool" data-category="calc">
   <h1>Severance pay calculator</h1>
   <form class="tool-form" id="tool-form">
+    <p class="example-hint">Example values are filled in. Replace them with your own and the result updates right away.</p>
     <div class="field">
   <label for="hireDate">Start date</label>
   <div class="field-row">
-    <input id="hireDate" name="hireDate" type="date">
+    <input id="hireDate" name="hireDate" type="date" value="2023-03-02" data-example>
     
   </div>
 </div>
 <div class="field">
   <label for="leaveDate">Leaving date (the day after your last working day)</label>
   <div class="field-row">
-    <input id="leaveDate" name="leaveDate" type="date">
+    <input id="leaveDate" name="leaveDate" type="date" value="2026-03-01" data-example>
     
   </div>
 </div>
 <div class="field">
   <label for="wages">Total wages, last 3 months (base pay and allowances)</label>
   <div class="field-row">
-    <input id="wages" name="wages" type="text" inputmode="decimal">
+    <input id="wages" name="wages" type="text" inputmode="decimal" value="9,000,000" data-example>
     <span class="unit">KRW</span>
   </div>
 </div>
@@ -164,8 +165,8 @@
   <p><a href="/en/guides/">Guides</a> · <a href="/en/about/">About this site</a> · <a href="/en/contact/">Contact</a> · <a href="/en/privacy/">Privacy policy</a></p>
 </footer>
 <script type="application/json" id="tool-labels">{"hireDateLabel":"Start date","leaveDateLabel":"Leaving date (the day after your last working day)","wagesLabel":"Total wages, last 3 months (base pay and allowances)","annualBonusLabel":"Bonuses paid in the last 12 months (optional)","annualLeavePayLabel":"Unused annual leave pay (optional, leave accrued in the previous year)","unitWon":"KRW","resultLabel":"Estimated severance pay","dailyWageLabel":"Average daily wage","daysWorkedResultLabel":"Days employed","periodLabel":"Average wage period","periodDaysFormat":"{days} days","errorInvalid":"Enter wages, bonuses, and leave pay as numbers of 0 or more.","errorDateOrder":"The leaving date must be after the start date.","noticeUnderOneYear":"With less than one year of service, statutory severance pay does not apply (Ministry of Employment and Labor)."}</script>
-<script src="/assets/logic/finance.js?v=d980c936"></script>
-<script src="/assets/common.js?v=d980c936"></script>
-<script src="/assets/tools/severance.js?v=d980c936" defer></script>
+<script src="/assets/logic/finance.js?v=6268db92"></script>
+<script src="/assets/common.js?v=6268db92"></script>
+<script src="/assets/tools/severance.js?v=6268db92" defer></script>
 </body>
 </html>

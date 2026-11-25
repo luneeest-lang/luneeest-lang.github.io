@@ -197,7 +197,7 @@ function renderField(field, labels) {
   }
   if (field.type === 'select') {
     const options = field.options
-      .map((option) => `<option value="${option.value}">${escapeHtml(labels[option.labelKey])}</option>`)
+      .map((option) => `<option value="${option.value}"${option.value === field.value ? ' selected' : ''}>${escapeHtml(labels[option.labelKey])}</option>`)
       .join('');
     return `<div class="field">
   <label for="${field.id}">${label}</label>
@@ -216,7 +216,7 @@ function renderField(field, labels) {
   return `<div class="field">
   <label for="${field.id}">${label}</label>
   <div class="field-row">
-    <input id="${field.id}" name="${field.id}" type="${type}"${inputmode}${field.value ? ` value="${escapeHtml(field.value)}"` : ''}${field.noShare ? ' data-no-share' : ''}>
+    <input id="${field.id}" name="${field.id}" type="${type}"${inputmode}${field.value ? ` value="${escapeHtml(field.value)}"` : ''}${field.noShare ? ' data-no-share' : ''}${field.example ? ' data-example' : ''}>
     ${unit}
   </div>
 </div>`;
@@ -388,6 +388,10 @@ function renderToolPage({ lang, tool, ui, alternates, origin, relatedGuide, rela
   const form = TOOL_FORMS[tool.slug];
   const labels = tool.labels;
   const inputs = form.inputs.map((field) => renderField(field, labels)).join('\n');
+  // Example values show a result on first load; the hint says they are only examples.
+  const exampleHint = form.inputs.some((field) => field.example)
+    ? `<p class="example-hint">${escapeHtml(ui.exampleHint)}</p>`
+    : '';
   const outputs = form.outputs.map((output) => renderOutput(output, labels, ui)).join('\n');
   return `${head({
     lang,
@@ -423,6 +427,7 @@ ${header({ lang, ui, alternates: alternates.paths })}
 <main class="tool" data-category="${categoryOf(tool.slug)}">
   <h1>${escapeHtml(tool.h1)}</h1>
   <form class="tool-form" id="tool-form">
+    ${exampleHint}
     ${inputs}
     ${form.presets ? renderPresets(form.presets, labels) : ''}
     <div class="results" aria-live="polite">

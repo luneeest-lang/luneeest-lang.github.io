@@ -26,10 +26,10 @@
   <meta property="og:locale" content="ko_KR">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"퍼센트 계산기","description":"A의 B%, A는 B의 몇 %, A에서 B로 몇 % 증감했는지, A에서 B% 늘리거나 줄인 값을 바로 계산합니다. 할인율, 상승률 계산에 쓰세요.","url":"https://moatool.com/ko/percent/","inLanguage":"ko","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"dateModified":"2026-10-29","publisher":{"@id":"https://moatool.com/#organization"}},{"@type":"Organization","@id":"https://moatool.com/#organization","name":"moatool","alternateName":"모아툴","url":"https://moatool.com/","logo":"https://moatool.com/assets/apple-touch-icon.png"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://moatool.com/ko/"},{"@type":"ListItem","position":2,"name":"퍼센트 계산기","item":"https://moatool.com/ko/percent/"}]}]}</script>
-  <link rel="stylesheet" href="/assets/style.css?v=d980c936">
-  <link rel="icon" href="/assets/favicon.svg?v=d980c936" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/style.css?v=6268db92">
+  <link rel="icon" href="/assets/favicon.svg?v=6268db92" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=d980c936">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=6268db92">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -41,6 +41,7 @@
 <main class="tool" data-category="calc">
   <h1>퍼센트 계산기</h1>
   <form class="tool-form" id="tool-form">
+    <p class="example-hint">예시 값이 미리 들어 있습니다. 내 값으로 바꾸면 결과가 바로 다시 계산됩니다.</p>
     <div class="field">
   <label for="mode">계산 종류</label>
   <select id="mode" name="mode"><option value="percentOf">A의 B%는? (예: 200의 15%)</option><option value="whatPercent">A는 B의 몇 %? (예: 30은 200의 몇 %)</option><option value="change">A에서 B로 변하면 몇 % 증감? (증감률)</option><option value="applyChange">A에서 B% 늘리면(줄이면)? (줄일 때는 B에 음수)</option></select>
@@ -48,14 +49,14 @@
 <div class="field">
   <label for="a">값 A</label>
   <div class="field-row">
-    <input id="a" name="a" type="text" inputmode="decimal">
+    <input id="a" name="a" type="text" inputmode="decimal" value="200" data-example>
     
   </div>
 </div>
 <div class="field">
   <label for="b">값 B</label>
   <div class="field-row">
-    <input id="b" name="b" type="text" inputmode="decimal">
+    <input id="b" name="b" type="text" inputmode="decimal" value="15" data-example>
     
   </div>
 </div>
@@ -127,8 +128,8 @@
   <p><a href="/ko/guides/">가이드</a> · <a href="/ko/about/">사이트 소개</a> · <a href="/ko/contact/">문의</a> · <a href="/ko/privacy/">개인정보처리방침</a></p>
 </footer>
 <script type="application/json" id="tool-labels">{"modeLabel":"계산 종류","modePercentOf":"A의 B%는? (예: 200의 15%)","modeWhatPercent":"A는 B의 몇 %? (예: 30은 200의 몇 %)","modeChange":"A에서 B로 변하면 몇 % 증감? (증감률)","modeApplyChange":"A에서 B% 늘리면(줄이면)? (줄일 때는 B에 음수)","aLabel":"값 A","bLabel":"값 B","resultLabel":"결과","errorInvalid":"숫자를 입력해 주세요.","errorDivideByZero":"0으로 나눌 수 없습니다. 기준이 되는 값을 0이 아닌 수로 입력해 주세요."}</script>
-<script src="/assets/logic/units.js?v=d980c936"></script>
-<script src="/assets/common.js?v=d980c936"></script>
-<script src="/assets/tools/percent.js?v=d980c936" defer></script>
+<script src="/assets/logic/units.js?v=6268db92"></script>
+<script src="/assets/common.js?v=6268db92"></script>
+<script src="/assets/tools/percent.js?v=6268db92" defer></script>
 </body>
 </html>

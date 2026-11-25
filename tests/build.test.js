@@ -520,7 +520,8 @@ test('계산기에는 결과 링크 복사 버튼이 있고 텍스트 도구에�
 test('기준일 입력은 공유 링크에서 빠진다', () => {
   assert.match(read('ko/discharge-date/index.html'), /<input id="on" name="on" type="date" data-no-share>/);
   assert.match(read('ko/korean-age/index.html'), /<input id="on" name="on" type="date" data-no-share>/);
-  assert.match(read('ko/discharge-date/index.html'), /<input id="enlist" name="enlist" type="date">/);
+  assert.match(read('ko/discharge-date/index.html'), /<input id="enlist" name="enlist" type="date"/);
+  assert.doesNotMatch(read('ko/discharge-date/index.html'), /<input id="enlist"[^>]*data-no-share/);
 });
 
 test('새 가이드가 도구와 연결되고 만 나이 가이드는 두 언어가 짝을 이룬다', () => {
@@ -825,4 +826,40 @@ test('실제 설정의 IndexNow 키 파일이 배포 결과에 들어간다', ()
   const { indexNowKey } = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
   assert.match(indexNowKey, /^[0-9a-f]{32}$/);
   assert.equal(read(`${indexNowKey}.txt`), indexNowKey);
+});
+
+const EXAMPLE_FIELDS = {
+  'take-home-pay': 'annualSalary',
+  'loan-calculator': 'principal',
+  severance: 'wages',
+  'unemployment-benefit': 'wages',
+  'annual-leave': 'hireDate',
+  'hourly-wage': 'amount',
+  'date-diff': 'start',
+  'date-add': 'days',
+  'korean-age': 'birth',
+  'discharge-date': 'enlist',
+  bmi: 'height',
+  pyeong: 'value',
+  percent: 'a',
+};
+
+test('계산기는 처음 열 때 결과가 보이도록 예시 값과 안내 문구를 갖는다', () => {
+  for (const lang of ['ko', 'en']) {
+    for (const [slug, id] of Object.entries(EXAMPLE_FIELDS)) {
+      const page = read(`${lang}/${slug}/index.html`);
+      assert.match(page, new RegExp(`<input id="${id}"[^>]* value="[^"]+"[^>]* data-example`), `${lang} ${slug} ${id}`);
+      assert.match(page, /<p class="example-hint">[^<]+<\/p>/, `${lang} ${slug} hint`);
+    }
+  }
+});
+
+test('예시 값이 없는 도구에는 안내 문구가 없다', () => {
+  for (const slug of ['char-count', 'case-convert', 'dedupe-lines', 'line-cleanup']) {
+    assert.doesNotMatch(read(`ko/${slug}/index.html`), /class="example-hint"/, slug);
+  }
+});
+
+test('선택 칸도 예시 값을 미리 고를 수 있다', () => {
+  assert.match(read('ko/unemployment-benefit/index.html'), /<option value="1to3" selected>/);
 });

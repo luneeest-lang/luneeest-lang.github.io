@@ -457,3 +457,10 @@ test('한국어 첫 화면 설명은 네이버 권장 길이(80자) 이내다', 
   const ui = JSON.parse(fs.readFileSync(path.join(ROOT, 'ui', 'ko.json'), 'utf8'));
   assert.ok(ui.homeDescription.length <= 80, `ko homeDescription ${ui.homeDescription.length}자`);
 });
+
+test('예시 값 안내 문구가 두 언어에 있다', () => {
+  for (const lang of LANGS) {
+    const ui = JSON.parse(fs.readFileSync(path.join(ROOT, 'ui', `${lang}.json`), 'utf8'));
+    assert.ok(ui.exampleHint && ui.exampleHint.length > 10, `${lang} exampleHint`);
+  }
+});

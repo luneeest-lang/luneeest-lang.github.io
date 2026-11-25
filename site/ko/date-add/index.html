@@ -26,10 +26,10 @@
   <meta property="og:locale" content="ko_KR">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"날짜 더하기 계산기","description":"오늘부터 100일 후, 1000일 전처럼 기준 날짜에서 며칠 후·며칠 전 날짜와 요일을 계산합니다. 100일, 1000일 기념일처럼 시작일을 1일로 세는 방식도 지원합니다.","url":"https://moatool.com/ko/date-add/","inLanguage":"ko","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"dateModified":"2026-11-22","publisher":{"@id":"https://moatool.com/#organization"}},{"@type":"Organization","@id":"https://moatool.com/#organization","name":"moatool","alternateName":"모아툴","url":"https://moatool.com/","logo":"https://moatool.com/assets/apple-touch-icon.png"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://moatool.com/ko/"},{"@type":"ListItem","position":2,"name":"날짜 더하기 계산기","item":"https://moatool.com/ko/date-add/"}]}]}</script>
-  <link rel="stylesheet" href="/assets/style.css?v=d980c936">
-  <link rel="icon" href="/assets/favicon.svg?v=d980c936" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/style.css?v=6268db92">
+  <link rel="icon" href="/assets/favicon.svg?v=6268db92" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=d980c936">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=6268db92">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -41,6 +41,7 @@
 <main class="tool" data-category="calc">
   <h1>날짜 더하기 계산기</h1>
   <form class="tool-form" id="tool-form">
+    <p class="example-hint">예시 값이 미리 들어 있습니다. 내 값으로 바꾸면 결과가 바로 다시 계산됩니다.</p>
     <div class="field">
   <label for="start">기준 날짜</label>
   <div class="field-row">
@@ -51,7 +52,7 @@
 <div class="field">
   <label for="days">더할 일수</label>
   <div class="field-row">
-    <input id="days" name="days" type="text" inputmode="numeric">
+    <input id="days" name="days" type="text" inputmode="numeric" value="100" data-example>
     <span class="unit">일</span>
   </div>
 </div>
@@ -146,8 +147,8 @@
   <p><a href="/ko/guides/">가이드</a> · <a href="/ko/about/">사이트 소개</a> · <a href="/ko/contact/">문의</a> · <a href="/ko/privacy/">개인정보처리방침</a></p>
 </footer>
 <script type="application/json" id="tool-labels">{"startLabel":"기준 날짜","daysLabel":"더할 일수","unitDays":"일","includeStartLabel":"시작일을 1일로 세기 (기념일 방식)","resultDateLabel":"결과 날짜","weekdayLabel":"요일","errorInvalidDate":"올바른 날짜를 입력해 주세요.","errorInvalidDays":"일수는 -100,000에서 100,000 사이의 정수로 입력해 주세요.","presetsLabel":"자주 쓰는 일수","milestonesHeading":"100일·1000일 전후 날짜 한눈에 보기","milestonesCaption":"{date} 기준","colPeriod":"기간","colBefore":"며칠 전","colAfter":"며칠 후"}</script>
-<script src="/assets/logic/date.js?v=d980c936"></script>
-<script src="/assets/common.js?v=d980c936"></script>
-<script src="/assets/tools/date-add.js?v=d980c936" defer></script>
+<script src="/assets/logic/date.js?v=6268db92"></script>
+<script src="/assets/common.js?v=6268db92"></script>
+<script src="/assets/tools/date-add.js?v=6268db92" defer></script>
 </body>
 </html>

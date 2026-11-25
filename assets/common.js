@@ -122,7 +122,11 @@
     const params = new URLSearchParams(location.hash.slice(1));
     let restored = false;
     for (const field of formFields()) {
-      if (!params.has(field.id)) continue;
+      if (!params.has(field.id)) {
+        // A shared link leaves out fields the sender cleared, so drop the example value there.
+        if ('example' in field.dataset && params.size > 0) field.value = '';
+        continue;
+      }
       if (field.type === 'checkbox') {
         field.checked = params.get(field.id) === '1';
       } else {
@@ -158,6 +162,15 @@
   });
 
   restoreFromHash();
+
+  // The first click on an example value selects it, so typing replaces it.
+  document.addEventListener('focusin', (event) => {
+    const field = event.target;
+    if (!field.matches || !field.matches('input[type="text"][data-example]')) return;
+    if (field.dataset.touched) return;
+    field.dataset.touched = '1';
+    setTimeout(() => field.select(), 0);
+  });
 
   window.ToolUI = {
     label,

@@ -321,6 +321,12 @@ textarea {
   letter-spacing: -0.02em;
 }
 
+.example-hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
 .presets {
   display: flex;
   flex-wrap: wrap;
@@ -623,6 +629,7 @@ textarea {
     padding: 32px;
   }
 
+  .tool-form > .example-hint,
   .tool-form > .field,
   .tool-form > .field-check,
   .tool-form > .presets {
