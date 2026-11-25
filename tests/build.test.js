@@ -863,3 +863,51 @@ test('예시 값이 없는 도구에는 안내 문구가 없다', () => {
 test('선택 칸도 예시 값을 미리 고를 수 있다', () => {
   assert.match(read('ko/unemployment-benefit/index.html'), /<option value="1to3" selected>/);
 });
+
+function refSection(page, name) {
+  const m = page.match(new RegExp(`<section class="ref-table" id="${name}">([\\s\\S]*?)</section>`));
+  assert.ok(m, `section ${name}`);
+  return m[1];
+}
+
+test('전역일 계산기에 입대 월별 전역 예정일 표가 있다', () => {
+  for (const lang of ['ko', 'en']) {
+    const s = refSection(read(`${lang}/discharge-date/index.html`), 'discharge-table');
+    assert.match(s, /<h2>[^<]+<\/h2>/, lang);
+    assert.equal((s.match(/<tr>/g) || []).length, 13, `${lang} header + 12 months`);
+    assert.match(s, /2027-07-14/, `${lang} army`);
+    assert.match(s, /2027-09-14/, `${lang} navy`);
+    assert.match(s, /2027-10-14/, `${lang} air force`);
+  }
+});
+
+test('만 나이 계산기에 출생 연도별 나이표가 있다', () => {
+  for (const lang of ['ko', 'en']) {
+    const s = refSection(read(`${lang}/korean-age/index.html`), 'age-table');
+    assert.match(s, /<td>2000<\/td><td>25 \/ 26<\/td><td>26 \/ 27<\/td><td>26<\/td>/, lang);
+    assert.match(s, /<td>1960<\/td>/, `${lang} oldest`);
+    assert.match(s, /<td>2015<\/td>/, `${lang} youngest`);
+  }
+});
+
+test('실업급여 계산기에 받는 기간 표와 근무시간별 하한액 표가 있다', () => {
+  for (const lang of ['ko', 'en']) {
+    const page = read(`${lang}/unemployment-benefit/index.html`);
+    const days = refSection(page, 'benefit-days-table');
+    assert.equal((days.match(/<tr>/g) || []).length, 6, `${lang} header + 5 bands`);
+    assert.match(days, /<td>150<\/td><td>180<\/td>/, `${lang} 1-3 years`);
+    assert.match(days, /<td>240<\/td><td>270<\/td>/, `${lang} 10+ years`);
+    const floor = refSection(page, 'benefit-floor-table');
+    assert.match(floor, /66,048/, `${lang} 2026 8h`);
+    assert.match(floor, /68,480/, `${lang} 2027 8h`);
+    assert.match(floor, /33,024/, `${lang} 2026 4h`);
+  }
+});
+
+test('퇴직금 계산기에 월급·근속연수별 예상액 표가 있다', () => {
+  for (const lang of ['ko', 'en']) {
+    const s = refSection(read(`${lang}/severance/index.html`), 'severance-table');
+    assert.match(s, /2,934,783/, `${lang} 3M won 1 year`);
+    assert.match(s, /8,812,388/, `${lang} 3M won 3 years`);
+  }
+});

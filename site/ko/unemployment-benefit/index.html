@@ -25,11 +25,11 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="ko_KR">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"실업급여 계산기","description":"마지막 근무일과 퇴사 전 3개월 임금, 나이, 고용보험 가입기간을 넣으면 구직급여 하루 금액과 받을 수 있는 일수, 총액을 계산합니다. 2026·2027년 상한액과 하한액을 반영합니다.","url":"https://moatool.com/ko/unemployment-benefit/","inLanguage":"ko","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"dateModified":"2026-11-04","publisher":{"@id":"https://moatool.com/#organization"}},{"@type":"Organization","@id":"https://moatool.com/#organization","name":"moatool","alternateName":"모아툴","url":"https://moatool.com/","logo":"https://moatool.com/assets/apple-touch-icon.png"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://moatool.com/ko/"},{"@type":"ListItem","position":2,"name":"실업급여 계산기","item":"https://moatool.com/ko/unemployment-benefit/"}]}]}</script>
-  <link rel="stylesheet" href="/assets/style.css?v=6268db92">
-  <link rel="icon" href="/assets/favicon.svg?v=6268db92" type="image/svg+xml">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"실업급여 계산기","description":"마지막 근무일과 퇴사 전 3개월 임금, 나이, 고용보험 가입기간을 넣으면 구직급여 하루 금액과 받을 수 있는 일수, 총액을 계산합니다. 2026·2027년 상한액과 하한액을 반영합니다.","url":"https://moatool.com/ko/unemployment-benefit/","inLanguage":"ko","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"dateModified":"2026-11-25","publisher":{"@id":"https://moatool.com/#organization"}},{"@type":"Organization","@id":"https://moatool.com/#organization","name":"moatool","alternateName":"모아툴","url":"https://moatool.com/","logo":"https://moatool.com/assets/apple-touch-icon.png"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://moatool.com/ko/"},{"@type":"ListItem","position":2,"name":"실업급여 계산기","item":"https://moatool.com/ko/unemployment-benefit/"}]}]}</script>
+  <link rel="stylesheet" href="/assets/style.css?v=866dfe7d">
+  <link rel="icon" href="/assets/favicon.svg?v=866dfe7d" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=6268db92">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=866dfe7d">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4375672351563367" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -106,6 +106,30 @@
   
   
   
+  <section class="ref-table" id="benefit-days-table">
+    <h2>고용보험 가입기간·나이별 받는 기간 (일)</h2>
+    <p>실업급여를 받을 수 있는 날수(소정급여일수)입니다. 퇴직 당시 나이를 기준으로 하며, 고용보험법 별표 1을 따릅니다.</p>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th scope="col">고용보험 가입기간</th><th scope="col">50세 미만</th><th scope="col">50세 이상·장애인</th></tr></thead>
+      <tbody><tr><td>1년 미만</td><td>120</td><td>120</td></tr>
+<tr><td>1년 이상 3년 미만</td><td>150</td><td>180</td></tr>
+<tr><td>3년 이상 5년 미만</td><td>180</td><td>210</td></tr>
+<tr><td>5년 이상 10년 미만</td><td>210</td><td>240</td></tr>
+<tr><td>10년 이상</td><td>240</td><td>270</td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="ref-table" id="benefit-floor-table">
+    <h2>하루 근무시간별 실업급여 하한액 (원)</h2>
+    <p>평균임금의 60%가 이 금액보다 적으면 이 금액을 받습니다. 최저임금 × 하루 근무시간 × 80%로 정해집니다(고용보험법 제46조).</p>
+    <div class="table-wrap"><table class="data-table">
+      <thead><tr><th scope="col">하루 근무시간</th><th scope="col">2026년 퇴직</th><th scope="col">2027년 퇴직</th></tr></thead>
+      <tbody><tr><td>8시간</td><td>66,048</td><td>68,480</td></tr>
+<tr><td>7시간</td><td>57,792</td><td>59,920</td></tr>
+<tr><td>6시간</td><td>49,536</td><td>51,360</td></tr>
+<tr><td>5시간</td><td>41,280</td><td>42,800</td></tr>
+<tr><td>4시간</td><td>33,024</td><td>34,240</td></tr></tbody>
+    </table></div>
+  </section>
   <div class="intro"><p>실업급여(구직급여)를 하루에 얼마씩, 며칠 동안, 모두 얼마나 받을 수 있는지 계산합니다. 퇴사 전 3개월 동안 받은 임금으로 평균임금을 구하고, 법에서 정한 상한액과 하한액, 나이와 고용보험 가입기간에 따른 지급일수를 적용합니다.</p>
 <p>2026년과 2027년에 이직한 경우를 계산할 수 있습니다. 실제 수급 자격과 금액은 고용센터에서 최종 확인됩니다.</p></div>
   <section class="howto">
@@ -157,15 +181,15 @@
     <h2>참고 자료</h2>
     <ul><li><a href="https://www.moel.go.kr/faq/faqView.do?seqRepeat=204" target="_blank" rel="noopener noreferrer">고용노동부: 실업급여의 지급기간 및 지급금액 (소정급여일수표)</a></li><li><a href="https://www.law.go.kr/법령/고용보험법" target="_blank" rel="noopener noreferrer">국가법령정보센터: 고용보험법 (제40조 수급 요건, 제46조 구직급여일액, 별표 1)</a></li><li><a href="https://www.law.go.kr/법령/고용보험법시행령" target="_blank" rel="noopener noreferrer">국가법령정보센터: 고용보험법 시행령 (제68조 급여기초 임금일액의 상한액)</a></li><li><a href="https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=19744" target="_blank" rel="noopener noreferrer">고용노동부: 2027년도 적용 최저임금 시간급 10,700원 (보도자료)</a></li><li><a href="https://www.etoday.co.kr/news/view/2620387" target="_blank" rel="noopener noreferrer">이투데이: 구직급여 상한액 축소·지급기간 연장 개편안 보도 (2026년 9월)</a></li></ul>
   </section>
-  <p class="updated">최종 수정일: 2026-11-04</p>
+  <p class="updated">최종 수정일: 2026-11-25</p>
 </main>
 <footer class="site-footer">
   <p>입력하신 값은 저장되거나 서버로 전송되지 않습니다. 광고 서비스는 쿠키를 사용할 수 있습니다.</p>
   <p><a href="/ko/guides/">가이드</a> · <a href="/ko/about/">사이트 소개</a> · <a href="/ko/contact/">문의</a> · <a href="/ko/privacy/">개인정보처리방침</a></p>
 </footer>
-<script type="application/json" id="tool-labels">{"lastWorkDayLabel":"마지막 근무일 (이직일)","wagesLabel":"퇴사 전 3개월 임금 총액 (세전)","dailyHoursLabel":"1일 소정근로시간","insuredBandLabel":"고용보험 가입기간","bandUnder1":"1년 미만","band1to3":"1년 이상 3년 미만","band3to5":"3년 이상 5년 미만","band5to10":"5년 이상 10년 미만","band10plus":"10년 이상","olderOrDisabledLabel":"이직일 기준 50세 이상 또는 장애인","unitWon":"원","unitHours":"시간","wonFormat":"{n}원","daysFormat":"{n}일","dailyBenefitLabel":"구직급여 하루 금액","benefitDaysLabel":"받을 수 있는 일수","totalLabel":"총 예상 수령액","monthlyLabel":"한 달(30일) 기준","basisLabel":"계산 근거","basisRate":"평균임금 하루 {avg}의 60% ({start}~{end}, {days}일 기준)","basisCap":"평균임금 하루 {avg}이 상한(113,500원)을 넘어 상한액 적용","basisFloor":"60% 금액이 하한액보다 낮아 하한액 적용 (최저임금 {wage} × 근로시간 × 80%)","errorInvalidDate":"올바른 날짜를 입력해 주세요.","errorUnsupportedYear":"2026년 1월 1일 이후 이직한 경우만 계산할 수 있습니다.","errorInvalidWages":"3개월 임금 총액을 0보다 큰 숫자로 입력해 주세요.","errorInvalidHours":"1일 소정근로시간은 0보다 크고 8 이하로 입력해 주세요."}</script>
-<script src="/assets/logic/finance.js?v=6268db92"></script>
-<script src="/assets/common.js?v=6268db92"></script>
-<script src="/assets/tools/unemployment-benefit.js?v=6268db92" defer></script>
+<script type="application/json" id="tool-labels">{"lastWorkDayLabel":"마지막 근무일 (이직일)","wagesLabel":"퇴사 전 3개월 임금 총액 (세전)","dailyHoursLabel":"1일 소정근로시간","insuredBandLabel":"고용보험 가입기간","bandUnder1":"1년 미만","band1to3":"1년 이상 3년 미만","band3to5":"3년 이상 5년 미만","band5to10":"5년 이상 10년 미만","band10plus":"10년 이상","olderOrDisabledLabel":"이직일 기준 50세 이상 또는 장애인","unitWon":"원","unitHours":"시간","wonFormat":"{n}원","daysFormat":"{n}일","dailyBenefitLabel":"구직급여 하루 금액","benefitDaysLabel":"받을 수 있는 일수","totalLabel":"총 예상 수령액","monthlyLabel":"한 달(30일) 기준","basisLabel":"계산 근거","basisRate":"평균임금 하루 {avg}의 60% ({start}~{end}, {days}일 기준)","basisCap":"평균임금 하루 {avg}이 상한(113,500원)을 넘어 상한액 적용","basisFloor":"60% 금액이 하한액보다 낮아 하한액 적용 (최저임금 {wage} × 근로시간 × 80%)","errorInvalidDate":"올바른 날짜를 입력해 주세요.","errorUnsupportedYear":"2026년 1월 1일 이후 이직한 경우만 계산할 수 있습니다.","errorInvalidWages":"3개월 임금 총액을 0보다 큰 숫자로 입력해 주세요.","errorInvalidHours":"1일 소정근로시간은 0보다 크고 8 이하로 입력해 주세요.","daysTableHeading":"고용보험 가입기간·나이별 받는 기간 (일)","daysTableNote":"실업급여를 받을 수 있는 날수(소정급여일수)입니다. 퇴직 당시 나이를 기준으로 하며, 고용보험법 별표 1을 따릅니다.","colInsuredPeriod":"고용보험 가입기간","colUnder50":"50세 미만","colOver50":"50세 이상·장애인","floorTableHeading":"하루 근무시간별 실업급여 하한액 (원)","floorTableNote":"평균임금의 60%가 이 금액보다 적으면 이 금액을 받습니다. 최저임금 × 하루 근무시간 × 80%로 정해집니다(고용보험법 제46조).","colDailyHours":"하루 근무시간","col2026":"2026년 퇴직","col2027":"2027년 퇴직","hoursFormat":"{n}시간"}</script>
+<script src="/assets/logic/finance.js?v=866dfe7d"></script>
+<script src="/assets/common.js?v=866dfe7d"></script>
+<script src="/assets/tools/unemployment-benefit.js?v=866dfe7d" defer></script>
 </body>
 </html>

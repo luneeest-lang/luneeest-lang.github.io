@@ -120,11 +120,14 @@
   function restoreFromHash() {
     if (location.hash.length < 2) return false;
     const params = new URLSearchParams(location.hash.slice(1));
+    const fields = formFields();
+    // Only a shared result link carries calculator inputs; a plain anchor such as #age-table does not.
+    if (!fields.some((field) => params.has(field.id))) return false;
     let restored = false;
-    for (const field of formFields()) {
+    for (const field of fields) {
       if (!params.has(field.id)) {
         // A shared link leaves out fields the sender cleared, so drop the example value there.
-        if ('example' in field.dataset && params.size > 0) field.value = '';
+        if ('example' in field.dataset) field.value = '';
         continue;
       }
       if (field.type === 'checkbox') {

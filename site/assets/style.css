@@ -438,7 +438,17 @@ textarea {
   background: var(--surface-1);
 }
 
+.ref-table {
+  margin-top: 24px;
+}
+
+#age-table .table-wrap {
+  margin: 12px 0 8px;
+  max-height: 420px;
+}
+
 .salary-table .table-wrap,
+.ref-table .table-wrap,
 .guide .table-wrap {
   margin: 12px 0 8px;
   max-height: none;

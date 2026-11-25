@@ -1,5 +1,7 @@
 const { TOOL_FORMS, CALC_SLUGS, TEXT_SLUGS } = require('./forms');
 const { takeHomePay } = require('../../src/logic/salary');
+const { dischargeDate, koreanAge } = require('../../src/logic/date');
+const { severancePeriod, severancePay, unemploymentBenefit } = require('../../src/logic/finance');
 
 function categoryOf(slug) {
   return CALC_SLUGS.includes(slug) ? 'calc' : 'text';
@@ -439,6 +441,7 @@ ${header({ lang, ui, alternates: alternates.paths })}
   ${form.schedule ? renderSchedule(labels) : ''}
   ${form.milestones ? renderMilestones(labels) : ''}
   ${form.salaryTable ? renderSalaryTable(tool, lang) : ''}
+  ${(form.refTables || []).map((name) => renderRefTable(name, tool, lang)).join('\n  ')}
   <div class="intro">${paragraphs(tool.intro)}</div>
   <section class="howto">
     <h2>${escapeHtml(ui.howToHeading)}</h2>
@@ -547,6 +550,84 @@ function renderSalaryTable(tool, lang) {
     <h2>${escapeHtml(labels.salaryTableHeading)}</h2>
     <p>${escapeHtml(labels.salaryTableNote)}</p>
     ${dataTable([labels.colSalary, labels.colMonthlyNet, labels.colDeduction, labels.colAnnualNet], rows)}
+  </section>`;
+}
+
+// Reference tables computed at build time with the calculators' own logic,
+// so the numbers always match what the calculator shows.
+function numberFormat(lang) {
+  return new Intl.NumberFormat(lang === 'ko' ? 'ko-KR' : 'en-US');
+}
+
+function dateWithWeekday(ymd, lang) {
+  const weekday = new Intl.DateTimeFormat(lang, { weekday: 'short', timeZone: 'UTC' }).format(new Date(`${ymd}T00:00:00Z`));
+  return `${ymd} (${weekday})`;
+}
+
+const REF_TABLES = {
+  'discharge-table': (labels, lang) => ({
+    prefix: 'dischargeTable',
+    headers: [labels.colEnlist, labels.colArmyMarine, labels.colNavy, labels.colAirSocial],
+    rows: Array.from({ length: 12 }, (_, i) => {
+      const enlist = `2026-${String(i + 1).padStart(2, '0')}-15`;
+      return [enlist, ...[18, 20, 21].map((months) => dateWithWeekday(dischargeDate({ enlist, months }), lang))];
+    }),
+  }),
+  'age-table': (labels) => ({
+    prefix: 'ageTable',
+    headers: [labels.colBirthYear, labels.colManAge2026, labels.colManAge2027, labels.colYearAge2026],
+    rows: Array.from({ length: 56 }, (_, i) => 2015 - i).map((year) => {
+      const range = (on) => {
+        const before = koreanAge({ birth: `${year}-12-31`, on: `${on}-01-01` }).manAge;
+        const after = koreanAge({ birth: `${year}-01-01`, on: `${on}-12-31` }).manAge;
+        return `${before} / ${after}`;
+      };
+      return [String(year), range(2026), range(2027), String(koreanAge({ birth: `${year}-01-01`, on: '2026-06-30' }).yearAge)];
+    }),
+  }),
+  'benefit-days-table': (labels) => ({
+    prefix: 'daysTable',
+    headers: [labels.colInsuredPeriod, labels.colUnder50, labels.colOver50],
+    rows: ['under1', '1to3', '3to5', '5to10', '10plus'].map((band) => {
+      const days = (olderOrDisabled) =>
+        String(unemploymentBenefit({ lastWorkDay: '2026-11-30', wagesLast3Months: 9000000, dailyHours: 8, olderOrDisabled, insuredBand: band }).benefitDays);
+      const key = { under1: 'bandUnder1', '1to3': 'band1to3', '3to5': 'band3to5', '5to10': 'band5to10', '10plus': 'band10plus' }[band];
+      return [labels[key], days(false), days(true)];
+    }),
+  }),
+  'benefit-floor-table': (labels, lang) => ({
+    prefix: 'floorTable',
+    headers: [labels.colDailyHours, labels.col2026, labels.col2027],
+    rows: [8, 7, 6, 5, 4].map((dailyHours) => {
+      const floor = (lastWorkDay) =>
+        numberFormat(lang).format(unemploymentBenefit({ lastWorkDay, wagesLast3Months: 1, dailyHours, olderOrDisabled: false, insuredBand: 'under1' }).dailyBenefit);
+      return [labels.hoursFormat.replace('{n}', dailyHours), floor('2026-11-30'), floor('2027-06-30')];
+    }),
+  }),
+  'severance-table': (labels, lang) => {
+    const years = [1, 3, 5, 10];
+    return {
+      prefix: 'severanceTable',
+      headers: [labels.colMonthlyWage, ...years.map((n) => labels.yearsFormat.replace('{n}', n))],
+      rows: [2500000, 3000000, 3500000, 4000000, 5000000].map((monthly) => [
+        numberFormat(lang).format(monthly),
+        ...years.map((n) => {
+          const period = severancePeriod({ hireDate: `${2027 - n}-01-01`, leaveDate: '2027-01-01' });
+          const pay = severancePay({ wagesLast3Months: monthly * 3, daysLast3Months: period.daysLast3Months, daysWorked: period.daysWorked });
+          return numberFormat(lang).format(pay.severance);
+        }),
+      ]),
+    };
+  },
+};
+
+function renderRefTable(name, tool, lang) {
+  const labels = tool.labels;
+  const table = REF_TABLES[name](labels, lang);
+  return `<section class="ref-table" id="${name}">
+    <h2>${escapeHtml(labels[`${table.prefix}Heading`])}</h2>
+    <p>${escapeHtml(labels[`${table.prefix}Note`])}</p>
+    ${dataTable(table.headers, table.rows)}
   </section>`;
 }
 

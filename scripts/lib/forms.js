@@ -76,6 +76,7 @@ const TOOL_FORMS = {
       { id: 'period', labelKey: 'periodLabel' },
     ],
     errorKeys: ['errorInvalid', 'errorDateOrder', 'noticeUnderOneYear'],
+    refTables: ['severance-table'],
   },
   'char-count': {
     inputs: [{ id: 'text', labelKey: 'inputLabel', type: 'textarea' }],
@@ -191,6 +192,7 @@ const TOOL_FORMS = {
       { id: 'basis', labelKey: 'basisLabel' },
     ],
     errorKeys: ['errorInvalidDate', 'errorUnsupportedYear', 'errorInvalidWages', 'errorInvalidHours'],
+    refTables: ['benefit-days-table', 'benefit-floor-table'],
   },
   'hourly-wage': {
     inputs: [
@@ -227,6 +229,7 @@ const TOOL_FORMS = {
       { id: 'daysToBirthday', labelKey: 'daysToBirthdayLabel' },
     ],
     errorKeys: ['errorInvalidDate', 'errorBirthAfterBase'],
+    refTables: ['age-table'],
   },
   'discharge-date': {
     inputs: [
@@ -252,6 +255,7 @@ const TOOL_FORMS = {
       { id: 'percent', labelKey: 'percentLabel' },
     ],
     errorKeys: ['errorInvalidDate'],
+    refTables: ['discharge-table'],
   },
   pyeong: {
     inputs: [

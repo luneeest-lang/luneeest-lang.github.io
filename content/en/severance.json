@@ -38,7 +38,11 @@
     "periodDaysFormat": "{days} days",
     "errorInvalid": "Enter wages, bonuses, and leave pay as numbers of 0 or more.",
     "errorDateOrder": "The leaving date must be after the start date.",
-    "noticeUnderOneYear": "With less than one year of service, statutory severance pay does not apply (Ministry of Employment and Labor)."
+    "noticeUnderOneYear": "With less than one year of service, statutory severance pay does not apply (Ministry of Employment and Labor).",
+    "severanceTableHeading": "Estimated severance by monthly wage and years worked (won)",
+    "severanceTableNote": "Calculator results assuming you leave after working through December 31, 2026, received the same monthly wage for the last three months, and had no bonuses or leave pay. Actual amounts depend on what counts toward your average wage.",
+    "colMonthlyWage": "Monthly wage",
+    "yearsFormat": "{n} yr"
   },
   "formula": "The Korean Ministry of Employment and Labor gives this formula:\n\nSeverance pay = average daily wage × 30 days × (days employed ÷ 365)\n\nThe average daily wage is your total wages for the three months before your leaving date, divided by the calendar days in those months. For example, if you leave on July 16, the period is April 16 to July 15. Bonuses paid in the 12 months before you leave, and unused annual leave pay for leave accrued in the previous year, are each added at 3/12.\n\nIf the result is lower than your ordinary wage (통상임금), the ordinary wage is used instead.",
   "example": "If you started on July 16, 2023 and leave on July 16, 2026 (last working day July 15), you were employed for 1,096 days, and the average wage period is April 16 to July 15, 2026, which is 91 days.\n\nWith wages of 9,000,000 in that period, the average daily wage is about 98,901 and the estimated severance pay is 8,909,228. Adding 4,000,000 in bonuses and 1,200,000 in leave pay contributes 1,000,000 and 300,000 (3/12 of each), so the average daily wage becomes about 113,187 and the estimated severance pay 10,196,116.",
@@ -77,5 +81,5 @@
       "url": "https://www.law.go.kr/법령/근로자퇴직급여보장법"
     }
   ],
-  "updated": "2026-10-29"
+  "updated": "2026-11-25"
 }

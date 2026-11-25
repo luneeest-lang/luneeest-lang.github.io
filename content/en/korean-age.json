@@ -35,7 +35,13 @@
     "birthdayToday": "Today is your birthday",
     "errorInvalidDate": "Enter a valid date.",
     "errorBirthAfterBase": "The date of birth is after the reference date.",
-    "dayFormatOne": "{n} day"
+    "dayFormatOne": "{n} day",
+    "ageTableHeading": "Korean age by birth year (2026 and 2027)",
+    "ageTableNote": "International age is shown as \"before / after your birthday\". Year age ignores the birthday: it is the year minus your birth year.",
+    "colBirthYear": "Birth year",
+    "colManAge2026": "International age in 2026",
+    "colManAge2027": "International age in 2027",
+    "colYearAge2026": "Year age in 2026"
   },
   "formula": "International age = reference year − birth year, minus 1 if this year's birthday has not yet arrived. The Korean Civil Act (Article 158) and the Framework Act on Administration (Article 7-2) count age this way, including the day of birth.\n\nYear age = reference year − birth year, regardless of birthday, so everyone born in the same year has the same year age. Counting age = year age + 1.\n\nFor people born on February 29, the birthday is treated as March 1 in common years.",
   "example": "Someone born on May 10, 2000 is, on May 9, 2026, 25 in international age, 26 in year age, and 27 in counting age, with 1 day to the next birthday. On May 10 they turn 26.\n\nSomeone born on February 29, 2000 is 24 through February 28, 2025 and turns 25 on March 1, 2025. In the leap year 2028 they turn 28 on February 29.",
@@ -54,5 +60,5 @@
       "url": "https://www.law.go.kr/법령/행정기본법"
     }
   ],
-  "updated": "2026-11-09"
+  "updated": "2026-11-25"
 }

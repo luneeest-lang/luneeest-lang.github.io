@@ -50,7 +50,18 @@
     "errorInvalidDate": "Enter a valid date.",
     "errorUnsupportedYear": "Only last working days from January 1, 2026 are supported.",
     "errorInvalidWages": "Enter three-month wages greater than 0.",
-    "errorInvalidHours": "Enter daily hours greater than 0 and no more than 8."
+    "errorInvalidHours": "Enter daily hours greater than 0 and no more than 8.",
+    "daysTableHeading": "Benefit days by insured period and age",
+    "daysTableNote": "How many days of benefits you can receive, by your age on your last day (Employment Insurance Act, Table 1).",
+    "colInsuredPeriod": "Insured period",
+    "colUnder50": "Under 50",
+    "colOver50": "50 or older, or disabled",
+    "floorTableHeading": "Minimum daily benefit by daily working hours (won)",
+    "floorTableNote": "If 60% of your average daily wage is lower, you receive this amount: minimum wage × contractual daily hours × 80% (Employment Insurance Act, Article 46).",
+    "colDailyHours": "Daily hours",
+    "col2026": "Leaving in 2026",
+    "col2027": "Leaving in 2027",
+    "hoursFormat": "{n} hours"
   },
   "formula": "Average daily wage = total wages in the three months up to your last working day ÷ the calendar days in that period.\n\nDaily benefit = average daily wage × 60%. Only up to 113,500 won of daily wage counts (Enforcement Decree Article 68), so the maximum benefit is 68,100 won a day.\n\nFloor = the minimum wage in the year you left × contractual daily hours × 80%. If 60% of your wage is lower, you receive the floor (Employment Insurance Act Article 46). For an 8-hour day the floor is 66,048 won in 2026 and 68,480 won in 2027.\n\nTotal = daily benefit × benefit days. Benefit days range from 120 to 270 depending on age on your last day (under 50, or 50 and over or disabled) and how long you were insured.",
   "example": "A 40-year-old who worked until July 15, 2026, earned 9,000,000 won in the three months from April 16 (91 days), and was insured for two years has an average daily wage of about 98,901 won. Sixty percent is 59,340 won, below the 66,048 won floor, so they receive 66,048 won a day for 150 days, 9,907,200 won in total.\n\nWith 15,000,000 won in three-month wages, the average wage exceeds the cap and the benefit is 68,100 won a day. Leaving in 2027, the 68,480 won floor is above the cap, so the benefit is 68,480 won a day.",
@@ -83,5 +94,5 @@
       "url": "https://www.etoday.co.kr/news/view/2620387"
     }
   ],
-  "updated": "2026-11-04"
+  "updated": "2026-11-25"
 }
